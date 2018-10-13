@@ -1,0 +1,368 @@
+			#LDay td{
+	            height: 30px;
+	            text-align: center;
+	            font-family: "Microsoft YaHei";
+	            font-size: 12px;
+	        }
+	        #LDay div{
+	            cursor:pointer;
+	            width: 25px;
+	            line-height: 25px;
+	            margin:0 auto;
+	        }
+	        .title{
+	        	color:#5FB5FE;
+	        	width: 14%;
+	        }
+			#currentDay{
+				font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	            font-size: 14px;
+	            color: #E52355;
+			}
+			#currentWeekDay{
+	            font-size: 12px;
+	            color: #BCB8B9;
+	            font-weight: bold;
+			}
+			.LeftArrow{
+				float:left;
+				width: 7px;
+				height: 10px;
+				background-image: url(../images/left_wev8.png) ;
+				background-repeat:no-repeat;
+				text-align: center;
+				margin: 10px;
+				margin-right: 8px;
+				cursor:pointer;
+			}
+			.LeftArrow2{
+				float:left;
+				width: 7px;
+				height: 10px;
+				background-image: url(../images/left_hot_wev8.png) ;
+				background-repeat:no-repeat;
+				text-align: center;
+				margin: 10px;
+				margin-right: 8px;
+				cursor:pointer;
+			}
+			.changeMonth{
+				float:left;
+				font-size: 12px;
+				color: #E52355;
+				height: 28px;
+				line-height: 28px;
+				margin-left: 10px;
+				margin-right: 10px;
+			}
+			.RightArrow{
+				float:left;
+				width: 7px;
+				height: 10px;
+				background-image: url(../images/right_wev8.png) ;
+				background-repeat:no-repeat;
+				text-align: center;
+				margin: 10px;
+				margin-left: 8px;
+				cursor:pointer;
+			}
+			.RightArrow2{
+				float:left;
+				width: 7px;
+				height: 10px;
+				background-image: url(../images/right_hot_wev8.png) ;
+				background-repeat:no-repeat;
+				text-align: center;
+				margin: 10px;
+				margin-left: 8px;
+				cursor:pointer;
+			}
+			.notSelectMonthDay{
+				color: #BCB8B9;
+			}
+			.hand{
+				cursor:pointer;
+			}
+			.hashPlanDiv{
+				background-image: url(../images/green_circle_wev8.png) ;
+				background-repeat:no-repeat;
+				text-align: center;
+				color:#fff;
+			}
+			.currentCalendar{
+				background-image: url(../images/blue_circle_wev8.png) ;
+				background-repeat:no-repeat;
+				text-align: center;
+				color:#fff;
+			}
+			.currentSelect{
+				background-image: url(../images/blue_ring_wev8.png) ;
+				background-repeat:no-repeat;
+				text-align: center;
+				color: #676A6C;
+			}
+			.planDataEvent{
+				/*height:100px;*/
+				width: 100%;
+				overflow-y: hidden;
+				position: relative;
+			}
+			.dataEvent{			
+				line-height: 30px;
+				border-width: 0px;
+				border-bottom: 1px;
+				border-style: solid;
+				border-color: #F3F2F2;
+				float: left;
+				height: 30px;
+				width: 100%;
+			}
+			.dataEvent1{			
+				line-height: 30px;
+				float: left;
+				height: 30px;
+				width: 2px;
+			}
+			.dataEvent2{			
+				line-height: 30px;
+				float: left;
+				height: 30px;
+				width: 80px;
+				background:#F5F5F5;
+			}
+			.dataEvent2_1{			
+				margin-left:5px;
+			}
+			.dataEvent3{			
+				margin-left: 5px;
+				height: 30px;
+				display:block;
+				overflow:hidden; 
+				text-overflow: ellipsis;
+				-o-text-overflow:ellipsis; 
+			}
+			.addWorkPlan { 	
+				border:none;
+				BACKGROUND: url(../images/add_wev8.png) no-repeat;
+				color:#333;
+				WIDTH: 24px;
+				height:24px;
+				text-align:left;
+				cursor:pointer;
+				padding-left:10px;
+				padding-top:2px;
+				margin-right:5px;
+				background-position:50% 50%;
+			}
+			
+			.addWorkPlan2 { 	
+				border:none;BACKGROUND: url(../images/add_hot_wev8.png) no-repeat;color:#333;WIDTH: 94px;height:24px;text-align:left;cursor:pointer;padding-left:10px;padding-top:2px;margin-right:5px;
+				background-position:50% 50%;
+			}
+			.popDiv{
+				float:right;
+				position:absolute;
+				top:0px;
+				right:0px;
+				display:none;
+				border:#D8D8D8 1px solid;
+			}
+			.shadowDiv{
+				position:absolute;
+				float:left;
+				top:0px;
+				right:0px;
+				width:11px;
+				height:7px;
+				z-index:3;
+				display:none;
+				background-image:url(../images/angle_wev8.png);
+				background-repeat:no-repeat;
+			}
+			body{
+				color:#676a6c;
+			}
+			.hide_div{
+				display: none !important;
+			}
+			.sssp_gj_layer>div{
+				margin: 5px 0;
+				overflow: hidden;
+			}
+			.is_can_edit>div{
+				overflow: hidden;
+				padding-top: 5px
+				/* padding: 5px 0;
+				border-bottom: 1px solid #ccc; */
+			}
+			.is_can_edit>div>div{
+				margin-left: 130px;
+			}
+			/*.sssp_gj_layer>div:last-child{
+				margin-bottom: 0;
+				border-bottom: 0;
+			}*/
+			.sssp_gj_layer label{
+				font-weight: normal;
+				margin: 0;
+				line-height: 28px;
+			}
+			.sssp_gj_layer .left_lab{
+				width: 50px;
+				padding-left: 10px;
+				float: left;
+			}
+			.sssp_gj_layer .left_lab_long{
+				width: 130px;
+			}
+			.title_div>div{
+				float: left;
+				margin: 0 5px;
+			}
+			.clear_both{
+				height: 0;
+				clear: both;
+			}
+			.short_time_plan{
+				width: 40px;
+				border: 1px solid #cccccc !important;
+				padding-left: 5px;
+			}
+			.short_plan{
+				width: calc(100% - 55px);
+				height: 28px !important;
+				line-height: 28px !important;
+				border: 1px solid #cccccc !important;
+				padding-left: 5px;
+			}
+			.sssp_gj_layer{
+				height: calc(100% - 40px);
+				background: #fff;
+				overflow: auto;
+			}
+			.sssp_gj_layer textarea{
+				width: calc(100% - 55px);
+			    height: 100px;
+			    resize: none;
+			    outline: none;
+			    line-height: 20px;
+			    border: 1px solid #ccc;
+			}
+			.laydate-icon{
+				background: url(../images/icon.png) 80% center no-repeat #11297B;
+				margin-left: 10px;
+			}
+			.model_btn_div{
+				height: 35px;
+				text-align: center;
+			}
+			.model_btn_div img{
+				width: 30px;
+				margin-top: 5px;
+				cursor: pointer;
+			}
+			.title_div{
+				border-bottom: 1px solid #6262F0;
+				background-color: #fff;
+			}
+			.title_div>div{
+				float: left;
+			}
+			.title_div>div:nth-child(2){
+				float: right;
+			}
+			.edit_btn{
+				height: 28px;
+				width: 50px;
+				border: 1px solid #af9f9f !important;
+				outline: none;
+				text-align: center;
+				margin-top: 10px;
+				float: left;
+				cursor: pointer;
+				background-color: #fff;
+				border: 1px solid #6CBAEB !important;
+			  	background-color: #1C84C6;
+			  	color: #fff;
+			  	font-size: 14px;
+			}
+			/* .check_btn{
+				background-color: #30b5ff;
+			} */
+			.edit_btn:hover{
+				background-color: #376fec;
+			}
+			
+			.schedule_plan{
+				/*width: 80vw;
+				height: 80vh;*/
+				/*margin: 10vh auto;*/
+				width: 99%;
+				margin: 30px 0 0 0.5%;
+				height: 90%;
+				box-shadow: none;
+				background: transparent;
+				border: 0;
+				max-height:245px;
+			}
+			
+			
+			/*寮瑰嚭鎻愮ず妗�*/
+			.loading{
+				display: none;
+			}
+			.layui-layer-btn {
+			    text-align: center !important;
+			}
+			.cannot_edit{
+				pointer-events: none;
+				opacity: 0.7;
+			}
+			label{
+				vertical-align: middle;
+			}
+			label>input{
+				vertical-align: text-bottom;
+			}
+			input[name=remind_type]{
+				vertical-align: text-top;
+			}
+			.modal-backdrop {
+			  	background-color: #676565;
+			}
+			#show_something{
+				position:absolute;
+				background-color: #0E96F6;
+			  	border: 1px solid #95C2E2;
+			  	border-radius: 5px;
+			  	padding: 5px 10px;
+			  	width: 150px;
+			  	color: #fff;
+			  	display: none;
+			}
+			#show_something p{
+				margin: 0;
+				padding: 0;
+				white-space: nowrap;
+			  	text-overflow: ellipsis;
+			  	-o-text-overflow: ellipsis;
+			  	overflow: hidden;
+			  	font-size: 16px;
+			}
+			#show_something .more_msg_p{
+				height: 15px;
+				line-height: 5px;
+				font-size: 12px;
+			}
+			#show_something i{
+				position: absolute;
+			  	top: 5px;
+			  	color: #0E96F6;
+			  	font-size: 16px !important;
+			}
+			#show_something .fa-caret-left{
+			  	left: -5px;
+			}
+			#show_something .fa-caret-right{
+				right: -5px;
+			}

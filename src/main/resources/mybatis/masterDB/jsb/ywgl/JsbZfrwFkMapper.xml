@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.jsb.ywgl.dao.JsbZfrwFkDao">
+	<resultMap id="BaseResultMap" type="com.bootdo.jsb.ywgl.domain.JsbZfrwFkDO">
+		<result column="id" property="id"></result>
+		<result column="zfrw_id" property="zfrwId"></result>
+		<result column="hz_mc" property="hzMc"></result>
+		<result column="hz_sfzhm" property="hzSfzhm"></result>
+		<result column="gkdj" property="gkdj"></result>
+		<result column="zfdd" property="zfdd"></result>
+		<result column="lng" property="lng"></result>
+		<result column="lat" property="lat"></result>
+		<result column="hzqk_ryzw" property="hzqkRyzw"></result>
+		<result column="hzqk_cqzw_qx" property="hzqkCqzwQx"></result>
+		<result column="hzqk_bqwd" property="hzqkBqwd"></result>
+		<result column="hzqk_jhrlz" property="hzqkJhrlz"></result>
+		<result column="hzqk_fyqk" property="hzqkFyqk"></result>
+		<result column="hzqk_fxdj" property="hzqkFxdj"></result>
+		<result column="hzqk_qtqksm" property="hzqkQtqksm"></result>
+		<result column="mjzfsx" property="mjzfsx"></result>
+		<result column="zfrq" property="zfrq"></result>
+		<result column="xczfrq" property="xczfrq"></result>
+		<result column="zfmj_jh" property="zfmjJh"></result>
+		<result column="zfmj_mc" property="zfmjMc"></result>
+		<result column="lhsfry_jh" property="lhsfryJh"></result>
+		<result column="lhsfry_mc" property="lhsfryMc"></result>
+		<result column="scsj" property="scsj"></result>
+		<result column="isread" property="isread"></result>
+		<result column="read_time" property="readTime"></result>
+	</resultMap>
+	<select id="get" resultMap="BaseResultMap">
+		select `id`,`zfrw_id`,`hz_mc`,`hz_sfzhm`,`gkdj`,`zfdd`,`lng`,`lat`,`hzqk_ryzw`,`hzqk_cqzw_qx`,`hzqk_bqwd`,`hzqk_jhrlz`,`hzqk_fyqk`,`hzqk_fxdj`,`hzqk_qtqksm`,`mjzfsx`,`zfrq`,`xczfrq`,`zfmj_jh`,`zfmj_mc`,`lhsfry_jh`,`lhsfry_mc`,`scsj`,`isread`,`read_time` from jsb_zfrw_fk where id = #{value}
+	</select>
+
+	<select id="list" resultMap="BaseResultMap">
+		select `id`,`zfrw_id`,`hz_mc`,`hz_sfzhm`,`gkdj`,`zfdd`,`lng`,`lat`,`hzqk_ryzw`,`hzqk_cqzw_qx`,`hzqk_bqwd`,`hzqk_jhrlz`,`hzqk_fyqk`,`hzqk_fxdj`,`hzqk_qtqksm`,`mjzfsx`,`zfrq`,`xczfrq`,`zfmj_jh`,`zfmj_mc`,`lhsfry_jh`,`lhsfry_mc`,`scsj`,`isread`,`read_time` from jsb_zfrw_fk
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="zfrwId != null and zfrwId != ''"> and zfrw_id = #{zfrwId} </if>
+		  		  <if test="hzMc != null and hzMc != ''"> and hz_mc = #{hzMc} </if>
+		  		  <if test="hzSfzhm != null and hzSfzhm != ''"> and hz_sfzhm = #{hzSfzhm} </if>
+		  		  <if test="gkdj != null and gkdj != ''"> and gkdj = #{gkdj} </if>
+		  		  <if test="zfdd != null and zfdd != ''"> and zfdd = #{zfdd} </if>
+		  		  <if test="lng != null and lng != ''"> and lng = #{lng} </if>
+		  		  <if test="lat != null and lat != ''"> and lat = #{lat} </if>
+		  		  <if test="hzqkRyzw != null and hzqkRyzw != ''"> and hzqk_ryzw = #{hzqkRyzw} </if>
+		  		  <if test="hzqkCqzwQx != null and hzqkCqzwQx != ''"> and hzqk_cqzw_qx = #{hzqkCqzwQx} </if>
+		  		  <if test="hzqkBqwd != null and hzqkBqwd != ''"> and hzqk_bqwd = #{hzqkBqwd} </if>
+		  		  <if test="hzqkJhrlz != null and hzqkJhrlz != ''"> and hzqk_jhrlz = #{hzqkJhrlz} </if>
+		  		  <if test="hzqkFyqk != null and hzqkFyqk != ''"> and hzqk_fyqk = #{hzqkFyqk} </if>
+		  		  <if test="hzqkFxdj != null and hzqkFxdj != ''"> and hzqk_fxdj = #{hzqkFxdj} </if>
+		  		  <if test="hzqkQtqksm != null and hzqkQtqksm != ''"> and hzqk_qtqksm = #{hzqkQtqksm} </if>
+		  		  <if test="mjzfsx != null and mjzfsx != ''"> and mjzfsx = #{mjzfsx} </if>
+		  		  <if test="zfrq != null and zfrq != ''"> and zfrq = #{zfrq} </if>
+		  		  <if test="xczfrq != null and xczfrq != ''"> and xczfrq = #{xczfrq} </if>
+		  		  <if test="zfmjJh != null and zfmjJh != ''"> and zfmj_jh = #{zfmjJh} </if>
+		  		  <if test="zfmjMc != null and zfmjMc != ''"> and zfmj_mc = #{zfmjMc} </if>
+		  		  <if test="lhsfryJh != null and lhsfryJh != ''"> and lhsfry_jh = #{lhsfryJh} </if>
+		  		  <if test="lhsfryMc != null and lhsfryMc != ''"> and lhsfry_mc = #{lhsfryMc} </if>
+		  		  <if test="scsj != null and scsj != ''"> and scsj = #{scsj} </if>
+		  		  <if test="isread != null and isread != ''"> and isread = #{isread} </if>
+		  		  <if test="readTime != null and readTime != ''"> and read_time = #{readTime} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from jsb_zfrw_fk
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="zfrwId != null and zfrwId != ''"> and zfrw_id = #{zfrwId} </if>
+		  		  <if test="hzMc != null and hzMc != ''"> and hz_mc = #{hzMc} </if>
+		  		  <if test="hzSfzhm != null and hzSfzhm != ''"> and hz_sfzhm = #{hzSfzhm} </if>
+		  		  <if test="gkdj != null and gkdj != ''"> and gkdj = #{gkdj} </if>
+		  		  <if test="zfdd != null and zfdd != ''"> and zfdd = #{zfdd} </if>
+		  		  <if test="lng != null and lng != ''"> and lng = #{lng} </if>
+		  		  <if test="lat != null and lat != ''"> and lat = #{lat} </if>
+		  		  <if test="hzqkRyzw != null and hzqkRyzw != ''"> and hzqk_ryzw = #{hzqkRyzw} </if>
+		  		  <if test="hzqkCqzwQx != null and hzqkCqzwQx != ''"> and hzqk_cqzw_qx = #{hzqkCqzwQx} </if>
+		  		  <if test="hzqkBqwd != null and hzqkBqwd != ''"> and hzqk_bqwd = #{hzqkBqwd} </if>
+		  		  <if test="hzqkJhrlz != null and hzqkJhrlz != ''"> and hzqk_jhrlz = #{hzqkJhrlz} </if>
+		  		  <if test="hzqkFyqk != null and hzqkFyqk != ''"> and hzqk_fyqk = #{hzqkFyqk} </if>
+		  		  <if test="hzqkFxdj != null and hzqkFxdj != ''"> and hzqk_fxdj = #{hzqkFxdj} </if>
+		  		  <if test="hzqkQtqksm != null and hzqkQtqksm != ''"> and hzqk_qtqksm = #{hzqkQtqksm} </if>
+		  		  <if test="mjzfsx != null and mjzfsx != ''"> and mjzfsx = #{mjzfsx} </if>
+		  		  <if test="zfrq != null and zfrq != ''"> and zfrq = #{zfrq} </if>
+		  		  <if test="xczfrq != null and xczfrq != ''"> and xczfrq = #{xczfrq} </if>
+		  		  <if test="zfmjJh != null and zfmjJh != ''"> and zfmj_jh = #{zfmjJh} </if>
+		  		  <if test="zfmjMc != null and zfmjMc != ''"> and zfmj_mc = #{zfmjMc} </if>
+		  		  <if test="lhsfryJh != null and lhsfryJh != ''"> and lhsfry_jh = #{lhsfryJh} </if>
+		  		  <if test="lhsfryMc != null and lhsfryMc != ''"> and lhsfry_mc = #{lhsfryMc} </if>
+		  		  <if test="scsj != null and scsj != ''"> and scsj = #{scsj} </if>
+		  		  <if test="isread != null and isread != ''"> and isread = #{isread} </if>
+		  		  <if test="readTime != null and readTime != ''"> and read_time = #{readTime} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.jsb.ywgl.domain.JsbZfrwFkDO">
+		insert into jsb_zfrw_fk
+		(
+			`id`, 
+			`zfrw_id`, 
+			`hz_mc`, 
+			`hz_sfzhm`, 
+			`gkdj`, 
+			`zfdd`, 
+			`lng`, 
+			`lat`, 
+			`hzqk_ryzw`, 
+			`hzqk_cqzw_qx`, 
+			`hzqk_bqwd`, 
+			`hzqk_jhrlz`, 
+			`hzqk_fyqk`, 
+			`hzqk_fxdj`, 
+			`hzqk_qtqksm`, 
+			`mjzfsx`, 
+			`zfrq`, 
+			`xczfrq`, 
+			`zfmj_jh`, 
+			`zfmj_mc`, 
+			`lhsfry_jh`, 
+			`lhsfry_mc`, 
+			`scsj`, 
+			`isread`, 
+			`read_time`
+		)
+		values
+		(
+			#{id}, 
+			#{zfrwId}, 
+			#{hzMc}, 
+			#{hzSfzhm}, 
+			#{gkdj}, 
+			#{zfdd}, 
+			#{lng}, 
+			#{lat}, 
+			#{hzqkRyzw}, 
+			#{hzqkCqzwQx}, 
+			#{hzqkBqwd}, 
+			#{hzqkJhrlz}, 
+			#{hzqkFyqk}, 
+			#{hzqkFxdj}, 
+			#{hzqkQtqksm}, 
+			#{mjzfsx}, 
+			#{zfrq}, 
+			#{xczfrq}, 
+			#{zfmjJh}, 
+			#{zfmjMc}, 
+			#{lhsfryJh}, 
+			#{lhsfryMc}, 
+			#{scsj}, 
+			#{isread}, 
+			#{readTime}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.jsb.ywgl.domain.JsbZfrwFkDO">
+		update jsb_zfrw_fk 
+		<set>
+			<if test="zfrwId != null">`zfrw_id` = #{zfrwId}, </if>
+			<if test="hzMc != null">`hz_mc` = #{hzMc}, </if>
+			<if test="hzSfzhm != null">`hz_sfzhm` = #{hzSfzhm}, </if>
+			<if test="gkdj != null">`gkdj` = #{gkdj}, </if>
+			<if test="zfdd != null">`zfdd` = #{zfdd}, </if>
+			<if test="lng != null">`lng` = #{lng}, </if>
+			<if test="lat != null">`lat` = #{lat}, </if>
+			<if test="hzqkRyzw != null">`hzqk_ryzw` = #{hzqkRyzw}, </if>
+			<if test="hzqkCqzwQx != null">`hzqk_cqzw_qx` = #{hzqkCqzwQx}, </if>
+			<if test="hzqkBqwd != null">`hzqk_bqwd` = #{hzqkBqwd}, </if>
+			<if test="hzqkJhrlz != null">`hzqk_jhrlz` = #{hzqkJhrlz}, </if>
+			<if test="hzqkFyqk != null">`hzqk_fyqk` = #{hzqkFyqk}, </if>
+			<if test="hzqkFxdj != null">`hzqk_fxdj` = #{hzqkFxdj}, </if>
+			<if test="hzqkQtqksm != null">`hzqk_qtqksm` = #{hzqkQtqksm}, </if>
+			<if test="mjzfsx != null">`mjzfsx` = #{mjzfsx}, </if>
+			<if test="zfrq != null">`zfrq` = #{zfrq}, </if>
+			<if test="xczfrq != null">`xczfrq` = #{xczfrq}, </if>
+			<if test="zfmjJh != null">`zfmj_jh` = #{zfmjJh}, </if>
+			<if test="zfmjMc != null">`zfmj_mc` = #{zfmjMc}, </if>
+			<if test="lhsfryJh != null">`lhsfry_jh` = #{lhsfryJh}, </if>
+			<if test="lhsfryMc != null">`lhsfry_mc` = #{lhsfryMc}, </if>
+			<if test="scsj != null">`scsj` = #{scsj}, </if>
+			<if test="isread != null">`isread` = #{isread}, </if>
+			<if test="readTime != null">`read_time` = #{readTime}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from jsb_zfrw_fk where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from jsb_zfrw_fk where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

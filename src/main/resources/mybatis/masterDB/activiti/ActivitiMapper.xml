@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.activiti.dao.ActivitiDao">
+
+	<delete id="batchRemove_act">
+		DELETE
+		a.*,
+		h1.*,
+		h2.*,
+		h3.*,
+		h4.*,
+		h5.*,
+		h6.*,
+		h7.*,
+		r1.*,
+		r2.*,
+		r3.*,
+		r4.*,
+		r5.*,
+		r6.*
+		FROM
+		act_hi_procinst a
+		LEFT JOIN act_hi_actinst h1 ON h1.PROC_INST_ID_ = a.PROC_INST_ID_
+		LEFT JOIN act_hi_attachment h2 ON h2.PROC_INST_ID_ = a.PROC_INST_ID_
+		LEFT JOIN act_hi_comment h3 ON h3.PROC_INST_ID_ = a.PROC_INST_ID_
+		LEFT JOIN act_hi_detail h4 ON h4.PROC_INST_ID_ = a.PROC_INST_ID_
+		LEFT JOIN act_hi_identitylink h5 ON h5.PROC_INST_ID_ = a.PROC_INST_ID_
+		LEFT JOIN act_hi_taskinst h6 ON h6.PROC_INST_ID_ = a.PROC_INST_ID_
+		LEFT JOIN act_hi_varinst h7 ON h7.PROC_INST_ID_ = a.PROC_INST_ID_
+		LEFT JOIN act_ru_event_subscr r1 ON r1.PROC_INST_ID_ = a.PROC_INST_ID_
+		LEFT JOIN act_ru_execution r2 ON r2.PROC_INST_ID_ = a.PROC_INST_ID_
+		LEFT JOIN act_ru_identitylink r3 ON r3.PROC_INST_ID_ = a.PROC_INST_ID_
+		LEFT JOIN act_ru_job r4 ON r4.PROCESS_INSTANCE_ID_ = a.PROC_INST_ID_
+		LEFT JOIN act_ru_task r5 ON r5.PROC_INST_ID_ = a.PROC_INST_ID_
+		LEFT JOIN act_ru_variable r6 ON r6.PROC_INST_ID_ = a.PROC_INST_ID_
+		WHERE
+		a.PROC_INST_ID_ IN
+		<foreach item="id" collection="array" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

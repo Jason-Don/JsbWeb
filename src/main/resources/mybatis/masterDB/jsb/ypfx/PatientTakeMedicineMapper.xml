@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.jsb.ypfx.dao.PatientTakeMedicineDao">
+	<resultMap id="BaseResultMap" type="com.bootdo.jsb.ypfx.domain.PatientTakeMedicineDO">
+		<result column="id" property="id"></result>
+		<result column="patient_name" property="patientName"></result>
+		<result column="patient_idcard" property="patientIdcard"></result>
+		<result column="guardian" property="guardian"></result>
+		<result column="guardian_idcard" property="guardianIdcard"></result>
+		<result column="guardian_relationship" property="guardianRelationship"></result>
+		<result column="guardian_phonenumber" property="guardianPhonenumber"></result>
+		<result column="xzdz" property="xzdz"></result>
+		<result column="xzqh" property="xzqh"></result>
+		<result column="hjdz" property="hjdz"></result>
+		<result column="hjqh" property="hjqh"></result>
+		<result column="bgdw" property="bgdw"></result>
+		<result column="zdlx" property="zdlx"></result>
+		<result column="iszk" property="iszk"></result>
+		<result column="szyy" property="szyy"></result>
+		<result column="isyjdb" property="isyjdb"></result>
+		<result column="yjdbtime" property="yjdbtime"></result>
+		<result column="lasttime_take_medicine" property="lasttimeTakeMedicine"></result>
+	</resultMap>
+	<select id="get" resultMap="BaseResultMap">
+		select `id`,`patient_name`,`patient_idcard`,`guardian`,`guardian_idcard`,`guardian_relationship`,`guardian_phonenumber`,`xzdz`,`xzqh`,`hjdz`,`hjqh`,`bgdw`,`zdlx`,`iszk`,`szyy`,`isyjdb`,`yjdbtime`,`lasttime_take_medicine` from patient_take_medicine where id = #{value}
+	</select>
+
+	<select id="list" resultMap="BaseResultMap">
+		select `id`,`patient_name`,`patient_idcard`,`guardian`,`guardian_idcard`,`guardian_relationship`,`guardian_phonenumber`,`xzdz`,`xzqh`,`hjdz`,`hjqh`,`bgdw`,`zdlx`,`iszk`,`szyy`,`isyjdb`,`yjdbtime`,`lasttime_take_medicine` from patient_take_medicine
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="patientName != null and patientName != ''"> and patient_name = #{patientName} </if>
+		  		  <if test="patientIdcard != null and patientIdcard != ''"> and patient_idcard = #{patientIdcard} </if>
+		  		  <if test="guardian != null and guardian != ''"> and guardian = #{guardian} </if>
+		  		  <if test="guardianIdcard != null and guardianIdcard != ''"> and guardian_idcard = #{guardianIdcard} </if>
+		  		  <if test="guardianRelationship != null and guardianRelationship != ''"> and guardian_relationship = #{guardianRelationship} </if>
+		  		  <if test="guardianPhonenumber != null and guardianPhonenumber != ''"> and guardian_phonenumber = #{guardianPhonenumber} </if>
+		  		  <if test="xzdz != null and xzdz != ''"> and xzdz = #{xzdz} </if>
+		  		  <if test="xzqh != null and xzqh != ''"> and xzqh = #{xzqh} </if>
+		  		  <if test="hjdz != null and hjdz != ''"> and hjdz = #{hjdz} </if>
+		  		  <if test="hjqh != null and hjqh != ''"> and hjqh = #{hjqh} </if>
+		  		  <if test="bgdw != null and bgdw != ''"> and bgdw = #{bgdw} </if>
+		  		  <if test="zdlx != null and zdlx != ''"> and zdlx = #{zdlx} </if>
+		  		  <if test="iszk != null and iszk != ''"> and iszk = #{iszk} </if>
+		  		  <if test="szyy != null and szyy != ''"> and szyy = #{szyy} </if>
+		  		  <if test="isyjdb != null and isyjdb != ''"> and isyjdb = #{isyjdb} </if>
+		  		  <if test="yjdbtime != null and yjdbtime != ''"> and yjdbtime = #{yjdbtime} </if>
+		  		  <if test="lasttimeTakeMedicine != null and lasttimeTakeMedicine != ''"> and lasttime_take_medicine = #{lasttimeTakeMedicine} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from patient_take_medicine
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="patientName != null and patientName != ''"> and patient_name = #{patientName} </if>
+		  		  <if test="patientIdcard != null and patientIdcard != ''"> and patient_idcard = #{patientIdcard} </if>
+		  		  <if test="guardian != null and guardian != ''"> and guardian = #{guardian} </if>
+		  		  <if test="guardianIdcard != null and guardianIdcard != ''"> and guardian_idcard = #{guardianIdcard} </if>
+		  		  <if test="guardianRelationship != null and guardianRelationship != ''"> and guardian_relationship = #{guardianRelationship} </if>
+		  		  <if test="guardianPhonenumber != null and guardianPhonenumber != ''"> and guardian_phonenumber = #{guardianPhonenumber} </if>
+		  		  <if test="xzdz != null and xzdz != ''"> and xzdz = #{xzdz} </if>
+		  		  <if test="xzqh != null and xzqh != ''"> and xzqh = #{xzqh} </if>
+		  		  <if test="hjdz != null and hjdz != ''"> and hjdz = #{hjdz} </if>
+		  		  <if test="hjqh != null and hjqh != ''"> and hjqh = #{hjqh} </if>
+		  		  <if test="bgdw != null and bgdw != ''"> and bgdw = #{bgdw} </if>
+		  		  <if test="zdlx != null and zdlx != ''"> and zdlx = #{zdlx} </if>
+		  		  <if test="iszk != null and iszk != ''"> and iszk = #{iszk} </if>
+		  		  <if test="szyy != null and szyy != ''"> and szyy = #{szyy} </if>
+		  		  <if test="isyjdb != null and isyjdb != ''"> and isyjdb = #{isyjdb} </if>
+		  		  <if test="yjdbtime != null and yjdbtime != ''"> and yjdbtime = #{yjdbtime} </if>
+		  		  <if test="lasttimeTakeMedicine != null and lasttimeTakeMedicine != ''"> and lasttime_take_medicine = #{lasttimeTakeMedicine} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.jsb.ypfx.domain.PatientTakeMedicineDO" useGeneratedKeys="true" keyProperty="id">
+		insert into patient_take_medicine
+		(
+			`patient_name`, 
+			`patient_idcard`, 
+			`guardian`, 
+			`guardian_idcard`, 
+			`guardian_relationship`, 
+			`guardian_phonenumber`, 
+			`xzdz`, 
+			`xzqh`, 
+			`hjdz`, 
+			`hjqh`, 
+			`bgdw`, 
+			`zdlx`, 
+			`iszk`, 
+			`szyy`, 
+			`isyjdb`, 
+			`yjdbtime`, 
+			`lasttime_take_medicine`
+		)
+		values
+		(
+			#{patientName}, 
+			#{patientIdcard}, 
+			#{guardian}, 
+			#{guardianIdcard}, 
+			#{guardianRelationship}, 
+			#{guardianPhonenumber}, 
+			#{xzdz}, 
+			#{xzqh}, 
+			#{hjdz}, 
+			#{hjqh}, 
+			#{bgdw}, 
+			#{zdlx}, 
+			#{iszk}, 
+			#{szyy}, 
+			#{isyjdb}, 
+			#{yjdbtime}, 
+			#{lasttimeTakeMedicine}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.jsb.ypfx.domain.PatientTakeMedicineDO">
+		update patient_take_medicine 
+		<set>
+			<if test="patientName != null">`patient_name` = #{patientName}, </if>
+			<if test="patientIdcard != null">`patient_idcard` = #{patientIdcard}, </if>
+			<if test="guardian != null">`guardian` = #{guardian}, </if>
+			<if test="guardianIdcard != null">`guardian_idcard` = #{guardianIdcard}, </if>
+			<if test="guardianRelationship != null">`guardian_relationship` = #{guardianRelationship}, </if>
+			<if test="guardianPhonenumber != null">`guardian_phonenumber` = #{guardianPhonenumber}, </if>
+			<if test="xzdz != null">`xzdz` = #{xzdz}, </if>
+			<if test="xzqh != null">`xzqh` = #{xzqh}, </if>
+			<if test="hjdz != null">`hjdz` = #{hjdz}, </if>
+			<if test="hjqh != null">`hjqh` = #{hjqh}, </if>
+			<if test="bgdw != null">`bgdw` = #{bgdw}, </if>
+			<if test="zdlx != null">`zdlx` = #{zdlx}, </if>
+			<if test="iszk != null">`iszk` = #{iszk}, </if>
+			<if test="szyy != null">`szyy` = #{szyy}, </if>
+			<if test="isyjdb != null">`isyjdb` = #{isyjdb}, </if>
+			<if test="yjdbtime != null">`yjdbtime` = #{yjdbtime}, </if>
+			<if test="lasttimeTakeMedicine != null">`lasttime_take_medicine` = #{lasttimeTakeMedicine}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from patient_take_medicine where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from patient_take_medicine where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

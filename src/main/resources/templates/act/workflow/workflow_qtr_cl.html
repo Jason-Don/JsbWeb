@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head th:include="include :: header"></head>
+<head>
+<meta charset="UTF-8">
+<title>牵头人处理任务</title>
+<link type='text/css' rel='stylesheet' href="/css/all_workflow.css">
+<style>
+		body,.message_div{
+			background-color:#e6e6e6;
+		}
+</style>
+</head>
+<body>
+	<div class="message_div">
+		<div class="message_title ">
+			<div>任务信息</div>
+		</div>
+		<!-- <form  id="add_form"> -->
+           	<input id="taskId" name="taskId" th:value="${workflow.taskId}"  type="hidden">
+           	<input id="id" name="id" th:value="${workflow.id}"  type="hidden">
+           	<input id="cjsj" th:value="${workflow.cjsj}"  type="hidden">
+           	<input id="rwkssj" th:value="${workflow.rwkssj}"  type="hidden">
+           	<input id="rwwcsj" th:value="${workflow.rwwcsj}"  type="hidden">
+           	<input id="rwly" name="rwly" th:value="${workflow.rwly}"  type="hidden">
+           	<input id="nycd" name="nycd" th:value="${workflow.nycd}"  type="hidden">
+           
+           
+           	<input id="rwzpqsry" name="rwzpqsry" type="hidden">
+           	<input id="rwzpqsryMc" name="rwzpqsryMc" type="hidden">
+           
+			<div class="message_detail_div ">
+				<div class="read_only">
+					<div class="more_div">
+						<label class="label_left">任务来源：</label>
+						<input class="input" id="rwlySelect" readonly="readonly"  >
+					</div>
+					<div class="more_div">
+						<label class="label_left">任务创建人：</label> 
+						<input class="input" id="cjryMc" name="cjryMc" readonly="readonly"   th:value="${workflow.cjryMc}">
+						<input id="cjryId" name="cjryId"  class="hidden" th:value="${workflow.cjryId}">
+					</div>
+					<div class="more_div">
+						<label class="label_left">任务名称：</label> 
+						<input class="input" id="taskName" name="taskName" type="text" readonly="readonly"  th:value="${workflow.taskName}"/>
+					</div>
+					
+					<div class="clear_both"></div>
+				</div>
+				<div class="read_only">
+					<label class="label_left">任务内容：</label>
+					<textarea id="rwnr" name="rwnr" readonly="readonly"  th:inline="text">[[${workflow.rwnr}]]</textarea>
+				</div>
+				<div class="more_div read_only">
+						<label class="label_left label_left_1">附件：</label>
+						<div >
+						<input id="files" th:value="${workflow.fileId}" class="hidden">
+							<a href="#" onclick="download()" th:text="${workflow.fileMc}" onclick="downloadFile()"></a>
+						</div>
+				</div>
+				<div class="read_only">
+					<label class="label_left label_left_1">难易程度：</label>
+					<div>
+						<label><input type="radio" id="JD" name="nycd" value="JD" disabled/>简单</label> 
+						<label><input type="radio" id="ZC" name="nycd" value="ZC" disabled/>正常</label> 
+						<label><input type="radio" id="Nan" name="nycd" value="Nan" disabled/>难</label>
+					</div>
+					<div class="clear_both"></div>
+				</div>
+				<div class="read_only">
+					<div class="more_div">
+						<label class="label_left">开始时间：</label> 
+						<input id="rwkssjLabel" readonly="readonly" class="laydate-icon layer-date input" placeholder="请选择">
+					</div>
+					<div class="more_div">
+						<label class="label_left">结束时间：</label> 
+						<input id="rwwcsjLabel"   readonly="readonly" class="laydate-icon layer-date input" placeholder="请选择">
+					</div>
+					<div class="clear_both"></div>
+				</div>
+				<div  class="read_only">
+					<label class="label_left">办理意见：</label>
+					<textarea id="blyj" name="blyj"  readonly="readonly"  th:inline="text">[[${workflow.blyj}]]</textarea>
+				</div>
+				<div class="read_only">
+						<label class="label_left">室领导审核：</label>
+						<input id="rwzpry" name="rwzpry" class="hidden" th:value="${workflow.rwzpry}" >
+	                    <input class="input" id="rwzpryMc" name="rwzpryMc" type="text" readonly="readonly" placeholder="--请选择--" th:value="${workflow.rwzpryMc}" >
+				</div>
+			</div>
+		<!-- </form> -->
+	</div>
+	<div class="submit_div">
+		<input class="no_detail" type="button" id="fb_button" onclick="Workflow_qtr_cl.fb()" value="分办" />
+		<input class="no_detail" type="button" id="save_button" onclick="Workflow_qtr_cl.commit()" value="反馈" />
+		<input class="no_detail" type="button" id="saveAndStart_button" onclick="Workflow_qtr_cl.reject()" value="退回" />
+		<span id="task_detail_type" class="already_detail hide_div">任务已经处理,请关闭页面</span>
+		<input class="already_detail hide_div" type="button" id="close_button" onclick="Workflow_qtr_cl.close()" value="关闭" />
+	</div>
+<div th:include="include::footer"></div>
+
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugins/layer/laydate/laydate.js"></script>
+<script type="text/javascript" src="/js/appjs/act/workflow/workflow_qtr_cl.js"></script>
+</html>

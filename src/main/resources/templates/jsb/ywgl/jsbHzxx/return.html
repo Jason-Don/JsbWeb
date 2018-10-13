@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<head>
+</head>
+<body class="gray-bg">
+<div id="dlg_redo" class="easyui-dialog panel-body panel-body-noborder window-body" style="padding: 10px 20px; width: 336px; height: 206px;" data-options="modal:true" closed="true" buttons="#dlg_redo_buttons" title="">
+		<div class="ftitle">确定回退该患者吗？</div>
+		<form id="fm_redo" method="post" novalidate="">
+    		<input name="id" type="text" readonly="true" style="display:none">
+			<div class="fitem">
+				<label class="textbox-label textbox-label-before" for="_easyui_textbox_input21" style="text-align: left; height: 24px; line-height: 24px;">身份证号</label><input class="easyui-textbox textbox-f" label="身份证号" style="width: 320px; display: none;" readonly="true" textboxname="sfzh"><span class="textbox textbox-readonly" style="width: 249px;"><input id="_easyui_textbox_input21" type="text" class="textbox-text validatebox-text validatebox-readonly" autocomplete="off" tabindex="" readonly="readonly" placeholder="" style="margin: 0px; padding-top: 0px; padding-bottom: 0px; height: 22px; line-height: 22px; width: 241px;"><input type="hidden" class="textbox-value" name="sfzh" value="360521196806272813"></span>
+            </div>
+			<div class="fitem">
+				<label class="textbox-label textbox-label-before" for="_easyui_textbox_input22" style="text-align: left; height: 24px; line-height: 24px;">患者姓名</label><input class="easyui-textbox textbox-f" label="患者姓名" style="width: 320px; display: none;" readonly="true" textboxname="hzxm"><span class="textbox textbox-readonly" style="width: 249px;"><input id="_easyui_textbox_input22" type="text" class="textbox-text validatebox-text validatebox-readonly" autocomplete="off" tabindex="" readonly="readonly" placeholder="" style="margin: 0px; padding-top: 0px; padding-bottom: 0px; height: 22px; line-height: 22px; width: 241px;"><input type="hidden" class="textbox-value" name="hzxm" value="邓小文"></span>
+			</div>
+			<div class="fitem">
+				<label class="textbox-label textbox-label-before" for="_easyui_textbox_input23" style="text-align: left; height: 24px; line-height: 24px;">户籍地址</label><input class="easyui-textbox textbox-f" label="户籍地址" style="width: 320px; display: none;" readonly="true" textboxname="hjdz"><span class="textbox textbox-readonly" style="width: 249px;"><input id="_easyui_textbox_input23" type="text" class="textbox-text validatebox-text validatebox-readonly" autocomplete="off" tabindex="" readonly="readonly" placeholder="" style="margin: 0px; padding-top: 0px; padding-bottom: 0px; height: 22px; line-height: 22px; width: 241px;"><input type="hidden" class="textbox-value" name="hjdz" value="江西省分宜县分宜镇安仁路161号1栋2单元301室"></span>
+			</div>
+			<div class="fitem">
+				<label class="textbox-label textbox-label-before" for="_easyui_textbox_input24" style="text-align: left; height: 24px; line-height: 24px;">现住地址</label><input class="easyui-textbox textbox-f" label="现住地址" style="width: 320px; display: none;" readonly="true" textboxname="xzdz"><span class="textbox textbox-readonly" style="width: 249px;"><input id="_easyui_textbox_input24" type="text" class="textbox-text validatebox-text validatebox-readonly" autocomplete="off" tabindex="" readonly="readonly" placeholder="" style="margin: 0px; padding-top: 0px; padding-bottom: 0px; height: 22px; line-height: 22px; width: 241px;"><input type="hidden" class="textbox-value" name="xzdz" value="分宜县分宜镇界桥村委文山村小组"></span>
+			</div>
+            <div class="fitem">
+                <label class="textbox-label textbox-label-before" for="_easyui_textbox_input34" style="text-align: left; height: 24px; line-height: 24px;">回退原因</label><select class="easyui-combobox combobox-f combo-f textbox-f" style="width: 320px; display: none;" label="回退原因" required="true" panelheight="auto" textboxname="scyy" comboname="scyy">
+                    <option value="居住地、户籍地均不在本辖区">居住地、户籍地均不在本辖区</option>
+					<option value="查无此人">查无此人</option>
+                    <option value="其他">其他</option>
+                </select><span class="textbox combo textbox-invalid" style="width: 249px;"><span class="textbox-addon textbox-addon-right" style="right: 0px; top: 0px;"><a href="javascript:;" class="textbox-icon combo-arrow" icon-index="0" tabindex="-1" style="width: 18px; height: 22px;"></a></span><input id="_easyui_textbox_input34" type="text" class="textbox-text validatebox-text validatebox-invalid textbox-prompt" autocomplete="off" tabindex="" placeholder="" title="" style="margin: 0px 18px 0px 0px; padding-top: 0px; padding-bottom: 0px; height: 22px; line-height: 22px; width: 223px;"><input type="hidden" class="textbox-value" name="scyy" value=""></span>
+            </div>
+		</form>
+	</div>
+	<div id="dlg_redo_buttons" class="dialog-button" style="width: 366px;">
+		<a href="javascript:void(0)" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-ok" onclick="saveredoPsychosis()" group="" id=""><span class="l-btn-left l-btn-icon-left"><span class="l-btn-text">确定</span><span class="l-btn-icon icon-ok">&nbsp;</span></span></a>
+		<a href="javascript:void(0)" class="easyui-linkbutton l-btn l-btn-small" iconcls="icon-cancel" onclick="javascript:$('#dlg_redo').dialog('close')" group="" id=""><span class="l-btn-left l-btn-icon-left"><span class="l-btn-text">取消</span><span class="l-btn-icon icon-cancel">&nbsp;</span></span></a>
+	</div>
+	</body>
+</html>
+	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+		<!-- <div>
+			<script type="text/javascript">
+				var s_edit_h = '';//hidden
+				var s_remove_h = '';
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="activiti:workflow:edit">
+			<script type="text/javascript">
+				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="activiti:workflow:remove">
+			<script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="activiti:workflow:resetPwd">
+			<script type="text/javascript">
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script src="/js/plugins/layer/laydate/laydate.js"></script>
+	<script type="text/javascript" src="/js/appjs/jsb/ywgl/jsbHzxx/return.js"></script>
+
+<script>
+$("#treepanel").hide();
+$("#depts").click(
+		function(){
+			$("#treepanel").show();
+		}
+);
+$("#treepanel").mouseout(function(){
+	$("#treepanel").hide();
+});
+
+</script> -->

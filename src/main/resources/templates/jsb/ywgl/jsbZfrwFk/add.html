@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+	<head th:include="include :: header"></head>
+	<head>
+		<meta charset="UTF-8">
+		<title>肇事肇祸等严重精神障碍患者走访情况登记表</title>
+	    <link href="/css/bootstrap.min.css" type="text/css" rel="stylesheet">
+	    <link href="/css/all.css" type="text/css" rel="stylesheet">
+	    <style>
+	    	body{
+				margin: 0;
+				font-size: 14px;
+	    		color: #000000;
+	    		background-color: #E6E6E6;
+			}
+			body>.box_div{
+				height: 100%;
+  				overflow: auto;
+				padding: 10px 0;
+			}
+			.tab_title_div{
+				font-size: 16px;
+				font-weight: bold;
+			}
+			.tab_div{
+				width: 80%;
+				margin: 0 auto;
+			}
+	    	table{
+	    		border: 2px solid #000;
+	    		width: 100%;
+	    	}
+	    	td{
+	    		border: 1px solid #000;
+	    		text-align: center;
+	    		padding: 4px;
+	    	}
+	    	.tdOne{
+	    		width: 50px;
+	    	}
+	    	.tdTwo{
+	    		width: 200px;
+	    	}
+	    	.tdTree{
+	    		width: 150px;
+	    	}
+	    	td input,td textarea{
+	    		border: 0;
+	    		outline: none;
+	    		background-color: transparent;
+	    	}
+	    	td>input, td>textarea{
+	    		width: 100%;
+	    		height: 100%;
+	    		padding: 0 10px;
+	    	}
+	    	td>textarea{
+	    		padding: 5px 10px;
+	    		resize: none;
+	    	}
+	    	td>div>input{
+	    		width: calc(100% - 120px);
+	    	}
+	    	td>div{
+	    		text-align: left;
+	    		margin: 5px 0;
+	    	}
+	    	label{
+	    		margin: 0 10px;
+	    		font-weight: normal;
+	    	}
+	    	label.checkAudioLabel{
+	    		width: 90px;
+	    		margin: 0;
+	    		text-align: right;
+	    	}
+	    	label.checkAudio{
+	    		width: 80px;
+	    	}
+	    	label>input{
+	    		vertical-align: text-top;
+	    	}
+	    </style>
+	</head>
+	<body>
+	<form  id="add_form">
+		<input id="taskId" name="taskId" th:value="${jsbZfrwFkDO.taskId}"  type="hidden">
+		<input id="zfrwId" name="zfrwId" th:value="${jsbZfrwFkDO.zfrwId}"  type="hidden">
+		<div>
+			<div class="alignCenter tab_title_div">肇事肇祸等严重精神障碍患者走访情况登记表</div>
+			<div class="tab_div">
+				<table>
+					<tr>
+						<td class="tdOne">患者姓名</td>
+						<td class="tdTwo">
+							<input id="hzMc" name="hzMc" th:value="${jsbZfrwFkDO.hzMc}" class="" type="text">
+						</td>
+						<td class="tdTree">身份证号</td>
+						<td>
+							<input id="hzSfzhm" name="hzSfzhm" th:value="${jsbZfrwFkDO.hzSfzhm}" class="" type="text">
+						</td>
+					</tr>
+					<tr>
+						<td class="tdOne">管控等级</td>
+						<td colspan="3">
+							<div>
+								<label><input name="jjqk" type="checkbox" value="L1" id="jjqk0">一级管控</label>
+								<label><input name="jjqk" type="checkbox" value="L2" id="jjqk0">二级管控</label>
+								<label><input name="jjqk" type="checkbox" value="L3" id="jjqk0">三级管控</label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdOne">走访地点</td>
+						<td colspan="3">
+							<input type="text" />
+						</td>
+					</tr>
+					<tr>
+						<td class="tdOne">患者情况</td>
+						<td colspan="3">
+							<div>
+								<label class="checkAudioLabel">人员在位：</label>
+								<label class="checkAudio"><input name="ryzw" type="checkbox" value="L1" id="jjqk0">在家</label>
+								<label class="checkAudio"><input name="ryzw" type="checkbox" value="L3" id="jjqk0">走失</label>
+								<label style="width: auto;" class="checkAudio"><input name="ryzw" type="checkbox" value="L2" id="jjqk0">长期在外（确定去向）</label>
+							</div>
+							<div>
+								<label class="checkAudioLabel">病情稳定：</label>
+								<label class="checkAudio"><input name="bqwd" type="checkbox" value="L1" id="jjqk0">未发病 </label>
+								<label class="checkAudio"><input name="bqwd" type="checkbox" value="L2" id="jjqk0">偶尔发病</label>
+								<label class="checkAudio"><input name="bqwd" type="checkbox" value="L3" id="jjqk0">经常发病</label>
+							</div>
+							<div>
+								<label class="checkAudioLabel">监护人履职：</label>
+								<label class="checkAudio"><input name="jhrlz" type="checkbox" value="L1" id="jjqk0">履行</label>
+								<label class="checkAudio"><input name="jhrlz" type="checkbox" value="L2" id="jjqk0">无力履行</label>
+								<label class="checkAudio"><input name="jhrlz" type="checkbox" value="L3" id="jjqk0">不履行</label>
+							</div>
+							<div>
+								<label class="checkAudioLabel">服药情况：</label>
+								<label class="checkAudio"><input name="fyqk" type="checkbox" value="L1" id="jjqk0">规律</label>
+								<label class="checkAudio"><input name="fyqk" type="checkbox" value="L2" id="jjqk0">不规律</label>
+								<label class="checkAudio"><input name="fyqk" type="checkbox" value="L3" id="jjqk0">药物间断 </label>
+								<label class="checkAudio"><input name="fyqk" type="checkbox" value="L2" id="jjqk0">无力购药</label>
+								<label class="checkAudio"><input name="fyqk" type="checkbox" value="L3" id="jjqk0">不服药 </label>
+							</div>
+							<div>
+								<label class="checkAudioLabel">风险等级：</label>
+								<label class="checkAudio"><input name="fxdj" type="checkbox" value="L1" id="jjqk0">0级</label>
+								<label class="checkAudio"><input name="fxdj" type="checkbox" value="L2" id="jjqk0">1级</label>
+								<label class="checkAudio"><input name="fxdj" type="checkbox" value="L3" id="jjqk0">2级</label>
+								<label class="checkAudio"><input name="fxdj" type="checkbox" value="L2" id="jjqk0">3级</label>
+								<label class="checkAudio"><input name="fxdj" type="checkbox" value="L3" id="jjqk0">4级</label>
+								<label class="checkAudio"><input name="fxdj" type="checkbox" value="L3" id="jjqk0">5级</label>
+							</div>
+							<div>
+								<label class="checkAudioLabel">其他情况：</label>
+								<input type="text" />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdOne">民警嘱咐事项</td>
+						<td colspan="3">
+							<div>
+								<label><input name="mjzfsx" type="checkbox" value="L1" id="jjqk0">告知监护人应当履行的法定监护职责</label>
+							</div>
+							<div>
+								<label><input name="mjzfsx" type="checkbox" value="L2" id="jjqk0">其他情况：</label>
+								<input type="text" />
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdOne">走访日期</td>
+						<td class="tdTwo">
+							<input id="zfsj" name="fqsjq" class="input" autocomplete="off" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+						</td>
+						<td>下次走访日期</td>
+						<td>
+							<input id="xczfsj" name="fqsjq" class="input" autocomplete="off" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+						</td>
+					</tr>
+					<tr>
+						<td class="tdOne">民警签名</td>
+						<td class="tdTwo">
+							<input id="zfmjMc" name="zfmjMc" th:value="${jsbZfrwFkDO.zfmjMc}" class="" type="text">
+						</td>
+						<td>监护人签名</td>
+						<td>
+							<input type="text" />
+						</td>
+					</tr>
+					<tr>
+						<td class="tdOne">备注（联合随访人员等）</td>
+						<td colspan="3">
+							<!--<input type="text" />-->
+							<textarea></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdOne">所领导审阅意见</td>
+						<td colspan="3">
+							<!--<input type="text" />-->
+							<textarea></textarea>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		</form>
+	</body>
+	<div th:include="include :: footer"></div>
+	<script src="/js/plugins/layer/laydate/laydate.js"></script>
+	<script>
+		$("input[type='checkbox']").click(function(){
+			if($(this).is(':checked')){
+				$("input[name='"+$(this).attr('name')+"']").each(function(){
+					$(this)[0].checked = false;
+				});
+				$(this)[0].checked = true;
+			}
+		});
+	</script>
+</html>

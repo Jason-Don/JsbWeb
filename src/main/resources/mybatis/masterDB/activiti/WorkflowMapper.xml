@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.activiti.dao.WorkflowDao">
+	<sql id="Base_Column_List">
+		id,task_name,cjsj,cjry_id,cjry_mc,rwly,rwnr,blyj,file_id,file_mc,nycd,rwkssj,rwwcsj,fqsj,rwzpry,rwzpry_mc,rwzpqsry,rwzpqsry_mc,rwbllx,cbry,cbry_mc,zzblry,zzblry_mc,sjrwwcsj,rwzt,wcqkpf,wcqkpj,yxbz,rwqtr
+	</sql>
+	<resultMap id="BaseResultMap" type="com.bootdo.activiti.domain.WorkflowDO">
+		<result column="id" property="id"></result>
+		<result column="task_name" property="taskName"></result>
+		<result column="cjsj" property="cjsj"></result>
+		<result column="cjry_id" property="cjryId"></result>
+		<result column="cjry_mc" property="cjryMc"></result>
+		<result column="rwly" property="rwly"></result>
+		<result column="rwnr" property="rwnr"></result>
+		<result column="blyj" property="blyj"></result>
+		<result column="file_id" property="fileId"></result>
+		<result column="file_mc" property="fileMc"></result>
+		<result column="nycd" property="nycd"></result>
+		<result column="rwkssj" property="rwkssj"></result>
+		<result column="rwwcsj" property="rwwcsj"></result>
+		<result column="fqsj" property="fqsj"></result>
+		<result column="rwzpry" property="rwzpry"></result>
+		<result column="rwzpry_mc" property="rwzpryMc"></result>
+		<result column="rwzpqsry" property="rwzpqsry"></result>
+		<result column="rwzpqsry_mc" property="rwzpqsryMc"></result>
+		<result column="rwbllx" property="rwbllx"></result>
+		<result column="cbry" property="cbry"></result>
+		<result column="cbry_mc" property="cbryMc"></result>
+		<result column="zzblry" property="zzblry"></result>
+		<result column="zzblry_mc" property="zzblryMc"></result>
+		<result column="sjrwwcsj" property="sjrwwcsj"></result>
+		<result column="rwzt" property="rwzt"></result>
+		<result column="wcqkpf" property="wcqkpf"></result>
+		<result column="wcqkpj" property="wcqkpj"></result>
+		<result column="yxbz" property="yxbz"></result>
+		<result column="rwqtr" property="rwqtr"></result>
+	</resultMap>
+
+	<select id="get" resultMap="BaseResultMap">
+		select
+<include refid="Base_Column_List" />
+		from workflow where id = #{value}
+	</select>
+
+	<select id="get_qt_rwly" resultType="String">
+		select `qt_rwly` from
+		qt_rwly where workflow_id = #{arg0}
+	</select>
+
+	<select id="list" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from workflow
+		<where>
+			<if test="id != null and id != ''"> and id = #{id} </if>
+			<if test="taskName != null and taskName != ''"> and task_name like CONCAT("%",#{taskName},"%") </if>
+			<if test="cjsj != null and cjsj != ''"> and cjsj = #{cjsj} </if>
+			<if test="cjryId != null and cjryId != ''"> and cjry_id = #{cjryId} </if>
+			<if test="cjryMc != null and cjryMc != ''"> and cjry_mc = #{cjryMc} </if>
+			<if test="rwly != null and rwly != ''"> and rwly = #{rwly} </if>
+			<if test="rwnr != null and rwnr != ''"> and rwnr = #{rwnr} </if>
+			<if test="blyj != null and blyj != ''"> and blyj = #{blyj} </if>
+			<if test="fileId != null and fileId != ''"> and file_id = #{fileId} </if>
+			<if test="fileMc != null and fileMc != ''"> and file_mc = #{fileMc} </if>
+			<if test="nycd != null and nycd != ''"> and nycd = #{nycd} </if>
+			<if test="rwkssj != null and rwkssj != ''"> and rwkssj = #{rwkssj} </if>
+			<if test="rwwcsj != null and rwwcsj != ''"> and rwwcsj = #{rwwcsj} </if>
+			<if test="fqsj != null and fqsj != ''"> and fqsj = #{fqsj} </if>
+			<if test="rwzpry != null and rwzpry != ''"> and rwzpry = #{rwzpry} </if>
+			<if test="rwzpryMc != null and rwzpryMc != ''"> and rwzpry_mc = #{rwzpryMc} </if>
+			<if test="rwzpqsry != null and rwzpqsry != ''"> and rwzpqsry = #{rwzpqsry} </if>
+			<if test="rwzpqsryMc != null and rwzpqsryMc != ''"> and rwzpqsry_mc = #{rwzpqsryMc} </if>
+			<if test="rwbllx != null and rwbllx != ''"> and rwbllx = #{rwbllx} </if>
+			<if test="cbry != null and cbry != ''"> and cbry = #{cbry} </if>
+			<if test="cbryMc != null and cbryMc != ''"> and cbry_mc = #{cbryMc} </if>
+			<if test="zzblry != null and zzblry != ''"> and zzblry = #{zzblry} </if>
+			<if test="zzblryMc != null and zzblryMc != ''"> and zzblry_mc = #{zzblryMc} </if>
+			<if test="sjrwwcsj != null and sjrwwcsj != ''"> and sjrwwcsj = #{sjrwwcsj} </if>
+			<if test="rwzt != null and rwzt != ''"> and rwzt = #{rwzt} </if>
+			<if test="wcqkpj != null and wcqkpj != ''"> and wcqkpj = #{wcqkpj} </if>
+			<if test="yxbz != null and yxbz != ''"> and yxbz = #{yxbz} </if>
+	  		<if test="fqsjq != null and fqsjq != ''"> and cjsj >= #{fqsjq} </if>
+	  		<if test="fqsjz != null and fqsjz != ''"> and cjsj &lt; #{fqsjz} </if>
+	  		<if test="deptIds != null and deptIds != ''"> and cjry_id in (select u.user_id from sys_user u where u.dept_id in 
+				<foreach collection="deptIds" index="index" item="deptId" open="(" separator="," close=")">
+						#{deptId}
+				</foreach>
+			 )</if>
+		</where>
+		<choose>
+			<when test="sort != null and sort.trim() != ''">
+				order by ${sort} ${order}
+			</when>
+			<otherwise>
+				order by id desc
+			</otherwise>
+		</choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="count" resultType="int">
+		select count(*) from workflow
+		<where>
+			<if test="id != null and id != ''"> and id = #{id} </if>
+			<if test="taskName != null and taskName != ''"> and task_name = #{taskName} </if>
+			<if test="cjsj != null and cjsj != ''"> and cjsj = #{cjsj} </if>
+			<if test="cjryId != null and cjryId != ''"> and cjry_id = #{cjryId} </if>
+			<if test="cjryMc != null and cjryMc != ''"> and cjry_mc = #{cjryMc} </if>
+			<if test="rwly != null and rwly != ''"> and rwly = #{rwly} </if>
+			<if test="rwnr != null and rwnr != ''"> and rwnr = #{rwnr} </if>
+			<if test="blyj != null and blyj != ''"> and blyj = #{blyj} </if>
+			<if test="fileId != null and fileId != ''"> and file_id = #{fileId} </if>
+			<if test="fileMc != null and fileMc != ''"> and file_mc = #{fileMc} </if>
+			<if test="nycd != null and nycd != ''"> and nycd = #{nycd} </if>
+			<if test="rwkssj != null and rwkssj != ''"> and rwkssj = #{rwkssj} </if>
+			<if test="rwwcsj != null and rwwcsj != ''"> and rwwcsj = #{rwwcsj} </if>
+			<if test="fqsj != null and fqsj != ''"> and fqsj = #{fqsj} </if>
+			<if test="rwzpry != null and rwzpry != ''"> and rwzpry = #{rwzpry} </if>
+			<if test="rwzpryMc != null and rwzpryMc != ''"> and rwzpry_mc = #{rwzpryMc} </if>
+			<if test="rwzpqsry != null and rwzpqsry != ''"> and rwzpqsry = #{rwzpqsry} </if>
+			<if test="rwzpqsryMc != null and rwzpqsryMc != ''"> and rwzpqsry_mc = #{rwzpqsryMc} </if>
+			<if test="rwbllx != null and rwbllx != ''"> and rwbllx = #{rwbllx} </if>
+			<if test="cbry != null and cbry != ''"> and cbry = #{cbry} </if>
+			<if test="cbryMc != null and cbryMc != ''"> and cbry_mc = #{cbryMc} </if>
+			<if test="zzblry != null and zzblry != ''"> and zzblry = #{zzblry} </if>
+			<if test="zzblryMc != null and zzblryMc != ''"> and zzblry_mc = #{zzblryMc} </if>
+			<if test="sjrwwcsj != null and sjrwwcsj != ''"> and sjrwwcsj = #{sjrwwcsj} </if>
+			<if test="rwzt != null and rwzt != ''"> and rwzt = #{rwzt} </if>
+			<if test="wcqkpj != null and wcqkpj != ''"> and wcqkpj = #{wcqkpj} </if>
+			<if test="yxbz != null and yxbz != ''"> and yxbz = #{yxbz} </if>
+	  		<if test="fqsjq != null and fqsjq != ''"> and cjsj >= #{fqsjq} </if>
+	  		<if test="fqsjz != null and fqsjz != ''"> and cjsj &lt; #{fqsjz} </if>
+	  		<if test="deptIds != null and deptIds != ''"> and cjry_id in (select u.user_id from sys_user u where u.dept_id in 
+				<foreach collection="deptIds" index="index" item="deptId" open="(" separator="," close=")">
+						#{deptId}
+				</foreach>
+			 )</if>
+		</where>
+	</select>
+
+	<insert id="save" parameterType="com.bootdo.activiti.domain.WorkflowDO">
+		insert into workflow
+		(
+		`id`,
+		`task_name`,
+		`cjsj`,
+		`cjry_id`,
+		`cjry_mc`,
+		`rwly`,
+		`rwnr`,
+		`blyj`,
+		`file_id`,
+		`file_mc`,
+		`nycd`,
+		`rwkssj`,
+		`rwwcsj`,
+		`fqsj`,
+		`rwzpry`,
+		`rwzpry_mc`,
+		`rwzpqsry`,
+		`rwzpqsry_mc`,
+		`rwbllx`,
+		`cbry`,
+		`cbry_mc`,
+		`zzblry`,
+		`zzblry_mc`,
+		`sjrwwcsj`,
+		`rwzt`,
+		`wcqkpf`,
+		`wcqkpj`,
+		`yxbz`,
+		rwqtr
+		)
+		values
+		(
+		#{id},
+		#{taskName},
+		#{cjsj},
+		#{cjryId},
+		#{cjryMc},
+		#{rwly},
+		#{rwnr},
+		#{blyj},
+		#{fileId},
+		#{fileMc},
+		#{nycd},
+		#{rwkssj},
+		#{rwwcsj},
+		#{fqsj},
+		#{rwzpry},
+		#{rwzpryMc},
+		#{rwzpqsry},
+		#{rwzpqsryMc},
+		#{rwbllx},
+		#{cbry},
+		#{cbryMc},
+		#{zzblry},
+		#{zzblryMc},
+		#{sjrwwcsj},
+		#{rwzt},
+		#{wcqkpf},
+		#{wcqkpj},
+		#{yxbz},
+		#{rwqtr}
+		)
+	</insert>
+
+	<insert id="save_new_rwly">
+		insert into qt_rwly
+		(
+		`workflow_id`,
+		`qt_rwly`
+		)
+		values
+		(
+		#{arg0},
+		#{arg1}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.bootdo.activiti.domain.WorkflowDO">
+		update workflow
+		<set>
+			<if test="taskName != null">`task_name` = #{taskName}, </if>
+			<if test="cjsj != null">`cjsj` = #{cjsj}, </if>
+			<if test="cjryId != null">`cjry_id` = #{cjryId}, </if>
+			<if test="cjryMc != null">`cjry_mc` = #{cjryMc}, </if>
+			<if test="rwnr != null">`rwnr` = #{rwnr}, </if>
+			<if test="blyj != null">`blyj` = #{blyj}, </if>
+			<if test="fileId != null">`file_id` = #{fileId}, </if>
+			<if test="fileMc != null">`file_mc` = #{fileMc}, </if>
+			<if test="nycd != null">`nycd` = #{nycd}, </if>
+			<if test="rwkssj != null">`rwkssj` = #{rwkssj}, </if>
+			<if test="rwwcsj != null">`rwwcsj` = #{rwwcsj}, </if>
+			<if test="fqsj != null">`fqsj` = #{fqsj}, </if>
+			<if test="rwzpry != null">`rwzpry` = #{rwzpry}, </if>
+			<if test="rwzpryMc != null">`rwzpry_mc` = #{rwzpryMc}, </if>
+			<if test="rwzpqsry != null">`rwzpqsry` = #{rwzpqsry}, </if>
+			<if test="rwzpqsryMc != null">`rwzpqsry_mc` = #{rwzpqsryMc}, </if>
+			<if test="rwbllx != null">`rwbllx` = #{rwbllx}, </if>
+			<if test="cbry != null">`cbry` = #{cbry}, </if>
+			<if test="cbryMc != null">`cbry_mc` = #{cbryMc}, </if>
+			<if test="zzblry != null">`zzblry` = #{zzblry}, </if>
+			<if test="zzblryMc != null">`zzblry_mc` = #{zzblryMc}, </if>
+			<if test="sjrwwcsj != null">`sjrwwcsj` = #{sjrwwcsj}, </if>
+			<if test="rwzt != null">`rwzt` = #{rwzt}, </if>
+			<if test="wcqkpf != null">`wcqkpf` = #{wcqkpf}, </if>
+			<if test="wcqkpj != null">`wcqkpj` = #{wcqkpj}, </if>
+			<if test="yxbz != null">`yxbz` = #{yxbz},</if>
+			<if test="rwqtr != null">`rwqtr` = #{rwqtr}</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<update id="updateRwly" parameterType="com.bootdo.activiti.domain.WorkflowDO">
+		update workflow
+		<set>
+			rwly = #{arg1}
+		</set>
+		where id = #{arg0}
+	</update>
+
+	<update id="updateQtRwly" parameterType="com.bootdo.activiti.domain.WorkflowDO">
+		update qt_rwly
+		<set>
+			qt_rwly = #{arg1}
+		</set>
+		where workflow_id = #{arg0}
+	</update>
+
+	<delete id="remove">
+		DELETE
+		w.*,
+		fk.*
+		FROM
+		workflow w
+		LEFT JOIN workflow_fk fk ON fk.workflow_id
+		= w.id
+		where
+		w.id = #{value}
+	</delete>
+
+	<delete id="batchRemove">
+		DELETE
+		w.*,
+		fk.*
+		FROM
+		workflow w
+		LEFT JOIN workflow_fk fk ON fk.workflow_id
+		= w.id
+		where
+		w.id in
+		<foreach item="id" collection="array" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+	<delete id="delete_from_act">
+		delete from act_ru_execution where PROC_INST_ID_ in
+		<foreach item="id" collection="array" open="(" separator=","
+			close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

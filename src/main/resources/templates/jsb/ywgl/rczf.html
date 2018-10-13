@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<head>
+	<link href="/css/dashboard.css" type="text/css" rel="stylesheet">
+	<link href="/css/all.css" type="text/css" rel="stylesheet">
+	<link href="/css/ywgl/xxhc.css" type="text/css" rel="stylesheet">
+	<style type="text/css">
+		.fixed-table-toolbar button>i{
+			margin-right: 5px;
+		}
+		.wrapper-content{
+			padding: 10px;
+		}
+		.tab-content>.tab-pane{
+		  	padding-top: 10px;
+		}
+		.more_condition{
+			width:calc(100% - 160px);
+		}
+		.more_condition>div{
+			float:right;
+			margin: 0 5px;
+		}
+		.more_condition input{
+			width: 150px;
+			height: 34px;
+		}
+		.more_condition .laydate-icon {
+		    width: 130px;
+		    vertical-align: middle !important;
+		    padding-left: 5px;
+		}
+		.more_condition select{
+			height: 34px;
+			max-width: 150px;
+		}
+		.displayInline .laydate-icon {
+		  	vertical-align: middle;
+		  	padding-left: 5px;
+		}
+	</style>
+</head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div>
+			<ul class="nav nav-tabs">
+				<li class="active"><a data-toggle="tab" href="#tab-1"><i class="fa fa-file-text"></i>走访任务代办</a>
+				</li>
+				<li class=""><a data-toggle="tab" href="#tab-2"><i class="fa fa-briefcase"></i>走访反馈审阅代办</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div id="tab-1" class="tab-pane active">
+					<div>
+						<label>任务名称</label>
+						<div class="displayInline"><input id="searchName" type="text" class="form-control" placeholder="任务名称"></div>
+						<button class="btn btn-success " onclick="reLoad()">查询</button>
+					</div>
+					<div class="fixed-table-toolbar">
+						<div class="columns pull-left">
+							<button type="button" class="btn  btn-primary" onclick="add()">
+								<i class="fa fa-plus" aria-hidden="true"></i>发起任务
+							</button>
+							<button type="button" class="btn  btn-danger"
+								onclick="batchRemove()">
+								<i class="fa fa-trash" aria-hidden="true"></i>删除
+							</button>
+						</div>
+					</div>
+					<table id="exampleTable" data-mobile-responsive="true">
+						<thead>
+							<tr>
+								<th data-field="state" data-checkbox="true"></th>
+								<th data-field="id">任务ID</th>
+								<th data-field="bzfhzMc">被走访患者_名称</th>
+								<th data-field="bzfhzSfzhm">被走访患者_身份证号码</th>
+								<th data-field="rwssjgDm">任务所属机关_代码</th>
+								<th data-field="rwssjgMc">任务所属机关_名称</th>
+								<th data-field="jhzfrq">计划走访日期</th>
+								<th data-field="scsj">生成时间</th>
+								<th data-formatter=operate>操作</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div id="tab-2" class="tab-pane ">
+					<div>
+						<label>任务名称</label>
+						<div class="displayInline">
+							<input class="form-control" id="deptIds" name="deptIds" autocomplete="off" type="hidden">
+							<input id="depts" placeholder="请选择所属部门" class="form-control" name="depts" autocomplete="off" type="text" readonly="readonly" >
+							<div id="treepanel" style="width:150px;height:auto;position:absolute;z-index:10;">
+								<iframe src="/tree/treeDept.html" style="height:100%;border:none;"></iframe>
+							</div>
+						</div>
+						<div class="displayInline">
+							<input id="fqsjq"name="fqsjq" class="laydate-icon layer-date input" autocomplete="off"
+								placeholder="开始时间" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+							—
+							<input id="fqsjz"name="fqsjz" class="laydate-icon layer-date input" autocomplete="off"
+								placeholder="结束时间"onclick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+						</div>
+						<div class="displayInline">
+							<select data-placeholder="--选择任务状态--" id="rwzt" name="rwzt" class="form-control">
+				              	<option value="">--选择任务状态--</option>
+				              	<option value="init">未开始</option>
+				              	<option value="ing">进行中</option>
+				              	<option value="end">已完成</option>
+			                </select>
+						</div>
+						<div class="displayInline">
+							<input id="taskName" name="taskName" type="text" class="form-control" placeholder="需求名称">
+						</div>
+						<button class="btn btn-success " onclick="reLoad()">查询</button>
+					</div>
+					<div class="fixed-table-toolbar">
+						<div class="columns pull-left" id="deleteDiv2">
+							<button shiro:hasPermission="all:batchRemove" type="button" class="btn  btn-danger"
+								onclick="batchRemove()">
+								<i class="fa fa-trash" aria-hidden="true"></i>删除
+							</button>
+						</div>
+					</div>
+					<table id="exampleTable_1" data-mobile-responsive="true">
+						<thead>
+							<tr>
+								<th data-field="state" data-checkbox="true"></th>
+								<th data-field="id">走访任务_反馈ID</th>
+								<th data-field="zfrwId">走访任务ID</th>
+								<th data-field="hzMc">患者名称</th>
+								<th data-field="hzSfzhm">患者身份证号码</th>
+								<th data-field="gkdj">管控等级</th><!-- 管控等级(1=一级管控，2=二级管控，3=三级管控) -->
+								<th data-field="zfdd">走访地点</th>
+								<th data-field="lng" data-visible="false">经度</th>
+								<th data-field="lat" data-visible="false">纬度</th>
+								<th data-field="hzqkRyzw">患者在位情况</th><!-- 患者情况_人员在位(1=在家，2=长期在外，3=走失) -->
+								<th data-field="hzqkCqzwQx">患者去向</th><!-- 患者情况_长期在外_去向 -->
+								<th data-field="hzqkBqwd">病情</th><!-- 患者情况_病情稳定(1=为发病，2=偶然发病，3=经常发病) -->
+								<th data-field="hzqkJhrlz">监护人履职</th><!-- 患者情况_监护人履职(1=履行，2=无力履行，3=不履行) -->
+								<th data-field="hzqkFyqk">服药情况</th><!-- 患者情况_服药情况(1=规律，2=不规律，3=服药间断，4=无力购药，5=不服药) -->
+								<th data-field="hzqkFxdj">风险等级</th><!-- 患者情况_风险等级(0=0级，1=1级，2=2级，3=3级，4=4级，5=5级) -->
+								<th data-field="hzqkQtqksm" data-visible="false">其他情况</th><!-- 患者情况_其他情况说明 -->
+								<th data-field="mjzfsx">民警嘱咐事项</th>
+								<th data-field="zfrq">走访日期</th>
+								<th data-field="xczfrq">下次走访日期</th>
+								<th data-field="zfmjJh" data-visible="false">走访民警_警号</th>
+								<th data-field="zfmjMc">走访民警_名称</th>
+								<th data-field="lhsfryJh" data-visible="false">联合随访人员_警号</th>
+								<th data-field="lhsfryMc">联合随访人员_名称</th>
+								<th data-field="scsj">生成时间</th>
+								<th data-field="isread">是否已读</th><!-- 是否已读(0=未读，1已读) -->
+								<th data-field="readTime">已读_时间</th>
+								<th data-formatter=operate_1>操作</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+		<div>
+			<script type="text/javascript">
+				var s_edit_h = '';//hidden
+				var s_remove_h = '';
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="activiti:workflow:edit">
+			<script type="text/javascript">
+				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="activiti:workflow:remove">
+			<script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="activiti:workflow:resetPwd">
+			<script type="text/javascript">
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script src="/js/plugins/layer/laydate/laydate.js"></script>
+	<script type="text/javascript" src="/js/appjs/jsb/ywgl/rczf.js"></script>
+</body>
+</html>
+<script>
+$("#treepanel").hide();
+$("#depts").click(
+		function(){
+			$("#treepanel").show();
+		}
+);
+$("#treepanel").mouseout(function(){
+	$("#treepanel").hide();
+});
+
+</script>

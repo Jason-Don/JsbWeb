@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head th:include="include :: header"></head>
+<head>
+<meta charset="UTF-8">
+<title>工作流程查看</title>
+<!-- <link type='text/css' rel='stylesheet' href="/css/all_workflow.css"> -->
+<link type='text/css' rel='stylesheet' href="/css/detail/task_manage_other_detail.css">
+<style type="text/css">
+.more_div_pj{
+	margin: 5px 0;
+}
+</style>
+</head>
+<body>
+	<div class="message_div">
+		<form  id="add_form">
+           <input id="taskId" name="taskId" th:value="${workflow.taskId}"  type="hidden">
+           <input id="id" name="id" th:value="${workflow.id}"  type="hidden">
+           <input id="cjsj" th:value="${workflow.cjsj}"  type="hidden">
+           <input id="rwkssj" th:value="${workflow.rwkssj}"  type="hidden">
+           <input id="rwwcsj" th:value="${workflow.rwwcsj}"  type="hidden">
+           <input id="rwly" name="rwly" th:value="${workflow.rwly}"  type="hidden">
+           <input id="nycd" name="nycd" th:value="${workflow.nycd}" type="hidden">
+           
+			<div class="message_detail_div message_detail_div_marg_0 read_only">
+				<div class="message_title ">
+					<div class="title_child_div">
+						任务信息
+						<div></div>
+					</div>
+				</div>
+				<div class="more_div">
+					<div class=" msg_div">
+						<label class="label_left">任务来源：</label>
+						<span id="rwlySelect" class="long_span"></span>
+					</div>
+					<div class=" msg_div">
+						<label class="label_left">任务创建人：</label> 
+						<!-- <input id="cjryId" name="cjryId"  class="hidden" th:value="${workflow.cjryId}"> -->
+						<span class="long_span" th:text="${workflow.cjryMc}" ></span>
+					</div>
+					<div class="clear_both"></div>
+				</div>
+				<div class=" msg_div">
+					<label class="label_left">任务名称：</label> 
+					<!-- <input class="input" id="taskName" name="taskName" type="text" readonly="readonly"  th:value="${workflow.taskName}"/> -->
+					<span class="long_span" th:text="${workflow.taskName}" ></span>
+				</div>
+				<div class="msg_div">
+					<label class="label_left">任务内容：</label>
+					<!-- <textarea id="rwnr" name="rwnr" readonly="readonly"  th:inline="text">[[${workflow.rwnr}]]</textarea> -->
+					<span class="long_span" th:text="${workflow.rwnr}" ></span>
+				</div>
+				<div class="more_div">
+					<div class=" msg_div">
+						<label class="label_left label_left_1">附件：</label>
+						<div >
+							<input id="files" th:value="${workflow.fileId}" class="hidden">
+							<a href="#" th:text="${workflow.fileMc}" onclick="downloadFile()"></a>
+						</div>
+					</div>
+					<div class=" msg_div">
+						<label class="label_left label_left_1">难易程度：</label>
+						<span id="nycd_span" class="long_span"></span>
+					</div>
+					<div class="clear_both"></div>
+				</div>
+				<div class="more_div">
+					<div class=" msg_div">
+						<label class="label_left">开始时间：</label> 
+						<!-- <input class="input" id="rwkssjLabel" readonly="readonly" class="laydate-icon layer-date input" placeholder="请选择"> -->
+						<span id="rwkssjLabel" class="long_span"></span>
+					</div>
+					<div class=" msg_div">
+						<label class="label_left">结束时间：</label> 
+						<!-- <input class="input" id="rwwcsjLabel" readonly="readonly" class="laydate-icon layer-date input" placeholder="请选择"> -->
+						<span id="rwwcsjLabel" class="long_span"></span>
+					</div>
+					<div class="clear_both"></div>
+				</div>
+				<div class="msg_div">
+					<label class="label_left">办理意见：</label>
+					<!-- <textarea id="blyj" name="blyj"  readonly="readonly"  th:inline="text">[[${workflow.blyj}]]</textarea> -->
+					<span class="long_span" th:text="${workflow.blyj}" ></span>
+				</div>
+				<div class="msg_div">
+					<label class="label_left">室领导审核：</label>
+				    <!-- <input id="rwzpry" name="rwzpry" class="hidden" th:value="${workflow.rwzpry}" > -->
+           			<span class="long_span" th:text="${workflow.rwzpryMc}" ></span>
+				</div>
+			</div>
+			<div class="message_detail_div read_only hide_div is_fk">
+				<div class="message_title is_fk is_pj ">
+					<div class="title_child_div">
+						反馈信息
+						<div></div>
+					</div>
+				</div>
+				<div class="" id="fkDiv">
+					
+				</div>
+			</div>
+			<div class="message_detail_div read_only is_pj hide_div">
+				<div class="message_title is_pj hide_div">
+					<div class="title_child_div">
+						任务评价
+						<div></div>
+					</div>
+				</div>
+				<div class="msg_div not_edit  read_only_div">
+					<label class="label_left">星级评价：</label>
+					<div id="starttwo" class="block clearfix">
+				        <div class="star_score" id="star_score">
+					        <a id="start1" href="javascript:void(0)" style="left: 0px; width: 22px; z-index: 5;"></a>
+					        <a id="start2" href="javascript:void(0)" style="left: 0px; width: 44px; z-index: 4;"></a>
+					        <a id="start3" href="javascript:void(0)" style="left: 0px; width: 66px; z-index: 3;"></a>
+					        <a id="start4" href="javascript:void(0)" style="left: 0px; width: 88px; z-index: 2;"></a>
+					        <a id="start5" href="javascript:void(0)" style="left: 0px; width: 110px; z-index: 1;"></a>
+				        </div>
+				        <p>您的评分：<span class="fenshu"  th:inline="text" id="fenshu">[[${workflow.wcqkpf}]]</span> 分</p>
+				    </div>
+				</div>	
+				<div class="msg_div">
+					<label class="label_left">完成情况评价：</label>
+					<!-- <textarea id="wcqkpj" name="wcqkpj"  readonly="readonly"  th:inline="text">[[${workflow.wcqkpj}]]</textarea> -->
+					<span id="wcqkpj" class="long_span" th:text="${workflow.wcqkpj}" ></span>
+				</div>
+			
+			</div>
+		</form>
+	</div>
+	<!-- <div class="submit_div">
+		<input type="button" id="save_button" onclick="Workflow_pj.commit()" value="完成并提交" />
+		<input type="button" id="saveAndStart_button" onclick="Workflow_sign.reject()" value="退回" />
+	</div> -->
+<div th:include="include::footer"></div>
+
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugins/layer/laydate/laydate.js"></script>
+<script src="/js/appjs/act/workflow/startScore.js"></script>
+<script type="text/javascript" src="/js/appjs/act/workflow/workflow_show.js"></script>
+</html>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.msg.msgDB.dao.TSendDao">
+
+	<sql id="Base_Column_List">
+		s_id,s_tel_send,s_tel_accept,s_content,n_result,s_result,d_created_time
+	</sql>
+	<resultMap id="BaseResultMap" type="com.bootdo.common.domain.TSendDO">
+		<result column="s_id" property="sId"></result>
+		<result column="s_tel_send" property="sTelSend"></result>
+		<result column="s_tel_accept" property="sTelAccept"></result>
+		<result column="s_content" property="sContent"></result>
+		<result column="n_result" property="nResult"></result>
+		<result column="s_result" property="sResult"></result>
+		<result column="d_created_time" property="dCreatedTime"></result>
+	</resultMap>
+
+
+	<select id="get" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_send where id = #{value}
+	</select>
+
+	<select id="list" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_send
+		<where>
+			<if test="sId != null and sId != ''"> and S_ID = #{sId} </if>
+			<if test="sTelSend != null and sTelSend != ''"> and S_TEL_SEND = #{sTelSend} </if>
+			<if test="sTelAccept != null and sTelAccept != ''"> and S_TEL_ACCEPT = #{sTelAccept} </if>
+			<if test="sContent != null and sContent != ''"> and S_CONTENT = #{sContent} </if>
+			<if test="nResult != null and nResult != ''"> and N_RESULT = #{nResult} </if>
+			<if test="sResult != null and sResult != ''"> and S_RESULT = #{sResult} </if>
+			<if test="dCreatedTime != null and dCreatedTime != ''"> and D_CREATED_TIME = #{dCreatedTime} </if>
+		</where>
+		<choose>
+			<when test="sort != null and sort.trim() != ''">
+				order by ${sort} ${order}
+			</when>
+			<otherwise>
+				order by S_ID desc
+			</otherwise>
+		</choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="count" resultType="int">
+		select count(*) from t_send
+		<where>
+			<if test="sId != null and sId != ''"> and S_ID = #{sId} </if>
+			<if test="sTelSend != null and sTelSend != ''"> and S_TEL_SEND = #{sTelSend} </if>
+			<if test="sTelAccept != null and sTelAccept != ''"> and S_TEL_ACCEPT = #{sTelAccept} </if>
+			<if test="sContent != null and sContent != ''"> and S_CONTENT = #{sContent} </if>
+			<if test="nResult != null and nResult != ''"> and N_RESULT = #{nResult} </if>
+			<if test="sResult != null and sResult != ''"> and S_RESULT = #{sResult} </if>
+			<if test="dCreatedTime != null and dCreatedTime != ''"> and D_CREATED_TIME = #{dCreatedTime} </if>
+		</where>
+	</select>
+
+	<insert id="save" parameterType="com.bootdo.common.domain.TSendDO">
+		insert into t_send
+		(
+		S_ID,
+		S_TEL_SEND,
+		S_TEL_ACCEPT,
+		S_CONTENT
+		)
+		values
+		(
+		#{sId,jdbcType=VARCHAR},
+		#{sTelSend,jdbcType=VARCHAR},
+		#{sTelAccept,jdbcType=VARCHAR},
+		#{sContent,jdbcType=VARCHAR}
+		)
+	</insert>
+
+	<delete id="removeHistory">
+		delete from t_send where n_result = '0'
+	</delete>
+
+</mapper>

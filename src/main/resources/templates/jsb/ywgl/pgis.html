@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<head>
+	<link href="/css/all.css" type="text/css" rel="stylesheet">
+	<style>
+		.fixed-table-toolbar button>i{
+			margin-right: 5px;
+		}
+		.wrapper-content{
+			padding: 10px;
+		}
+	</style>
+</head>
+<body class="gray-bg">
+	<div>
+		<div class="ibox float-e-margins">
+<!-- 			<div class="ibox-title"> -->
+<!-- 				<h5>患者现住地点展示</h5> -->
+<!-- 				<div class="ibox-tools"> -->
+<!-- 					<a class="collapse-link"> -->
+<!-- 					<i class="fa fa-chevron-up"></i> -->
+<!-- 					</a> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+			<div class="">
+				<div id="mymap" style="width:100%; height: 610px;position:absolute;margin-top: 0px;"></div>
+				<div id="coordiate" style="margin-left: 10px;"></div>
+<!-- 				<img src="/images/green_circle_wev8.png"> -->
+			</div>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script src="http://10.136.7.31:80/PGIS_S_TileMap/js/EzMapAPI.js" type="text/javascript" charset="gb2312" language="javascript" ></script>
+	<script type="text/javascript" src="/js/appjs/jsb/ywgl/pgis.js"></script>
+</body>
+</html>

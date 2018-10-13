@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<head>
+	<style type="text/css">
+		.more_condition{
+			width:calc(100% - 160px);
+		}
+		.more_condition>div{
+			float:right;
+			margin: 0 5px;
+		}
+		.more_condition input{
+			width: 150px;
+			height: 34px;
+		}
+		.more_condition .laydate-icon {
+		    width: 130px;
+		    vertical-align: middle !important;
+		    padding-left: 5px;
+		}
+		.more_condition select{
+			height: 34px;
+			max-width: 150px;
+		}
+	</style>
+</head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="col-sm-12">
+			<div class="ibox">
+				<div class="ibox-body">
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" href="#tab-1"><i class="fa fa-file-text"></i>我的工作流程</a>
+						</li>
+						<li class=""><a data-toggle="tab" href="#tab-2"><i class="fa fa-briefcase"></i>所有工作流程</a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div id="tab-1" class="tab-pane active">
+							<div class="fixed-table-toolbar">
+								<div class="columns pull-left">
+									<button type="button" class="btn  btn-primary" onclick="add()">
+										<i class="fa fa-plus" aria-hidden="true"></i>发起任务
+									</button>
+									<button type="button" class="btn  btn-danger"
+										onclick="batchRemove()">
+										<i class="fa fa-trash" aria-hidden="true"></i>删除
+									</button>
+								</div>
+								<div class="columns pull-right">
+									<button class="btn btn-success" onclick="reLoad()">查询</button>
+								</div>
+								<div class="columns pull-right col-md-2 nopadding">
+									<input id="searchName" type="text" class="form-control"
+										placeholder="任务名称">
+								</div>
+							</div>
+							<table id="exampleTable" data-mobile-responsive="true">
+							</table>
+						</div>
+						<div id="tab-2" class="tab-pane ">
+							<div class="fixed-table-toolbar">
+								<div class="columns pull-left" id="deleteDiv2">
+									<button shiro:hasPermission="all:batchRemove" type="button" class="btn  btn-danger"
+										onclick="batchRemove()">
+										<i class="fa fa-trash" aria-hidden="true"></i>删除
+									</button>
+								</div>
+								<div class="columns pull-right">
+									<button class="btn btn-success" onclick="reLoad()">查询</button>
+								</div>
+								<div class="columns pull-right col-md-2 nopadding more_condition">
+								  	<div>
+								  		<input id="taskName" name="taskName" type="text" class="form-control" placeholder="需求名称">
+								  	</div>	
+								  	<div>
+								  		<select data-placeholder="--选择任务状态--" id="rwzt" name="rwzt" class="form-control">
+							              <option value="">--选择任务状态--</option>
+							              <option value="init">未开始</option>
+							              <option value="ing">进行中</option>
+							              <option value="end">已完成</option>
+						                </select>
+								  	</div>
+								  	<div>
+										<input id="fqsjq"name="fqsjq" class="laydate-icon layer-date input" autocomplete="off"
+											placeholder="开始时间" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+										—
+										<input id="fqsjz"name="fqsjz" class="laydate-icon layer-date input" autocomplete="off"
+											placeholder="结束时间"onclick="laydate({istime: true, format: 'YYYY-MM-DD'})">
+								  	</div>
+									<div>
+							  			<input class="form-control" id="deptIds"
+											name="deptIds" autocomplete="off" type="hidden">
+										<input id="depts" placeholder="请选择所属部门" 
+											name="depts" autocomplete="off" type="text" readonly="readonly" >
+										<div id="treepanel" style="width:150px;height:auto;position:absolute;z-index:10;">
+											<iframe src="/tree/treeDept.html" style="height:100%;border:none;"></iframe>
+										</div>
+									</div>
+								</div>
+							</div>
+							<table id="exampleTable_1" data-mobile-responsive="true">
+							</table>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+		<div>
+			<script type="text/javascript">
+				var s_edit_h = '';//hidden
+				var s_remove_h = '';
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="activiti:workflow:edit">
+			<script type="text/javascript">
+				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="activiti:workflow:remove">
+			<script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="activiti:workflow:resetPwd">
+			<script type="text/javascript">
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script src="/js/plugins/layer/laydate/laydate.js"></script>
+	<script type="text/javascript" src="/js/appjs/activiti/workflow/workflow.js"></script>
+</body>
+</html>
+<script>
+$("#treepanel").hide();
+$("#depts").click(
+		function(){
+			$("#treepanel").show();
+		}
+);
+$("#treepanel").mouseout(function(){
+	$("#treepanel").hide();
+});
+
+</script>

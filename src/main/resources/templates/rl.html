@@ -1,0 +1,224 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+		<link type='text/css' rel='stylesheet' href="/css/font-awesome.min.css">
+		<link type='text/css' rel='stylesheet' href="/css/commonCss_wev8.css">
+	    <link href="/css/bootstrap.min.css" rel="stylesheet">
+		<link type='text/css' rel='stylesheet' href="/css/style.css">
+		<link type='text/css' rel='stylesheet' href="/css/rl.css">
+		<style type="text/css">
+			/* body{
+				overflow:hidden
+			}
+			.body_div{
+				height: 100%;
+				background-color: #F3F3F4;
+			}
+			.body_div>div{
+				width: calc(50% - 5px);
+				height: 100%;
+				float: left;
+				overflow:auto;
+				background-color: #FFF;
+				border: 1px solid #CCC;
+			}
+			.body_div>div:first-child{
+				margin-right: 10px;
+			}
+			body>.modal{
+				width: 100%;
+			} */
+			table{
+				table-layout: fixed;
+			}
+			body>table{
+				width:calc(100% - 10px);
+				margin: 0 5px;
+			}
+		</style>
+	</head>
+	<body>
+	<div id='show_something'></div>
+		<!-- <div class="body_div">
+			<div> -->
+				<table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td valign="top">
+							<div style="border:#F3F2F2 1px solid;">
+								<table id="Calendar" width="100%" border=0>
+							        <tr>
+							            <td>
+							                <table height="40" width="100%">
+						                        <tr align="center">
+						                        	<td  class="hand" align="center" width="33%" onclick="todayClick()" title="今天">
+						                        		<span id="currentDay"></span>
+						                        		<br>
+						                        		<span id="currentWeekDay" ></span>
+						                        	</td>
+						                            <td align="center" style="border-left:#E4E1E1 1px solid;">
+						                            	<div style="display: inline-block;">
+							                                <div class="LeftArrow" id="prevbtn" title="上一个月" onclick="prev(this)"></div>
+							                                <div class="changeMonth " id="showDate"></div>
+							                                <div class="RightArrow" id="nextbtn" title="下一个月" onclick="next(this)"></div>
+						                                </div>
+						                            </td>
+						                        </tr>
+						                        <tr style="height:1px!important;" class="Spacing">
+													<td class="paddingLeft0" colspan="2">
+														<div class="intervalDivClass"></div>
+													</td>
+												</tr>
+							                </table>
+							                <table id="LDay"  width="100%"></table>
+							            </td>
+							        </tr>
+							        <tr style="height:1px!important;" class="Spacing">
+										<td class="paddingLeft0">
+											<div class="intervalDivClass"></div>
+										</td>
+									</tr>
+									<tr>
+										<td style="text-align: center;height:30px;">
+											<input data-toggle="modal" data-target="#schedule_plan" onclick="doAdd()" class="addWorkPlan" type="button" onMouseOut=""  title="添加">
+										</td>
+									</tr>
+									<tr>
+							            <td>
+							            	<div id="planDataEvent" class="planDataEvent">
+						           				<div id="planDataEventchd"></div>
+							            	</div>
+							            </td>
+							        </tr>
+							    </table>
+					    	</div>
+						</td>	 
+					</tr>
+				</table>
+			<!-- </div>
+			<div>
+				<h4 class="tab_title">通知公告</h4>
+		        <table style="border:0;" id="inform_online" data-mobile-responsive="true"></table>
+			</div>
+		</div> -->
+		<div class="modal inmodal" id="schedule_plan" tabindex="-1" role="dialog" aria-hidden="false">
+            <div class="modal-dialog modal-content animated flipInY schedule_plan">
+            	<div class="sssp_gj_layer ">
+            		<div class="title_div">
+	            		<div>
+	            			<img src="images/mnav20_wev8.png" />
+	            			<span>日程</span>
+	            		</div>
+	            		<div>
+	            			<input onclick="save_schedule_plan();" type="button" class="edit_btn check_btn edit_btn_1" value="保存"/>
+	            			<input onclick="edit_schedule_plan();" type="button" class="edit_btn check_btn edit_btn_2" value="编辑"/>
+	            			<input onclick="complete_schedule_plan();" type="button" class="edit_btn edit_btn_2" value="完成"/>
+	            			<input onclick="delete_schedule_plan();" type="button" class="edit_btn edit_btn_2" value="删除"/>
+	            		</div>
+            		</div>
+            		<div class="is_can_edit cannot_edit">
+						<!-- <div>
+							<label class="left_lab">日程类型</label>
+							<select id="condition_type" class="short_plan">
+								<option>领导安排</option>
+								<option>日常工作</option>
+							</select>
+						</div> -->
+						<div>
+							<label class="left_lab">标题</label>
+							<input id="condition_title" onblur="show_hide_img(this);" class="short_plan" type="text" />
+							<!-- <span class="img_show_hide">
+								<img src="images/BacoError_wev8.gif" />
+							</span> -->
+						</div>
+						<div>
+							<label class="left_lab">内容</label>
+							<textarea id="condition_content"></textarea>
+						</div>
+						<!-- <div>
+							<label class="left_lab">接收人</label>
+							<input id="condition_recipient" onblur="show_hide_img(this);" class="short_plan" type="text" />
+							<span class="img_show_hide">
+								<img src="images/BacoError_wev8.gif" />
+							</span>
+						</div> -->
+						<!-- <div>
+							<label class="left_lab">紧急程度</label>
+							<div>
+								<label>
+									<input type="radio" name="important_level" checked="checked" />一般
+								</label>
+								<label>
+									<input type="radio" name="important_level" />重要
+								</label>
+								<label>
+									<input type="radio" name="important_level" />紧急
+								</label>
+							</div>
+						</div> -->
+
+						<div class="hidden"> 
+							<label class="left_lab left_lab_long">日程提醒方式</label>
+							<div>
+								<label>
+									<input value="0" type="radio" name="remind_type" />不提醒
+								</label>
+								<label>
+									<input value="1" type="radio" name="remind_type" />短信提醒
+								</label>
+								<!-- <label>
+									<input value="2" type="radio" name="remind_type" />邮件提醒
+								</label> -->
+							</div>
+							<div class="clear_both"></div>
+						</div>
+						<div id="schedule_remind_time">
+							<label class="left_lab left_lab_long">日程提醒时间</label>
+							 <input id="remindTime" name="remindTime" class="laydate-icon layer-date short_plan">
+							 
+							<!-- <label class="left_lab">日程时间</label>
+							<div>
+
+						    </div>
+						    <div>
+							 <label class="left_lab">日程结束时间</label>
+							 <input id="endTime" name="end" class="laydate-icon layer-date short_plan">
+						    </div>
+						    <label class="left_lab">日程提醒时间</label>
+							<div style="margin-right: 10px;">
+								<label>
+									<input type="checkbox" />开始前
+								</label>
+								<input class="short_time_plan" type="text" value="0"/>
+								<span>小时</span>
+								<input class="short_time_plan" type="text" value="0"/>
+								<span>分钟</span>
+							</div>
+							<div>
+								<label>
+									<input type="checkbox" />结束前
+								</label>
+								<input class="short_time_plan" type="text" value="0"/>
+								<span>小时</span>
+								<input class="short_time_plan" type="text" value="0"/>
+								<span>分钟</span>
+							</div>-->
+							<div class="clear_both"></div> 
+						</div>
+					</div>
+				</div>
+				<div class="model_btn_div">
+					<img id="close_schedule_plan" src="images/close_model.png" class="" data-dismiss="modal"/>
+				</div>
+            </div>
+        </div>
+		<script type="text/javascript" src="/js/jquery.min.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+		<script src="/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+		<script src="/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+		<script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script type="text/javascript" src="/js/plugins/layer/laydate/laydate.js"></script>
+		<script type="text/javascript" src="/js/plugins/layer/layer.min.js"></script>
+		<script type="text/javascript" src="/js/rl.js"></script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head th:include="include :: header"></head>
+<head>
+<meta charset="UTF-8">
+<title>各环节--任务退回</title>
+<link th:href="@{/app/css/all_workflow.css}" rel="stylesheet"/>
+<style>
+.message_div {
+	padding:10px !important;
+	padding-bottom:0 !important;
+}
+#fkqksm{
+width:99%;
+height:100px;
+}
+</style>
+</head>
+<body class="body_layer">
+	<div class="message_div">
+		<form  id="add_form">
+		<input id="id" name="id" type="hidden">
+		<input id="taskId" name="taskId" type="hidden">
+		<input id="taskPass" name="taskPass" type="hidden">
+		<input id="fk_id" name="fk_id" type="hidden">
+			<div class="message_detail_div">
+				<div>
+					<textarea id="fkqksm" name="comment" ></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="submit_div">
+		<input class="detail_type_1" type="button" id="fb_button" onclick="submit_task(this)" value="提交" />
+	</div>
+	<div th:include="include::footer"></div>
+
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugins/layer/laydate/laydate.js"></script>
+<script type="text/javascript" src="/js/appjs/act/workflow/sub_sh.js"></script>
+</html>

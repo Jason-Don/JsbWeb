@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header">
+<style>
+.wrapper wrapper-content {
+padding-top:0px;
+}
+</style>
+</head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox-content">
+					<div id="jsTree"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/app/js/jquery.min.js}"></script>
+	<script th:src="@{/app/js/plugins/jsTree/jstree_for_single.js}"></script>
+	<script type="text/javascript">
+		getTreeData();
+		function getTreeData() {
+			$.ajax({
+				type : "GET",
+				url : "/sys/user/tree",
+				success : function(tree) {
+					loadTree(tree);
+				}
+			});
+		}
+		function loadTree(tree) {
+			$('#jsTree').jstree({
+				'core' : {
+					'data' : tree
+				}
+			});
+			$('#jsTree').jstree().open_all();
+		}
+		$('#jsTree').on("changed.jstree", function(e, data) {
+			if($(data.node.children).length == 0){
+				parent.loadUser_1(data.node.id,data.node.text);
+				var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+				parent.layer.close(index);
+			}
+		});
+	</script>
+</body>
+</html>

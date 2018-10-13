@@ -1,0 +1,45 @@
+
+#test-n2 {
+	position: relative;
+	/* min-height: 400px !important; */
+	/* width: 40% !important; */
+	float:left;
+}
+
+#test-n2  #layui-laydate1,#test-n2  #layui-laydate1 .layui-laydate-main,#test-n2 .layui-laydate-content table{
+	width: 100%;
+}
+
+#test-n2 .layui-laydate-content table tbody{
+	height:calc(100vh - 240px)!important;
+}
+.text_box{
+	padding: 15px !important;
+}
+#test-n2 #layui-laydate1{
+	width:240px;
+	height:230px;
+}
+#rl_thing_show{
+	float: left;
+	width: calc(100% - 250px);
+	/* width: 220px; */
+	height: 230px;
+	margin-left: 10px;
+}
+.add_thing{
+	text-align: center;
+}
+#thing_show_text{
+    width: 100%;
+    resize: none;
+    height: 140px;
+}
+#rl_thing_show>div{
+	margin: 10px 0;
+}
+.fa-edit{
+	font-size: 18px;
+    color: #19aa8d;
+    cursor:pointer;
+}

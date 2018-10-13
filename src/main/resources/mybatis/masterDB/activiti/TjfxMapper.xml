@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.activiti.dao.TjfxDao">
+
+	<select id="getWorkflowBarByConditions" resultType="com.bootdo.activiti.domain.Tjfx_WorkflowBarDO">
+SELECT
+	DATE_FORMAT( w.rwkssj, '%Y' ) `yyyy`,
+	DATE_FORMAT( w.rwkssj, '%m' ) `mm`,
+	COUNT( 1 ) `total`,
+	sum(CASE w.rwly WHEN 'TDWJB' THEN 1 ELSE	0 END) `tdwjb`,
+	sum(CASE w.rwly WHEN 'TZQTDWJBHZB' THEN 1 ELSE	0 END) `tzqtdwjbhzb`,
+	sum(CASE w.rwly WHEN 'SJYWDKBMJB' THEN 1 ELSE	0 END) `sjywdkbmjb`,
+	sum(CASE w.rwly WHEN 'XJYWDKBMSQ' THEN 1 ELSE	0 END) `xjywdkbmsq`,
+  sum(CASE w.rwly WHEN 'QT' THEN 1 ELSE	0 END) `qt`
+FROM
+	workflow w 
+WHERE
+	w.yxbz = 'Y' 
+	AND DATE_FORMAT( w.rwkssj, '%Y' ) = #{year} AND (cjry_mc in
+    <foreach item="item" index="index" collection="duty" open="(" separator="," close=")">
+    #{item}
+    </foreach>
+    or  rwzpry_mc in (SELECT rwzpry_mc FROM workflow WHERE rwzpry_mc LIKE ''
+    <foreach item="item" index="index" collection="duty" >
+    or rwzpry_mc LIKE CONCAT('%',#{item},'%') 
+    </foreach>)
+     or  cbry_mc in (SELECT cbry_mc FROM workflow WHERE cbry_mc LIKE ''
+    <foreach item="item" index="index" collection="duty" >
+    or cbry_mc LIKE CONCAT('%',#{item},'%') 
+    </foreach>)
+    )
+GROUP BY 2
+ORDER BY 2
+	</select>
+
+	<select id="getOvertimeBarByConditions" resultType="com.bootdo.activiti.domain.Tjfx_OvertimeBar">
+SELECT 
+DATE_FORMAT(o.kssj,'%Y') yyyy,
+DATE_FORMAT(o.kssj,'%m') mm,
+count(1) total,
+sum(CASE o.jblx WHEN 'GZR' THEN 1 ELSE	0 END) gzr,
+sum(CASE o.jblx WHEN 'ZM' THEN 1 ELSE	0 END) zm,
+sum(CASE o.jblx WHEN 'FDJJR' THEN 1 ELSE	0 END) fdjjr
+FROM
+	overtime o 
+WHERE
+	o.yxbz = 'Y'
+	AND DATE_FORMAT( o.kssj, '%Y' ) = #{year} AND (sqr_mc in
+	(SELECT sqr_mc FROM overtime WHERE sqr_mc LIKE ''
+    <foreach item="item" index="index" collection="duty">
+    or sqr_mc LIKE CONCAT('%',#{item},'%')
+    </foreach>
+    ))
+GROUP BY 2
+ORDER BY 2
+	</select>
+	
+	<select id="getCurrentYear" resultType="String">
+select DATE_FORMAT(CURRENT_DATE,'%Y') current_year from dual
+	</select>
+</mapper>

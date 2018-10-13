@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>精神障碍患者管控系统</title>
+		<meta name="viewport" content="width=device-width,inital-scale=1.0">
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/template_mine.css" />
+		<link rel="stylesheet" href="css/slideImageCarousel.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<style type="text/css">
+			.all_center{
+				overflow-x: hidden;
+			}
+			.all_li{
+				width: 200%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+			.all_li>div{
+				width: 50%;
+				height: 100%;
+				float: left;
+				margin: 0;
+				overflow-y: auto;
+			}
+			.clear_div{
+				clear: both;
+			  	height: 0 !important;
+			  	width: 100% !important;
+			  	margin: 0 !important;
+			  	padding: 0 !important;
+			}
+		</style>
+		
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js" ></script>
+		<script src="/app/js/all.js" type="text/javascript"></script>
+		<script src="/app/js/index.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="app_div">
+					<!-- <div class="title_div">精神障碍患者管控系统</div> -->
+					<div class="all_center tab-content">
+						<div class="all_li">
+							<div class="tab-pane fade active in" id="OTN_1">
+								<div class="slider-container">
+						        	<div class="slider-control left inactive"></div>
+						            <div class="slider-control right"></div>
+						            <ul class="slider-pagi"></ul>
+						            <div class="slider">
+						                <div class="slide slide-0 active">
+						                    <div class="slide__bg"></div>
+						                </div>
+						                <div class="slide slide-1 ">
+						                    <div class="slide__bg"></div>
+						                </div>
+						                <div class="slide slide-2">
+						                    <div class="slide__bg"></div>
+						                </div>
+						                <div class="slide slide-3">
+						                    <div class="slide__bg"></div>
+						                </div>
+						            </div>
+						        </div>
+						        <div class="touch_edit function_div">
+						        	<div onclick="tz_function(1);">
+										<img class="img_first" src="images/msg_check.png" />
+										<span>信息核查</span>
+									</div>
+									<div onclick="tz_function(2);">
+										<img class="img_first" src="images/daily_interview.png" />
+										<span>日常走访</span>
+									</div>
+									<div onclick="tz_function(7);">
+										<img class="img_first" src="images/scene_quest.png" />
+										<span>现场盘查</span>
+									</div>
+									<div onclick="tz_function(5);">
+										<img class="img_first" src="images/patient_cure.png" />
+										<span>患者送治</span>
+									</div>
+									<div class="clear_div"></div>
+									<div class="detail_div">
+										<div onclick="tz_function(3);">
+											<img class="img_first" src="images/mine_task.png" />
+											<span>我的任务</span>
+										</div>
+										<div onclick="tz_function(4);">
+											<img class="img_first" src="images/mine_notice.png" />
+											<span>我的通知</span>
+										</div>
+									</div>
+						        </div>
+							</div>
+							<div class="tab-pane fade touch_edit active in" id="OTN_2">
+								<div class="head_div">
+									<div class="admin_div">
+										<img src="images/admin_person.png" />
+										<div>
+											<input id="userId" name="userId"  class="hidden" th:value="${userid}">
+											<span class="no_span"></span>
+											<span th:text="${username}"></span>
+											<span th:text="${name}"></span>
+										</div>
+										<div class="clear_both"></div>
+									</div>
+								</div>
+								<div class="center_div">
+									<div>
+										<span>性别</span>
+										<span class="span_right" id="sex"></span>
+									</div>
+									<!-- <div>
+										<span>邮箱</span>
+										<span class="span_right"></span>
+									</div> -->
+									<div>
+										<span>电话</span>
+										<span class="span_right" id="mobile"></span>
+									</div>
+									<div>
+										<span>部门</span>
+										<span class="span_right" id="dept"></span>
+									</div>
+								</div>
+								<div class="center_div bottom_div">
+									<div onclick="change_psd();" class="change_psd">修改密码</div>
+								</div>
+								<div class="center_div bottom_div bottom_div_2">
+									<div onclick="log_out();" class="logout_div">退出</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="log_top" class="all_bottom col-xs-12">
+						<ul id="myTab" calss="nav nav-tabs">
+							<li class="top_other active" onclick="tz_iframe_web(this,1);">
+								<!-- <a href="#OTN_1" data-toggle="tab">
+									<div id="function_btn_1" onclick="tz_iframe_web(this,1);" class="function_btn">
+										<img src="images/home_page_1.png" />
+										<span>主页</span>
+									</div>
+								</a> -->
+								<div id="function_btn_1" class="function_btn">
+									<img src="images/home_page.png" />
+									<span>主页</span>
+								</div>
+							</li>
+							<li class="top_other" onclick="tz_iframe_web(this,2);">
+								<!-- <a href="#OTN_2" data-toggle="tab">
+									<div id="function_btn_2" onclick="tz_iframe_web(this,2);" class="function_btn">
+										<img src="images/setting.png" />
+										<span>设置</span>
+									</div>
+								</a> -->
+								<div id="function_btn_2" class="function_btn">
+									<img src="images/setting.png" />
+									<span>设置</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!-- 静态弹框 -->
+					<div class="hide_div" id="open_change_psd" data-toggle="modal" data-target="#change_psd"></div>
+					<div class="modal inmodal" id="change_psd" tabindex="-1" role="dialog" aria-hidden="false">
+		                <div class="modal-dialog modal-content animated flipInY setting_property" style="">
+	                		<div class="title_div">
+		                		<span data-dismiss="modal">
+									<img src="images/back_history.png" />
+								</span>
+		                		<div>修改密码</div>
+	                		</div>
+	                		<form id="pwd">
+	                		<div class="psd_change_div">
+	                		<input type="hidden" name ="userDO.userId"  th:value="${userid}"/>
+								<div>
+									<label>原密码</label>
+									<input type="password" name="pwdOld" placeholder="请输入原密码"/>
+								</div>
+								<div>
+									<label>新密码</label>
+									<input id="new_psd" type="password" name="pwdNew" placeholder="请输入新密码"/>
+								</div>
+								<div>
+									<label>确认新密码</label>
+									<input id="confirm_psd" type="password" name="confirm_psd" placeholder="请再次输入新密码"/>
+								</div>
+							</div>
+							</form>
+							<div class="psd_change_btn">
+								<input onclick="save_psd();" type="button" value="确认修改"/>
+							</div>
+		                </div>
+		            </div>
+				</div>
+			</div>
+		</div>
+	</body>
+<script th:src="@{/app/js/plugins/layer/layer.js}" type="text/javascript"></script>
+<script>
+$.ajax({
+	url:'/app/user/myinfo/'+$("#userId").val(),
+	method : 'get',
+	dataType : 'json',
+	cache : false,
+	async : false,
+	success : function(data) {
+		$("#sex").text(data['sex']);
+		$("#mobile").text(data['mobile']);
+		$("#dept").text(data['dept']);
+	}
+});
+function save_psd(){
+	if($("#new_psd").val()==$("#confirm_psd").val()){
+		$.ajax({
+		    cache : true,
+		    type : "POST",
+		    url :"/sys/user/resetPwd",
+		    data : $('#pwd').serialize(),
+		    async : false,
+		    error : function(request) {
+				laryer.msg("Connection error");
+		    },
+		    success : function(data) {
+		        if (data.code == 0) {
+		            layer.msg("更新密码成功");
+		            $(".psd_change_btn").hide();
+		          //保存成功重新登录
+					window.location = "/appLogout";
+		        } else {
+		            layer.msg(data.msg)
+		        }
+		    }
+		});
+	}else{
+		layer.msg("两次输入新密码不一致！");
+	}
+}
+</script>
+</html>

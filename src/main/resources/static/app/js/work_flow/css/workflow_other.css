@@ -1,0 +1,119 @@
+			#app_div{
+				width: 100%;
+				/* height: 100vh; */
+				background-color: rgba(13,72,137,1);
+				font-size: 12px;
+				overflow: hidden;
+			}
+			.title_div {
+				text-align: center;
+			  	font-size: 16px;
+			  	font-weight: bold;
+			  	height: 0.3rem;
+			  	line-height: 0.3rem;
+			  	border-bottom: 1px solid #0Cf;
+			}
+			.title_div span {
+			  	float: left;
+			  	padding-left: 0.1rem;
+			}
+			.message_div {
+				padding: 10px 20px;
+			}
+			.message_title {
+				height: 25px;
+				line-height: 25px;
+				border-bottom: 3px solid rgb(204, 204, 204);
+			}
+			.message_title div {
+				border-bottom: 3px solid rgb(0, 153, 255);
+				float: left;
+				margin-top: -3px;
+				font-size: 16px;
+			}
+			.message_detail_div>div {
+				min-height: 25px;
+				margin: 10px 0;
+			}
+			.label_left {
+				float: left;
+				width: 90px;
+				margin-top: 5px;
+			}
+			.more_div input, .more_div select, .message_detail_div textarea {
+				width: calc(100% - 90px);
+				height: 28px;
+				line-height: 28px;
+				padding: 0;
+				padding-left: 5px;
+				max-width: 1000px;
+				border-radius: 0;
+			}
+			#rwzpryMc{
+				overflow: hidden;
+			  	white-space: nowrap;
+			  	text-overflow: ellipsis;
+			}
+			.message_detail_div textarea{
+				height: 80px;
+				resize: none;
+			}
+			.submit_div {
+				text-align: center;
+				margin: 15px 0;
+			}
+			.submit_div input {
+				width: 120px;
+				height: 40px;
+				border: 2px solid #3D81CB;
+			  	outline: none;
+			  	background-color: #0D4889;
+			}
+			.submit_div input:hover {
+				background-color: #6666ff;
+				color: #fff;
+			}
+			#file{
+				display: inline-block;
+				padding: 0;
+			  	line-height: 20px;
+			  	height: 24px;
+			  	margin-top: 2px;
+			}
+			label input{
+				vertical-align: text-bottom;
+			}
+			.select_m{
+				width: calc(100% - 90px);
+				float: left;
+			}
+			
+			.block .star_score {
+			    float: left;
+			    margin-right: 20px;
+			}
+			.block>p{
+				float: left;
+			    margin: 0;
+			    margin-top: 2px;
+			}
+			.star_score {
+			   	background: url(../../images/starky.png);
+			    width: 160px;
+			    height: 21px;
+			    position: relative;
+			}
+			.star_score a {
+			    height: 21px;
+			    display: block;
+			    text-indent: -999em;
+			    position: absolute;
+			    left: 0;
+			}
+			#starttwo .star_score a.clibg {
+			    background: url(../../images/starsy.png);
+			    left: 0;
+			}
+			
+
+

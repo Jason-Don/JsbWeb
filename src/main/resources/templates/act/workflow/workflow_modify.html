@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head th:include="include :: header"></head>
+<head>
+<meta charset="UTF-8">
+<title>信息入录</title>
+<link type='text/css' rel='stylesheet' href="/css/all_workflow.css">
+<!-- <style>
+	#mask-layer{
+		position:absolute;
+	    top:0px;
+	    left:0px;
+		width:100%;
+		height:100%;
+		background-color:rgba(27, 22, 22,0.6);
+		display:none; 
+		z-index:10;
+	}
+	#create-rwly-panel{
+		border:2px solid;
+		width:30%;
+		height:20%;
+		position:absolute;
+		margin-left:30%;
+	    margin-top:10%;
+		background-color:white;
+		opacity:1;
+		border-radius: 5px;
+		display:none; 
+	}
+	#rwly_input{
+	  	width: 90%;
+	  	margin-top: 10px;
+	  	margin-left: 5%;
+	}
+</style> -->
+<style>
+		body,.message_div{
+			background-color:#e6e6e6;
+		}
+</style>
+</head>
+<body>
+	<div class="message_div">
+		<div class="message_title ">
+			<div>任务信息</div>
+		</div>
+		<form  id="add_form" enctype="multipart/form-data">
+			<input id="taskId" name="taskId" th:value="${workflow.taskId}"  type="hidden">
+			<input id="id" name="id" th:value="${workflow.id}"  type="hidden">
+
+			<input id="rwkssjOld" th:value="${workflow.rwkssj}"  type="hidden">
+			<input id="rwwcsjOld" th:value="${workflow.rwwcsj}"  type="hidden">
+			<input id="rwlyOld"  th:value="${workflow.rwly}"  type="hidden">
+			<input id="nycdOld"  th:value="${workflow.nycd}"  type="hidden">
+
+
+		<div class="message_detail_div ">
+			<div>
+				<div class="more_div">
+					<label class="label_left">任务来源：</label>
+					<select
+						data-placeholder="--选择类别--" name="rwly" id="rwly"
+						class="form-control chosen-select" tabindex="2" required onchange="create_rwly()">
+						<option value="">--选择类别--</option>
+					</select>
+				</div>
+				<div class="more_div read_only">
+					<label class="label_left">任务创建人：</label>
+					<input id="cjryId" name="cjryId"  class="hidden" th:value="${workflow.cjryId}">
+					<input class="input" id="cjryMc" name="cjryMc" readonly="readonly" th:value="${workflow.cjryMc}">
+				</div>
+				<div class="more_div">
+					<label class="label_left">任务名称：</label>
+					<input class="input"  id="taskName" name="taskName" type="text" th:value="${workflow.taskName}"/>
+				</div>
+
+				<div class="clear_both"></div>
+			</div>
+			<div>
+				<label class="label_left">任务内容：</label>
+				<textarea id="rwnr" name="rwnr"  th:inline="text">[[${workflow.rwnr}]]</textarea>
+			</div>
+			<div>
+				<div class="more_div">
+					<label class="label_left">开始时间：</label> <input class="input"  id="rwkssj" name="rwkssj"
+						class="laydate-icon layer-date input" placeholder="请选择"
+						onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm',type:'datetime'})">
+				</div>
+				<div class="more_div">
+					<label class="label_left">结束时间：</label> <input class="input"  id="rwwcsj" name="rwwcsj"
+						class="laydate-icon layer-date input" placeholder="请选择"
+						onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm',type:'datetime'})">
+				</div>
+				<div class="clear_both"></div>
+			</div>
+            <div class="form-group">
+                  <label class="control-label label_left label_left_1">之前附件内容：</label>
+				<div >
+					<input id="fileId"name="fileId" th:value="${workflow.fileId}" class="hidden">
+					<a href="#" onclick="download()" th:text="${workflow.fileMc}" onclick="downloadFile()"></a>
+				</div>
+            </div>
+			<div class="form-group">
+				<label class="control-label label_left label_left_1">上传新的附件：</label>
+				<input id="file" name="file" type="file" >
+			</div>
+
+			<div>
+				<label class="label_left">办理意见：</label>
+				<textarea id="blyj" name="blyj" th:inline="text">[[${workflow.blyj}]]</textarea>
+			</div>
+			
+			<div class="more_div">
+					<label class="label_left">室领导审核：</label>
+					<input id="rwzpry" name="rwzpry" class="hidden" th:value="${workflow.rwzpry}" >
+					<input class="input"  id="rwzpryMc" name="rwzpryMc" type="text" onclick="openUser_1()"
+						   readonly="readonly" placeholder="--请选择--" th:value="${workflow.rwzpryMc}" >
+			</div>
+		</div>
+		</form>
+	</div>
+	<div class="submit_div">
+		<!-- <input type="button" id="save_button" onclick="Workflow.save()" value="保存" /> -->
+		<input type="button" id="saveAndStart_button" onclick="Workflow.modifySaveAndStart()" value="重新发起" />
+		<!-- <input type="button" id="start_button" onclick="Workflow.start()" value="发起任务" />  -->
+	</div>
+
+	<!-- <div id="mask-layer">
+		<div id="create-rwly-panel">
+			<input id="rwly_input" type="text" placeholder="请输入任务来源" />
+			<button style="margin-left: 25%; margin-top: 15px;"
+				onclick="write_down_rwly()">确定</button>
+			<button style="margin-left: 10px; margin-top: 15px;"
+				onclick="hide_rwly_panel()">取消</button>
+		</div>
+	</div> -->
+
+	<div th:include="include::footer"></div>
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugins/layer/laydate/laydate.js"></script>
+<script type="text/javascript" src="/js/plugins/layer/extend/layer.ext.js"></script>
+<script type="text/javascript" src="/js/appjs/act/workflow/workflow_modify.js"></script>
+</html>

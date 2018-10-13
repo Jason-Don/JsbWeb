@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.common.dao.MsgRecordDao">
+
+	<select id="isSendWithinSometime" resultType="int">
+SELECT
+	count(1)
+FROM
+	msg_record msg
+WHERE
+	msg.send_time >= DATE_SUB(NOW(), INTERVAL #{hour} HOUR)
+AND
+msg.send_time &lt; NOW()
+AND
+msg.PROC_INST_ID_ = #{procInstId}
+AND
+msg.cflx = "MT"
+	</select>
+	
+	<sql id="Base_Column_List">
+	id,receive_user,mobile,msg,send_time,proc_inst_id_,task_id_,cflx,fqry
+	</sql>
+	<resultMap id="BaseResultMap" type="com.bootdo.common.domain.MsgRecordDO">
+		<result column="id" property="id"></result>
+		<result column="receive_user" property="receiveUser"></result>
+		<result column="mobile" property="mobile"></result>
+		<result column="msg" property="msg"></result>
+		<result column="send_time" property="sendTime"></result>
+		<result column="proc_inst_id_" property="procInstId"></result>
+		<result column="task_id_" property="taskId"></result>
+		<result column="cflx" property="cflx"></result>
+		<result column="fqry" property="fqry"></result>
+	</resultMap>
+
+
+	<select id="get" resultMap="BaseResultMap">
+		select 
+		<include refid="Base_Column_List" />
+		from msg_record where id = #{value}
+	</select>
+
+	<select id="list" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from msg_record
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="receiveUser != null and receiveUser != ''"> and receive_user = #{receiveUser} </if>
+		  		  <if test="mobile != null and mobile != ''"> and mobile = #{mobile} </if>
+		  		  <if test="msg != null and msg != ''"> and msg = #{msg} </if>
+		  		  <if test="sendTime != null and sendTime != ''"> and send_time = #{sendTime} </if>
+		  		  <if test="procInstId != null and procInstId != ''"> and PROC_INST_ID_ = #{procInstId} </if>
+		  		  <if test="taskId != null and taskId != ''"> and TASK_ID_ = #{taskId} </if>
+		  		  <if test="cflx != null and cflx != ''"> and cflx = #{cflx} </if>
+		  		  <if test="fqry != null and fqry != ''"> and fqry = #{fqry} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from msg_record
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="receiveUser != null and receiveUser != ''"> and receive_user = #{receiveUser} </if>
+		  		  <if test="mobile != null and mobile != ''"> and mobile = #{mobile} </if>
+		  		  <if test="msg != null and msg != ''"> and msg = #{msg} </if>
+		  		  <if test="sendTime != null and sendTime != ''"> and send_time = #{sendTime} </if>
+		  		  <if test="procInstId != null and procInstId != ''"> and PROC_INST_ID_ = #{procInstId} </if>
+		  		  <if test="taskId != null and taskId != ''"> and TASK_ID_ = #{taskId} </if>
+		  		  <if test="cflx != null and cflx != ''"> and cflx = #{cflx} </if>
+		  		  <if test="fqry != null and fqry != ''"> and fqry = #{fqry} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.common.domain.MsgRecordDO" useGeneratedKeys="true" keyProperty="id">
+		insert into msg_record
+		(
+			`receive_user`, 
+			`mobile`, 
+			`msg`, 
+			`send_time`, 
+			`PROC_INST_ID_`, 
+			`TASK_ID_`, 
+			`cflx`, 
+			`fqry`
+		)
+		values
+		(
+			#{receiveUser}, 
+			#{mobile}, 
+			#{msg}, 
+			#{sendTime}, 
+			#{procInstId}, 
+			#{taskId}, 
+			#{cflx}, 
+			#{fqry}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.common.domain.MsgRecordDO">
+		update msg_record 
+		<set>
+			<if test="receiveUser != null">`receive_user` = #{receiveUser}, </if>
+			<if test="mobile != null">`mobile` = #{mobile}, </if>
+			<if test="msg != null">`msg` = #{msg}, </if>
+			<if test="sendTime != null">`send_time` = #{sendTime}, </if>
+			<if test="procInstId != null">`PROC_INST_ID_` = #{procInstId}, </if>
+			<if test="taskId != null">`TASK_ID_` = #{taskId}, </if>
+			<if test="cflx != null">`cflx` = #{cflx}, </if>
+			<if test="fqry != null">`fqry` = #{fqry}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from msg_record where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from msg_record where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

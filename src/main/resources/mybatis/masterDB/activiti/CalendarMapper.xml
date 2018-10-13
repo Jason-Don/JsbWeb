@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.activiti.dao.CalendarDao">
+
+	<resultMap id="BaseResultMap" type="com.bootdo.activiti.domain.CalendarDO">
+		<result column="user_id" property="userId"></result>
+		<result column="ssrq" property="ssrq"></result>
+		<result column="event_id" property="eventId"></result>
+		<result column="title" property="title"></result>
+		<result column="content" property="content"></result>
+		<result column="remind_type" property="remindType"></result>
+		<result column="remind_time" property="remindTime"></result>
+		<result column="sjscsj" property="sjscsj"></result>
+	</resultMap>
+
+	<select id="get" resultMap="BaseResultMap">
+		SELECT
+		c.user_id,
+		DATE_FORMAT( c.ssrq, '%Y-%m-%d' ) ssrq,
+		c.event_id,
+		c.title,
+		c.content,
+		c.remind_type,
+		c.remind_time,
+		c.sjscsj
+		FROM
+		calendar c
+		WHERE
+		c.user_id = #{value}
+		ORDER BY c.sjscsj DESC
+	</select>
+
+	<insert id="save" parameterType="com.bootdo.activiti.domain.CalendarDO">
+		insert into calendar
+		(
+		`user_id`,
+		`ssrq`,
+		`event_id`,
+		`title`,
+		`content`,
+		`remind_type`,
+		`remind_time`,
+		`sjscsj`
+		)
+		values
+		(
+		#{userId},
+		#{ssrq},
+		#{eventId},
+		#{title},
+		#{content},
+		#{remindType},
+		#{remindTime},
+		#{sjscsj}
+		)
+	</insert>
+
+	<update id="update" parameterType="com.bootdo.activiti.domain.CalendarDO">
+		update calendar
+		<set>
+			<if test="ssrq != null">`ssrq` = #{ssrq}, </if>
+			<if test="eventId != null">`event_id` = #{eventId}, </if>
+			<if test="title != null">`title` = #{title}, </if>
+			<if test="content != null">`content` = #{content}, </if>
+			<if test="remindType != null">`remind_type` = #{remindType}, </if>
+			<!-- <if test="remindTime != null">`remind_time` = #{remindTime}, </if> -->
+			`remind_time` = #{remindTime},
+			<if test="sjscsj != null">`sjscsj` = #{sjscsj}</if>
+		</set>
+		where event_id = #{eventId}
+	</update>
+
+	<delete id="remove">
+		delete from calendar where event_id = #{eventId}
+	</delete>
+
+</mapper>

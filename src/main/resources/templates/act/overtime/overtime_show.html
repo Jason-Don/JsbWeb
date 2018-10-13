@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head th:include="include :: header"></head>
+	<head>
+		<meta charset="UTF-8">
+		<title>加班信息查看</title>
+		<!-- <link type='text/css' rel='stylesheet' href="/css/all_workflow.css"> -->
+		<link type='text/css' rel='stylesheet' href="/css/detail/task_manage_other_detail.css">
+		<style>
+		body,.message_div{
+			background-color:#e6e6e6;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="message_div">
+			<form class="gg-form" role="form" id="add_form">
+				<input id="jblx" name="jblx" class="hidden" th:value="${overtime.jblx}" >
+				<div class="message_detail_div message_detail_div_marg_0 read_only" >
+					<div class="message_title ">
+						<div class="title_child_div">
+							基本信息
+							<div></div>
+						</div>
+					</div>
+					<div class="more_div">
+						<label class="label_left">申请人：</label>
+						<!-- <input id="sqrId" name="sqrId" class="hidden" th:value="${overtime.sqrId}" >
+						<input class="input" id="sqrMc" name="sqrMc" readonly="readonly"  th:value="${overtime.sqrMc}"> -->
+						<span class="long_span" th:text="${overtime.sqrMc}" ></span>
+					</div>
+					<div class="more_div">
+						<label class="label_left">所在部门：</label>
+						<!-- <input id="szbmId" name="szbmId" class="hidden" th:value="${overtime.szbmId}" >
+						<input class="input" id="szbmMc" name="szbmMc" readonly="readonly" th:value="${overtime.szbmMc}" > -->
+						<span class="long_span" th:text="${overtime.szbmMc}" ></span>
+					</div>
+					<div  class="msg_div">
+						<label class="label_left label_left_1">紧急情况：</label>
+						<input id="jjqk" name="jjqk" class="hidden" th:value="${overtime.jjqk}" >
+						<!-- <div id="jjqk_type"></div>
+						<div class="clear_both"></div> -->
+						<span id="jjqk_type" class="long_span" ></span>
+					</div>
+				</div>
+				<div class="message_detail_div read_only" >
+					<div class="message_title ">
+						<div class="title_child_div">
+							加班信息
+							<div></div>
+						</div>
+					</div>
+					<div class="msg_div">
+						<label class="label_left label_left_1">加班类型：</label>
+	                   <!--  <input class="input" id="jblxSelect" readonly="readonly"  > -->
+	                    <span id="jblxSelect" class="long_span" ></span>
+					</div>
+					<div class="msg_div">
+						<label class="label_left label_left_1">加班审核人员：</label>
+						<!-- <input id="shryId" name="shryId" class="hidden" th:value="${overtime.shryId}">
+	                    <input class="input" id="shryMc" name="shryMc"
+	                                        type="text" th:value="${overtime.shryMc}" readonly="readonly" > -->
+	              		<span class="long_span" th:text="${overtime.shryMc}" ></span>
+					</div>
+					<div class="msg_div">
+						<label class="label_left">加班事由：</label>
+						<!-- <textarea id="jbsy" name="jbsy" readonly="readonly"  th:inline="text">[[${overtime.jbsy}]]</textarea> -->
+						<span class="long_span" th:text="${overtime.jbsy}" ></span>
+					</div>
+					<div class="more_div">
+						<div class="msg_div">
+							<label class="label_left">开始时间：</label>
+							<!-- <input id="kssj" name="kssj" class="hidden" type="text" th:value="${overtime.kssj}" >
+							<input id="kssjLabel" class="laydate-icon layer-date input" type="text" > -->
+							<span class="long_span" th:text="${overtime.kssj}" ></span>
+						</div>
+						<div class="msg_div">
+							<label class="label_left">结束时间：</label>
+							<!-- <input id="jssj" name="jssj" class="hidden" type="text" th:value="${overtime.jssj}" >
+							<input id="jssjLabel" class="laydate-icon layer-date input" type="text" > -->
+							<span class="long_span" th:text="${overtime.jssj}" ></span>
+						</div>
+						<div class="clear_both"></div>
+					</div>
+					<div class="msg_div">
+						<label class="label_left">关联流程：</label>
+						<!-- <input class="input" id="glgzlcMc" name="glgzlcMc" readonly="readonly" type="text" th:value="${overtime.glgzlcMc}" > -->
+						<span class="long_span" th:text="${overtime.glgzlcMc}" ></span>
+					</div>
+				</div>
+				<div class="message_detail_div read_only" >
+					<div class="message_title ">
+						<div class="title_child_div">
+							审核信息
+							<div></div>
+						</div>
+					</div>
+					<div class="msg_div">
+						<label class="label_left">审核意见：</label>
+						<!-- <textarea id="shyj" name="shyj" readonly="readonly"  th:inline="text">[[${overtime.shyj}]]</textarea> -->
+						<span class="long_span" th:text="${overtime.shyj}" ></span>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!-- <div class="submit_div">
+			<input id="submit_button" type="button" value="提交"  />
+			<input id="save_button" type="button" value="保存" />
+		</div> -->
+		<div th:include="include::footer"></div>
+	</body>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/dateformat-min.js"></script>
+	<script src="/js/plugins/layer/laydate/laydate.js"></script>
+	<script type="text/javascript" src="/js/appjs/act/overtime/overtime_show.js"></script>
+</html>

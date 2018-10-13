@@ -1,0 +1,26 @@
+.body_layer {
+  	background-color: #f6f6f6;
+}
+.submit_div input {
+	height: 40px;
+ 	line-height: 0;
+	border: 2px solid #3D81CB;
+  	outline: none;
+  	/* background-color: #0973E8; */
+  	background-color: #3DA6CD;
+	color: #fff;
+	font-size: 14px;
+	border:0;
+	border-radius: 5px;
+	width: 90px;
+}
+.submit_div input:hover {
+	background-color: #6666ff;
+	color: #fff;
+}
+label{
+	font-weight: normal;	
+}
+.more_div{
+	margin: 10px 0 !important;;
+}

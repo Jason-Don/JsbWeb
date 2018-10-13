@@ -1,0 +1,111 @@
+bootdo:
+  uploadPath: D:/var/uploaded_files/
+msg:
+  SendTel: 1211020
+  XTZDCF: 【精神障碍患者管控系统】任务提醒：您有一个“?”任务，处于“?”办理阶段，请及时办理！
+  RGCF: 【精神障碍患者管控系统】任务催办提醒：您有一个“?”任务，处于“?”办理阶段，请及时办理！催办人：?
+logging:
+  level:
+    root: info
+    com.bootdo: debug
+spring:
+  datasource:
+      masterDB:
+         type: com.alibaba.druid.pool.DruidDataSource
+         driverClassName: com.mysql.jdbc.Driver
+         url: jdbc:mysql://10.136.134.60:3306/jszahzdb?useUnicode=true&characterEncoding=utf8
+         username: root
+         password: root
+         initialSize: 1
+         minIdle: 3
+         maxActive: 20
+         # 配置获取连接等待超时的时间
+         maxWait: 60000
+         # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+         timeBetweenEvictionRunsMillis: 60000
+         # 配置一个连接在池中最小生存的时间，单位是毫秒
+         minEvictableIdleTimeMillis: 30000
+         validationQuery: select 'x'
+         testWhileIdle: true
+         testOnBorrow: false
+         testOnReturn: false
+         # 打开PSCache，并且指定每个连接上PSCache的大小
+         poolPreparedStatements: true
+         maxPoolPreparedStatementPerConnectionSize: 20
+         # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+         filters: stat,wall,slf4j
+         # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+         connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+         # 合并多个DruidDataSource的监控数据
+         #useGlobalDataSourceStat: true
+      msgDB:
+         type: com.alibaba.druid.pool.DruidDataSource
+         driverClassName: oracle.jdbc.OracleDriver
+         url: jdbc:oracle:thin:@//10.136.4.106:1521/policext
+         username: zys
+         password: zys
+         initialSize: 1
+         minIdle: 3
+         maxActive: 20
+         # 配置获取连接等待超时的时间
+         maxWait: 60000
+         # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+         timeBetweenEvictionRunsMillis: 60000
+         # 配置一个连接在池中最小生存的时间，单位是毫秒
+         minEvictableIdleTimeMillis: 30000
+         validationQuery: select 'x'
+         testWhileIdle: true
+         testOnBorrow: false
+         testOnReturn: false
+         # 打开PSCache，并且指定每个连接上PSCache的大小
+         poolPreparedStatements: true
+         maxPoolPreparedStatementPerConnectionSize: 20
+         # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+         filters: stat,wall,slf4j
+         # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+         connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+         # 合并多个DruidDataSource的监控数据
+         #useGlobalDataSourceStat: true
+      bigDataDB:
+         type: com.alibaba.druid.pool.DruidDataSource
+         driverClassName: com.mysql.jdbc.Driver
+         url: jdbc:mysql://jxgabdads-3139863f.cn-jiangxi-jxga-am5001-a.cloud.jx:10007/jxgabdads?useUnicode=true&characterEncoding=utf8
+         username: UzfFkMtH3fvTHZcw
+         password: tOAMebziBESjjB91FIttCpVh62Li7O
+         initialSize: 1
+         minIdle: 3
+         maxActive: 20
+         # 配置获取连接等待超时的时间
+         maxWait: 60000
+         # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+         timeBetweenEvictionRunsMillis: 60000
+         # 配置一个连接在池中最小生存的时间，单位是毫秒
+         minEvictableIdleTimeMillis: 30000
+         validationQuery: select 'x'
+         testWhileIdle: true
+         testOnBorrow: false
+         testOnReturn: false
+         # 打开PSCache，并且指定每个连接上PSCache的大小
+         poolPreparedStatements: true
+         maxPoolPreparedStatementPerConnectionSize: 20
+         # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+         filters: stat,wall,slf4j
+         # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+         connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+         # 合并多个DruidDataSource的监控数据
+         #useGlobalDataSourceStat: true
+  redis:
+      host: localhost
+      port: 6379
+      password:
+      # 连接超时时间（毫秒）
+      timeout: 10000
+      pool:
+        # 连接池中的最大空闲连接
+        max-idle: 8
+        # 连接池中的最小空闲连接
+        min-idle: 10
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: 100
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1

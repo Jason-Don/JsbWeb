@@ -1,0 +1,204 @@
+		
+		html{
+			font-size: 100px;
+		}
+		body{
+			margin: 0;
+			padding: 0;  
+			font-family: "Microsoft YaHei";
+		}
+		.row,.container-fluid,.col-lg-1,.col-lg-10,.col-lg-11,.col-lg-12,.col-lg-2,.col-lg-3,.col-lg-4,
+		.col-lg-5,.col-lg-6,.col-lg-7,.col-lg-8,.col-lg-9,.col-md-1,.col-md-10,
+		.col-md-11,.col-md-12,.col-md-2,.col-md-3,.col-md-4,.col-md-5,.col-md-6,
+		.col-md-7,.col-md-8,.col-md-9,.col-sm-1,.col-sm-10,.col-sm-11,.col-sm-12,
+		.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,
+		.col-sm-9,.col-xs-1,.col-xs-10,.col-xs-11,.col-xs-12,.col-xs-2,.col-xs-3,
+		.col-xs-4,.col-xs-5,.col-xs-6,.col-xs-7,.col-xs-8,.col-xs-9{
+			padding-right:0;
+			padding-left:0;
+			margin: 0;
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+		}
+		ul li{
+			list-style-type: none;
+		}
+		/*鎼滅储鎸夐挳*/
+		.search_btn{
+			width:0.8rem;
+			height: 0.28rem;
+			margin-left:0;
+			border-radius: 0.05rem;
+			background-color: #076dbd;
+			outline: none;
+			color: #fff;
+		}
+		.search_btn:hover{
+			background-color: #098aef;
+		}
+		.search_btn_click{
+			background-color: #098aef;
+		}
+		/*瀵煎嚭鎸夐挳*/
+		.dc_btn{
+			/*float: right;*/
+			border-radius: 0.05rem;
+			padding: 0 0.15rem;
+			height: 0.25rem;
+			margin-right: 0.05rem;
+			background-color: #1b95f4;
+		}
+		.dc_btn:hover{
+			background-color: #1175c3;
+		}
+		.laydate-icon{
+			width: 1.5rem;
+			height: 0.28rem !important;
+    		padding-left: 0.05rem;
+	    	border: 1px solid #17318a !important;
+	    	border-radius: 0;
+	   	 	vertical-align: middle !important;
+		}
+		input::-webkit-input-placeholder{
+		    color: #fff;
+		    opacity:0.7;
+		}
+		/*閫変腑鎸夐挳*/
+		.condition_checked{
+			background: #4e6cd4 !important;
+		}    
+		.page_check{
+			background: #2f60f1 !important;
+		}
+		
+		/*宸茬‘璁わ紝宸叉姄鎹曪紝宸插拷鐣ユ寜閽�*/
+		.edit_btn1{
+			width: 0.6rem;
+			height: 0.25rem;
+			border: 0;
+			outline: none;
+			border-radius: 0.05rem;
+		}
+		.confirm_btn1{
+			background-color: #9a0419;
+		}
+		.confirm_btn1:hover{
+			background-color: #7c0314;
+		}
+		.ignore_btn1{
+			background-color: #a6a4a6;
+		}
+		.ignore_btn1:hover{
+			background-color: #8e8d8e;
+		}
+		.arrest-btn1{
+			background-color: #1da616;
+		}
+		.arrest-btn1:hover{
+			background-color: #157d10;
+		}
+		
+		/*淇濆瓨锛屽彇娑堟寜閽�*/
+		.edit_btn{
+			height: 0.35rem;
+			border: 0;
+			border-radius: 0.05rem;
+			color: #fff;
+			outline: none;
+			width: 1rem;
+			font-size: 0.22rem;
+			margin: 0.05rem;
+		}
+		.confirm_btn{
+			background-color: #349aeb;
+		}
+		.confirm_btn:hover{
+			background-color: #2271b0;
+		}
+		.ignore_btn{
+			background-color: #a6a4a6;
+		}
+		.ignore_btn:hover{
+			background-color: #8e8d8e;
+		}
+		/*select鐨勬牱寮�*/
+		.select_m{
+			background: url(../images/arrow.png) 98% no-repeat !important;
+		}
+		/*鏄惁鏈夎竟妗嗭紝鏄惁灞呬腑 鏄惁鏈夎儗鏅�,鏃犳硶鏍囪缂栬緫*/
+		.no_outline{
+			outline: none !important;
+		}	
+		.text_center{
+			text-align: center !important;
+		}
+		.same_bg{
+			background-color: transparent !important;
+		}
+		.no_bg{
+			background-color: transparent !important;
+		}
+		.same_border{
+			border: 1px solid #3D81CB !important;
+		}
+		.no_border{
+			border: 0 !important;
+		}
+		.read_only{
+			border: 0;
+			background-color: rgba(204, 204, 204, 0.44) !important;
+			outline: none;
+		}
+		label.read_only{
+			background-color: transparent !important;
+		}
+		.read_only_div{
+			pointer-events: none;
+		}
+		
+		/*鐩稿鍋忕Щ*/
+		.ps_rel{
+			position: relative;
+		}
+		.ps_abs{
+			position: absolute;
+		}
+		
+		/*鏄惁闅愯棌鎴栬�呴�忔槑搴︿负0*/
+		.opacity_div{
+			opacity: 0 !important;
+			z-index: -1 !important;
+		}
+		.hide_div{
+			display: none !important;
+		}
+		
+		
+		
+		/*琛ㄦ牸鍒囨崲椤电爜鏁版牱寮忚皟鏁�*/
+		.fixed-table-container tbody .selected td {
+		  	background-color: transparent;
+		}
+		.fixed-table-pagination .dropup .dropdown-menu {
+		  	margin: 0;
+		  	padding: 0;
+		}
+		.dropdown-menu > li > a {
+  			margin: 0.01rem 0;
+  		}
+  		
+  		
+  		/* app中outline全部为none */
+  		input,textarea,select{
+  			outline: none;
+  		}
+  		/* app手机时间选择 */
+		.dww{
+			height: 102px !important;
+		}
+		.layer-date{
+			margin-top: -5px !important;
+		}
+		

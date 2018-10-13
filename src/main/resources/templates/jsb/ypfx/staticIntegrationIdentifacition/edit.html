@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" th:value="${staticIntegrationIdentifacition.id}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">唯一键 防止重复插入：</label>
+								<div class="col-sm-8">
+									<input id="kid" name="kid" th:value="${staticIntegrationIdentifacition.kid}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">身份证号：</label>
+								<div class="col-sm-8">
+									<input id="sfzh" name="sfzh" th:value="${staticIntegrationIdentifacition.sfzh}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">患者姓名：</label>
+								<div class="col-sm-8">
+									<input id="hzxm" name="hzxm" th:value="${staticIntegrationIdentifacition.hzxm}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">曾用名：</label>
+								<div class="col-sm-8">
+									<input id="cym" name="cym" th:value="${staticIntegrationIdentifacition.cym}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">患者电话：</label>
+								<div class="col-sm-8">
+									<input id="hzdh" name="hzdh" th:value="${staticIntegrationIdentifacition.hzdh}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">性别：</label>
+								<div class="col-sm-8">
+									<input id="xb" name="xb" th:value="${staticIntegrationIdentifacition.xb}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">出生日期：</label>
+								<div class="col-sm-8">
+									<input id="csrq" name="csrq" th:value="${staticIntegrationIdentifacition.csrq}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">职业：</label>
+								<div class="col-sm-8">
+									<input id="zy" name="zy" th:value="${staticIntegrationIdentifacition.zy}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">文化程度：</label>
+								<div class="col-sm-8">
+									<input id="whcd" name="whcd" th:value="${staticIntegrationIdentifacition.whcd}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">婚姻状态：</label>
+								<div class="col-sm-8">
+									<input id="hyzk" name="hyzk" th:value="${staticIntegrationIdentifacition.hyzk}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">名族：</label>
+								<div class="col-sm-8">
+									<input id="mz" name="mz" th:value="${staticIntegrationIdentifacition.mz}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">现住国标地码 区划：</label>
+								<div class="col-sm-8">
+									<input id="xzqh" name="xzqh" th:value="${staticIntegrationIdentifacition.xzqh}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">现住地址：</label>
+								<div class="col-sm-8">
+									<input id="xzdz" name="xzdz" th:value="${staticIntegrationIdentifacition.xzdz}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">现住派出所机构代码：</label>
+								<div class="col-sm-8">
+									<input id="xzpcsjgdm" name="xzpcsjgdm" th:value="${staticIntegrationIdentifacition.xzpcsjgdm}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">户籍国标 区划：</label>
+								<div class="col-sm-8">
+									<input id="hjqh" name="hjqh" th:value="${staticIntegrationIdentifacition.hjqh}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">户籍地址：</label>
+								<div class="col-sm-8">
+									<input id="hjdz" name="hjdz" th:value="${staticIntegrationIdentifacition.hjdz}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">户籍派出所机构代码：</label>
+								<div class="col-sm-8">
+									<input id="hjpcsjgdm" name="hjpcsjgdm" th:value="${staticIntegrationIdentifacition.hjpcsjgdm}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">初次发病时间：</label>
+								<div class="col-sm-8">
+									<input id="firsttime" name="firsttime" th:value="${staticIntegrationIdentifacition.firsttime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">报告地区：</label>
+								<div class="col-sm-8">
+									<input id="bgdq" name="bgdq" th:value="${staticIntegrationIdentifacition.bgdq}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">报告单位：</label>
+								<div class="col-sm-8">
+									<input id="bgdw" name="bgdw" th:value="${staticIntegrationIdentifacition.bgdw}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">疾病诊断类型：</label>
+								<div class="col-sm-8">
+									<input id="zdlx" name="zdlx" th:value="${staticIntegrationIdentifacition.zdlx}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">鉴定号或诊断书：</label>
+								<div class="col-sm-8">
+									<input id="zdsh" name="zdsh" th:value="${staticIntegrationIdentifacition.zdsh}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">是否评估：</label>
+								<div class="col-sm-8">
+									<input id="ispg" name="ispg" th:value="${staticIntegrationIdentifacition.ispg}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">风险等级：</label>
+								<div class="col-sm-8">
+									<input id="fxdj" name="fxdj" th:value="${staticIntegrationIdentifacition.fxdj}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">评估机构：</label>
+								<div class="col-sm-8">
+									<input id="pgjg" name="pgjg" th:value="${staticIntegrationIdentifacition.pgjg}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">评估人：</label>
+								<div class="col-sm-8">
+									<input id="pgr" name="pgr" th:value="${staticIntegrationIdentifacition.pgr}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">肇事：</label>
+								<div class="col-sm-8">
+									<input id="zs" name="zs" th:value="${staticIntegrationIdentifacition.zs}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">肇祸：</label>
+								<div class="col-sm-8">
+									<input id="zh" name="zh" th:value="${staticIntegrationIdentifacition.zh}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">轻度滋事：</label>
+								<div class="col-sm-8">
+									<input id="qwzs" name="qwzs" th:value="${staticIntegrationIdentifacition.qwzs}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">送治次数：</label>
+								<div class="col-sm-8">
+									<input id="sz" name="sz" th:value="${staticIntegrationIdentifacition.sz}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">最后收治医院：</label>
+								<div class="col-sm-8">
+									<input id="szyy" name="szyy" th:value="${staticIntegrationIdentifacition.szyy}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">最后收治时间：</label>
+								<div class="col-sm-8">
+									<input id="sztime" name="sztime" th:value="${staticIntegrationIdentifacition.sztime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">肇事肇祸简要案情：</label>
+								<div class="col-sm-8">
+									<input id="jyaq" name="jyaq" th:value="${staticIntegrationIdentifacition.jyaq}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">是否排查：</label>
+								<div class="col-sm-8">
+									<input id="ispc" name="ispc" th:value="${staticIntegrationIdentifacition.ispc}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">排查时间：</label>
+								<div class="col-sm-8">
+									<input id="pctime" name="pctime" th:value="${staticIntegrationIdentifacition.pctime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">是否纳入重大敏感节点重点患者：</label>
+								<div class="col-sm-8">
+									<input id="iszd" name="iszd" th:value="${staticIntegrationIdentifacition.iszd}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">是否在控：</label>
+								<div class="col-sm-8">
+									<input id="iszk" name="iszk" th:value="${staticIntegrationIdentifacition.iszk}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">在控状态或失控原因：</label>
+								<div class="col-sm-8">
+									<input id="skyy" name="skyy" th:value="${staticIntegrationIdentifacition.skyy}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">是否落实以奖励代补政策：</label>
+								<div class="col-sm-8">
+									<input id="isyjdb" name="isyjdb" th:value="${staticIntegrationIdentifacition.isyjdb}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">以奖代补时间：</label>
+								<div class="col-sm-8">
+									<input id="yjdbtime" name="yjdbtime" th:value="${staticIntegrationIdentifacition.yjdbtime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">是否删除：</label>
+								<div class="col-sm-8">
+									<input id="issc" name="issc" th:value="${staticIntegrationIdentifacition.issc}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">删除原因：</label>
+								<div class="col-sm-8">
+									<input id="scyy" name="scyy" th:value="${staticIntegrationIdentifacition.scyy}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">监护人身份证：</label>
+								<div class="col-sm-8">
+									<input id="jhrsfzh" name="jhrsfzh" th:value="${staticIntegrationIdentifacition.jhrsfzh}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">监护人姓名：</label>
+								<div class="col-sm-8">
+									<input id="jhrxm" name="jhrxm" th:value="${staticIntegrationIdentifacition.jhrxm}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">监护人电话：</label>
+								<div class="col-sm-8">
+									<input id="jhrdh" name="jhrdh" th:value="${staticIntegrationIdentifacition.jhrdh}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">监护人关系：</label>
+								<div class="col-sm-8">
+									<input id="jhrgx" name="jhrgx" th:value="${staticIntegrationIdentifacition.jhrgx}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">记录生成时间：</label>
+								<div class="col-sm-8">
+									<input id="createtime" name="createtime" th:value="${staticIntegrationIdentifacition.createtime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">经度：</label>
+								<div class="col-sm-8">
+									<input id="lng" name="lng" th:value="${staticIntegrationIdentifacition.lng}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">纬度：</label>
+								<div class="col-sm-8">
+									<input id="lat" name="lat" th:value="${staticIntegrationIdentifacition.lat}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">最后定位时间：</label>
+								<div class="col-sm-8">
+									<input id="ltime" name="ltime" th:value="${staticIntegrationIdentifacition.ltime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">数据传递，0未分发、1省级、2市、3县、4派出所：</label>
+								<div class="col-sm-8">
+									<input id="sjzd" name="sjzd" th:value="${staticIntegrationIdentifacition.sjzd}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">现在地民警身份证：</label>
+								<div class="col-sm-8">
+									<input id="xzgkmj" name="xzgkmj" th:value="${staticIntegrationIdentifacition.xzgkmj}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">户籍地民警身份证：</label>
+								<div class="col-sm-8">
+									<input id="hjgkmj" name="hjgkmj" th:value="${staticIntegrationIdentifacition.hjgkmj}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">户籍地社区干部代码：</label>
+								<div class="col-sm-8">
+									<input id="hjsqgb" name="hjsqgb" th:value="${staticIntegrationIdentifacition.hjsqgb}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">现住地社区干部代码：</label>
+								<div class="col-sm-8">
+									<input id="xzsqgb" name="xzsqgb" th:value="${staticIntegrationIdentifacition.xzsqgb}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">批量操作标记，0未操作、1已操作：</label>
+								<div class="col-sm-8">
+									<input id="isbat" name="isbat" th:value="${staticIntegrationIdentifacition.isbat}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">一案一码次数：</label>
+								<div class="col-sm-8">
+									<input id="yaym" name="yaym" th:value="${staticIntegrationIdentifacition.yaym}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">管控等级：</label>
+								<div class="col-sm-8">
+									<input id="gkdj" name="gkdj" th:value="${staticIntegrationIdentifacition.gkdj}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/ypfx/staticIntegrationIdentifacition/edit.js">
+	</script>
+</body>
+</html>

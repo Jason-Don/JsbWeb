@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" th:value="${jsbZfrwFk.id}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">走访任务ID：</label>
+								<div class="col-sm-8">
+									<input id="zfrwId" name="zfrwId" th:value="${jsbZfrwFk.zfrwId}" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">患者名称：</label>
+								<div class="col-sm-8">
+									<input id="hzMc" name="hzMc" th:value="${jsbZfrwFk.hzMc}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">患者身份证号码：</label>
+								<div class="col-sm-8">
+									<input id="hzSfzhm" name="hzSfzhm" th:value="${jsbZfrwFk.hzSfzhm}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">管控等级(1=一级管控，2=二级管控，3=三级管控)：</label>
+								<div class="col-sm-8">
+									<input id="gkdj" name="gkdj" th:value="${jsbZfrwFk.gkdj}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">走访地点：</label>
+								<div class="col-sm-8">
+									<input id="zfdd" name="zfdd" th:value="${jsbZfrwFk.zfdd}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">经度：</label>
+								<div class="col-sm-8">
+									<input id="lng" name="lng" th:value="${jsbZfrwFk.lng}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">纬度：</label>
+								<div class="col-sm-8">
+									<input id="lat" name="lat" th:value="${jsbZfrwFk.lat}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">患者情况_人员在位(1=在家，2=长期在外，3=走失)：</label>
+								<div class="col-sm-8">
+									<input id="hzqkRyzw" name="hzqkRyzw" th:value="${jsbZfrwFk.hzqkRyzw}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">患者情况_长期在外_去向：</label>
+								<div class="col-sm-8">
+									<input id="hzqkCqzwQx" name="hzqkCqzwQx" th:value="${jsbZfrwFk.hzqkCqzwQx}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">患者情况_病情稳定(1=为发病，2=偶然发病，3=经常发病)：</label>
+								<div class="col-sm-8">
+									<input id="hzqkBqwd" name="hzqkBqwd" th:value="${jsbZfrwFk.hzqkBqwd}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">患者情况_监护人履职(1=履行，2=无力履行，3=不履行)：</label>
+								<div class="col-sm-8">
+									<input id="hzqkJhrlz" name="hzqkJhrlz" th:value="${jsbZfrwFk.hzqkJhrlz}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">患者情况_服药情况(1=规律，2=不规律，3=服药间断，4=无力购药，5=不服药)：</label>
+								<div class="col-sm-8">
+									<input id="hzqkFyqk" name="hzqkFyqk" th:value="${jsbZfrwFk.hzqkFyqk}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">患者情况_风险等级(0=0级，1=1级，2=2级，3=3级，4=4级，5=5级)：</label>
+								<div class="col-sm-8">
+									<input id="hzqkFxdj" name="hzqkFxdj" th:value="${jsbZfrwFk.hzqkFxdj}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">患者情况_其他情况说明：</label>
+								<div class="col-sm-8">
+									<input id="hzqkQtqksm" name="hzqkQtqksm" th:value="${jsbZfrwFk.hzqkQtqksm}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">民警嘱咐事项：</label>
+								<div class="col-sm-8">
+									<input id="mjzfsx" name="mjzfsx" th:value="${jsbZfrwFk.mjzfsx}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">走访日期：</label>
+								<div class="col-sm-8">
+									<input id="zfrq" name="zfrq" th:value="${jsbZfrwFk.zfrq}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">下次走访日期：</label>
+								<div class="col-sm-8">
+									<input id="xczfrq" name="xczfrq" th:value="${jsbZfrwFk.xczfrq}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">走访民警_警号：</label>
+								<div class="col-sm-8">
+									<input id="zfmjJh" name="zfmjJh" th:value="${jsbZfrwFk.zfmjJh}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">走访民警_名称：</label>
+								<div class="col-sm-8">
+									<input id="zfmjMc" name="zfmjMc" th:value="${jsbZfrwFk.zfmjMc}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">联合随访人员_警号：</label>
+								<div class="col-sm-8">
+									<input id="lhsfryJh" name="lhsfryJh" th:value="${jsbZfrwFk.lhsfryJh}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">联合随访人员_名称：</label>
+								<div class="col-sm-8">
+									<input id="lhsfryMc" name="lhsfryMc" th:value="${jsbZfrwFk.lhsfryMc}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">生成时间：</label>
+								<div class="col-sm-8">
+									<input id="scsj" name="scsj" th:value="${jsbZfrwFk.scsj}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">是否已读(0=未读，1已读)：</label>
+								<div class="col-sm-8">
+									<input id="isread" name="isread" th:value="${jsbZfrwFk.isread}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">已读_时间：</label>
+								<div class="col-sm-8">
+									<input id="readTime" name="readTime" th:value="${jsbZfrwFk.readTime}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/jsb/ywgl/jsbZfrwFk/edit.js">
+	</script>
+</body>
+</html>

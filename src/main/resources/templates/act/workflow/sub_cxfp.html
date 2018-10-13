@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head th:include="include :: header"></head>
+<head>
+<meta charset="UTF-8">
+<title>重新分配任务--更换处理人</title>
+<link type='text/css' rel='stylesheet' href="/css/all_workflow.css">
+<style>
+body,.message_div{
+background-color:#e6e6e6;
+padding-top:5px;
+}
+.submit_div{
+max-width:100%;
+}
+</style>
+</head>
+<body class="body_layer_1">
+	<div class="message_div">
+		<form  id="add_form">
+			<input id="id" name="id" type="hidden">
+			<input id="taskId" name="taskId" type="hidden">
+			<input id="cbry" name="cbry" type="hidden">
+			<input id="cbryMc" name="cbryMc" type="hidden">			
+			<div class="message_detail_div ">
+				<div style="margin:10px 0">
+					<label class="label_left">更改承办人员：</label>
+					<input id="assignee" name="assignee" type="hidden"/>
+					<input style="background-color: rgba(204, 204, 204, 0.44) !important;border: 1px solid #A9A9A9;" id="assigneeMc" name="assigneeMc" readonly="readonly"/>
+					<span>——></span>
+					<input id="rwzpry" name="newAssignee" type="text" type="hidden" />
+                    <input id="rwzpryMc" name="newAssigneeMc" type="text" onclick="openUser_1()" readonly="readonly"/>
+				</div>
+				<div>
+					<label class="label_left label_left_2">更改说明：</label>
+					<textarea id="comment" name="comment" ></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="submit_div">
+		<input class="detail_type_1" type="button" id="fb_button" onclick="submit_task(this)" value="提交" />
+	</div>
+	<div th:include="include::footer"></div>
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugins/layer/laydate/laydate.js"></script>
+<script type="text/javascript" src="/js/appjs/act/workflow/sub_cxfp.js"></script>
+</html>

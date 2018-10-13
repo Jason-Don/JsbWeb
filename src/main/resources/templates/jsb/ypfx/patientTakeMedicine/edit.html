@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" th:value="${patientTakeMedicine.id}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">患者姓名：</label>
+								<div class="col-sm-8">
+									<input id="patientName" name="patientName" th:value="${patientTakeMedicine.patientName}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">身份证号：</label>
+								<div class="col-sm-8">
+									<input id="patientIdcard" name="patientIdcard" th:value="${patientTakeMedicine.patientIdcard}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">监护人：</label>
+								<div class="col-sm-8">
+									<input id="guardian" name="guardian" th:value="${patientTakeMedicine.guardian}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">监护人身份证号：</label>
+								<div class="col-sm-8">
+									<input id="guardianIdcard" name="guardianIdcard" th:value="${patientTakeMedicine.guardianIdcard}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">监护人关系：</label>
+								<div class="col-sm-8">
+									<input id="guardianRelationship" name="guardianRelationship" th:value="${patientTakeMedicine.guardianRelationship}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">监护人联系电话：</label>
+								<div class="col-sm-8">
+									<input id="guardianPhonenumber" name="guardianPhonenumber" th:value="${patientTakeMedicine.guardianPhonenumber}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">现住地址：</label>
+								<div class="col-sm-8">
+									<input id="xzdz" name="xzdz" th:value="${patientTakeMedicine.xzdz}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">现住区划：</label>
+								<div class="col-sm-8">
+									<input id="xzqh" name="xzqh" th:value="${patientTakeMedicine.xzqh}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">户籍地址：</label>
+								<div class="col-sm-8">
+									<input id="hjdz" name="hjdz" th:value="${patientTakeMedicine.hjdz}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">户籍区划：</label>
+								<div class="col-sm-8">
+									<input id="hjqh" name="hjqh" th:value="${patientTakeMedicine.hjqh}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">报告单位：</label>
+								<div class="col-sm-8">
+									<input id="bgdw" name="bgdw" th:value="${patientTakeMedicine.bgdw}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">疾病诊断类型：</label>
+								<div class="col-sm-8">
+									<input id="zdlx" name="zdlx" th:value="${patientTakeMedicine.zdlx}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">是否在控：</label>
+								<div class="col-sm-8">
+									<input id="iszk" name="iszk" th:value="${patientTakeMedicine.iszk}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">最后收治医院：</label>
+								<div class="col-sm-8">
+									<input id="szyy" name="szyy" th:value="${patientTakeMedicine.szyy}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">是否落实以奖励代补政策：</label>
+								<div class="col-sm-8">
+									<input id="isyjdb" name="isyjdb" th:value="${patientTakeMedicine.isyjdb}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">以奖代补时间：</label>
+								<div class="col-sm-8">
+									<input id="yjdbtime" name="yjdbtime" th:value="${patientTakeMedicine.yjdbtime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">最近拿药时间：</label>
+								<div class="col-sm-8">
+									<input id="lasttimeTakeMedicine" name="lasttimeTakeMedicine" th:value="${patientTakeMedicine.lasttimeTakeMedicine}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/ypfx/patientTakeMedicine/edit.js">
+	</script>
+</body>
+</html>

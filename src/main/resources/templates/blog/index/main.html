@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="blog/index/include_blog::header"></head>
+<body>
+	<nav th:include="blog/index/include_blog::nav"  class="navbar navbar-default navbar-custom navbar-fixed-top" ></nav>
+	<header class="intro-header"
+		style="background-image: url('/img/blog/home-bg.jpg');height:300px;">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+					<div class="site-heading">
+						<h2>精神障碍患者管控系统</h2>
+						<h3></h3>
+						<!-- <span class="subheading">文章列表</span> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Main Content -->
+	<div class="container">
+		<div class="row">
+			<div>
+				<div id="incomeNum">
+					<div class="col-xs-7 inform_div inform_div1">
+						<h4>新闻动态</h4>
+						<table id="xwdt_online" data-mobile-responsive="true" style="font-size:12px;"></table>
+					</div>
+					<div class="col-xs-5 inform_div inform_div2">
+						<h4>通知公告</h4>
+						<table id="inform_online" data-mobile-responsive="true" style="font-size:12px;"></table>
+					</div>
+				</div>
+				<!-- <div class="clearfix">
+					<p id="flagLoaded" style="display: none; text-align: center;">已全部加载</p>
+					<a id="flagLoad" style="display: none;" class="btn btn-secondary float-right" 
+						href="javascript:void(0)" onclick="nextPage()">更早 &rarr;</a>
+				</div> -->
+			</div>
+		</div>
+	</div>
+	</body>
+	<!-- <div th:include="blog/index/include_blog::footer"></div> -->
+	<div th:include="include :: footer"></div>
+	<!-- <script src="../../../static/js/jquery.min.js"></script>
+	<script src="../../../static/js/bootstrap.min.js"></script>
+	<script src="../../../static/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script src="../../../static/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script> -->
+	<script type="text/javascript">
+		var limit = 10;
+		var currentPage = 0;
+		var total;
+		var prefix = "/blog/bContent"
+		$(function(){
+//			bindList(0);
+			query_tab();
+			
+		});
+		
+		function nextPage() {
+			bindList(currentPage * limit)
+		}
+		function preview(id) {
+			window.open("/blog/open/post/"+id);   
+			//window.location.href="/blog/open/post/"+id;
+		}
+		function bindList(offset) {
+			$
+				.ajax({
+					url : 'blog/open/list?type=article&limit=10&offset=' + offset,
+					method : 'get',
+					dataType : 'json',
+					success : function(data) {
+						var rows = data.rows;
+						total = data.total;
+						var htmlText = "";
+						for (i = 0; i < rows.length; i++) {
+							htmlText += '<div class="post-preview">';
+							htmlText += '<a href="/blog/open/post/' + rows[i].cid + '">';
+							htmlText += '<h2 class="post-title">';
+							htmlText += rows[i].title;
+							htmlText += '</h2>';
+							htmlText += '</a>';
+							htmlText += '<p class="post-meta">作者：<a href="#">'
+								+ rows[i].author
+								+ '</a> &nbsp;&nbsp; '
+								+ rows[i].gtmModified + '</p>';
+							htmlText += '</div>';
+							htmlText += '<hr>';
+						}
+						$("#incomeNum").append(htmlText);
+						document.getElementById("flagLoad").style.display = "block";
+						currentPage++;
+						if (total <= currentPage * limit) {
+							document.getElementById("flagLoaded").style.display = "block";
+							document.getElementById("flagLoad").style.display = "none";
+						}
+					}
+				});
+		}
+		function query_tab() {
+			$('#xwdt_online').bootstrapTable({
+				method : 'get', // 服务器数据的请求方式 get or post
+				url : prefix + "/list", // 服务器数据的加载地址
+				// showRefresh : true,
+				// showToggle : true,
+				showColumns : false,
+				iconSize : 'outline',
+//				toolbar : '#exampleToolbar',
+//				striped : true, // 设置为true会有隔行变色效果
+				dataType : "json", // 服务器返回的数据类型
+				pagination : true, // 设置为true会在底部显示分页条
+				singleSelect : false, // 设置为true将禁止多选
+				pageSize : 1000, // 如果设置了分页，每页数据条数
+				pageNumber : 1, // 如果设置了分布，首页页码
+				sidePagination : "server", // 设置在哪里进行分页，可选值为"client" 或者
+				queryParams : function(params) {
+					return {
+						limit : params.limit,
+						offset : params.offset
+					};
+				},
+				columns : [
+					{
+						field : 'title',
+						title : '标题',
+						width :320,
+                      	formatter:function (value,row,index) {
+                    		return '<a href="#" onclick="preview(\''+ row.cid+ '\')">'+row.title+'</a>';
+                   		}
+                	},
+					{
+						visible : true,
+						field : 'gtmModified',
+						title : '最近修改时间'
+					}
+				]
+			});
+			$('#inform_online').bootstrapTable({
+				method : 'get', // 服务器数据的请求方式 get or post
+				url : "/oa/notify/selfList", // 服务器数据的加载地址
+				//	showRefresh : true,
+				//	showToggle : true,
+				//	showColumns : true,
+				iconSize : 'outline',
+//				toolbar : '#exampleToolbar',
+//				striped : true, // 设置为true会有隔行变色效果
+				dataType : "json", // 服务器返回的数据类型
+				pagination : true, // 设置为true会在底部显示分页条
+				// queryParamsType : "limit",
+				// //设置为limit则会发送符合RESTFull格式的参数
+				singleSelect : false, // 设置为true将禁止多选
+				// contentType : "application/x-www-form-urlencoded",
+				// //发送到服务器的数据编码类型
+				pageSize : 10, // 如果设置了分页，每页数据条数
+				pageNumber : 1, // 如果设置了分布，首页页码
+				//search : true, // 是否显示搜索框
+				showColumns : false, // 是否显示内容下拉框（选择显示的列）
+				sidePagination : "server", // 设置在哪里进行分页，可选值为"client" 或者 "server"
+				queryParams : function(params) {
+					return {
+						//说明：传入后台的参数包括offset开始索引，limit步长，sort排序列，order：desc或者,以及所有列的键值对
+						limit : params.limit,
+						offset : params.offset
+					// name:$('#searchName').val(),
+					// username:$('#searchName').val()
+					};
+				},
+				// //请求服务器数据时，你可以通过重写参数的方式添加一些额外的参数，例如 toolbar 中的参数 如果
+				// queryParamsType = 'limit' ,返回参数必须包含
+				// limit, offset, search, sort, order 否则, 需要包含:
+				// pageSize, pageNumber, searchText, sortName,
+				// sortOrder.
+				// 返回false将会终止请求
+				columns : [
+					{
+						field : 'title',
+						width: '20%',
+						title : '标题',
+						formatter:function (value,row,index) {
+                            return '<a href="#" onclick="read(\''+ row.id+ '\')">'+row.title+'</a>';
+                        }
+					}
+				]
+			});
+		}
+		function read(id) {
+			layer.open({
+				type : 2,
+				title : '查看',
+				maxmin : true,
+				shadeClose : false, // 点击遮罩关闭层
+				area : [ '800px', '520px' ],
+				content : '/oa/notify/read/' + id // iframe的url
+			});
+		}
+	</script>
+
+
+</html>

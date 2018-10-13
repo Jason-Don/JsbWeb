@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.jsb.ywgl.dao.JsbHzxxDao">
+
+	<select id="get" resultType="com.bootdo.jsb.ywgl.domain.JsbHzxxDO">
+		select `id`,`kid`,`sfzh`,`hzxm`,`cym`,`hzdh`,`xb`,`csrq`,`zy`,`whcd`,`hyzk`,`mz`,`xzqh`,`xzdz`,`xzpcsjgdm`,`hjqh`,`hjdz`,`hjpcsjgdm`,`firsttime`,`bgdq`,`bgdw`,`zdlx`,`zdsh`,`ispg`,`fxdj`,`pgjg`,`pgr`,`zs`,`zh`,`qwzs`,`sz`,`szyy`,`sztime`,`jyaq`,`ispc`,`pctime`,`iszd`,`iszk`,`skyy`,`isyjdb`,`yjdbtime`,`issc`,`scyy`,`jhrsfzh`,`jhrxm`,`jhrdh`,`jhrgx`,`createtime`,`lng`,`lat`,`ltime`,`sjzd`,`xzgkmj`,`hjgkmj`,`hjsqgb`,`xzsqgb`,`isbat`,`yaym` from jsb_hzxx where id = #{value}
+	</select>
+
+	<select id="list" resultType="com.bootdo.jsb.ywgl.domain.JsbHzxxDO">
+		select `id`,`kid`,`sfzh`,`hzxm`,`cym`,`hzdh`,`xb`,`csrq`,`zy`,`whcd`,`hyzk`,`mz`,`xzqh`,`xzdz`,`xzpcsjgdm`,`hjqh`,`hjdz`,`hjpcsjgdm`,`firsttime`,`bgdq`,`bgdw`,`zdlx`,`zdsh`,`ispg`,`fxdj`,`pgjg`,`pgr`,`zs`,`zh`,`qwzs`,`sz`,`szyy`,`sztime`,`jyaq`,`ispc`,`pctime`,`iszd`,`iszk`,`skyy`,`isyjdb`,`yjdbtime`,`issc`,`scyy`,`jhrsfzh`,`jhrxm`,`jhrdh`,`jhrgx`,`createtime`,`lng`,`lat`,`ltime`,`sjzd`,`xzgkmj`,`hjgkmj`,`hjsqgb`,`xzsqgb`,`isbat`,`yaym` from jsb_hzxx
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="kid != null and kid != ''"> and kid = #{kid} </if>
+		  		  <if test="sfzh != null and sfzh != ''"> and sfzh = #{sfzh} </if>
+		  		  <if test="hzxm != null and hzxm != ''"> and hzxm = #{hzxm} </if>
+		  		  <if test="cym != null and cym != ''"> and cym = #{cym} </if>
+		  		  <if test="hzdh != null and hzdh != ''"> and hzdh = #{hzdh} </if>
+		  		  <if test="xb != null and xb != ''"> and xb = #{xb} </if>
+		  		  <if test="csrq != null and csrq != ''"> and csrq = #{csrq} </if>
+		  		  <if test="zy != null and zy != ''"> and zy = #{zy} </if>
+		  		  <if test="whcd != null and whcd != ''"> and whcd = #{whcd} </if>
+		  		  <if test="hyzk != null and hyzk != ''"> and hyzk = #{hyzk} </if>
+		  		  <if test="mz != null and mz != ''"> and mz = #{mz} </if>
+		  		  <if test="xzqh != null and xzqh != ''"> and xzqh = #{xzqh} </if>
+		  		  <if test="xzdz != null and xzdz != ''"> and xzdz = #{xzdz} </if>
+		  		  <if test="xzpcsjgdm != null and xzpcsjgdm != ''"> and xzpcsjgdm = #{xzpcsjgdm} </if>
+		  		  <if test="hjqh != null and hjqh != ''"> and hjqh = #{hjqh} </if>
+		  		  <if test="hjdz != null and hjdz != ''"> and hjdz = #{hjdz} </if>
+		  		  <if test="hjpcsjgdm != null and hjpcsjgdm != ''"> and hjpcsjgdm = #{hjpcsjgdm} </if>
+		  		  <if test="firsttime != null and firsttime != ''"> and firsttime = #{firsttime} </if>
+		  		  <if test="bgdq != null and bgdq != ''"> and bgdq = #{bgdq} </if>
+		  		  <if test="bgdw != null and bgdw != ''"> and bgdw = #{bgdw} </if>
+		  		  <if test="zdlx != null and zdlx != ''"> and zdlx = #{zdlx} </if>
+		  		  <if test="zdsh != null and zdsh != ''"> and zdsh = #{zdsh} </if>
+		  		  <if test="ispg != null and ispg != ''"> and ispg = #{ispg} </if>
+		  		  <if test="fxdj != null and fxdj != ''"> and fxdj = #{fxdj} </if>
+		  		  <if test="pgjg != null and pgjg != ''"> and pgjg = #{pgjg} </if>
+		  		  <if test="pgr != null and pgr != ''"> and pgr = #{pgr} </if>
+		  		  <if test="zs != null and zs != ''"> and zs = #{zs} </if>
+		  		  <if test="zh != null and zh != ''"> and zh = #{zh} </if>
+		  		  <if test="qwzs != null and qwzs != ''"> and qwzs = #{qwzs} </if>
+		  		  <if test="sz != null and sz != ''"> and sz = #{sz} </if>
+		  		  <if test="szyy != null and szyy != ''"> and szyy = #{szyy} </if>
+		  		  <if test="sztime != null and sztime != ''"> and sztime = #{sztime} </if>
+		  		  <if test="jyaq != null and jyaq != ''"> and jyaq = #{jyaq} </if>
+		  		  <if test="ispc != null and ispc != ''"> and ispc = #{ispc} </if>
+		  		  <if test="pctime != null and pctime != ''"> and pctime = #{pctime} </if>
+		  		  <if test="iszd != null and iszd != ''"> and iszd = #{iszd} </if>
+		  		  <if test="iszk != null and iszk != ''"> and iszk = #{iszk} </if>
+		  		  <if test="skyy != null and skyy != ''"> and skyy = #{skyy} </if>
+		  		  <if test="isyjdb != null and isyjdb != ''"> and isyjdb = #{isyjdb} </if>
+		  		  <if test="yjdbtime != null and yjdbtime != ''"> and yjdbtime = #{yjdbtime} </if>
+		  		  <if test="issc != null and issc != ''"> and issc = #{issc} </if>
+		  		  <if test="scyy != null and scyy != ''"> and scyy = #{scyy} </if>
+		  		  <if test="jhrsfzh != null and jhrsfzh != ''"> and jhrsfzh = #{jhrsfzh} </if>
+		  		  <if test="jhrxm != null and jhrxm != ''"> and jhrxm = #{jhrxm} </if>
+		  		  <if test="jhrdh != null and jhrdh != ''"> and jhrdh = #{jhrdh} </if>
+		  		  <if test="jhrgx != null and jhrgx != ''"> and jhrgx = #{jhrgx} </if>
+		  		  <if test="createtime != null and createtime != ''"> and createtime = #{createtime} </if>
+		  		  <if test="lng != null and lng != ''"> and lng = #{lng} </if>
+		  		  <if test="lat != null and lat != ''"> and lat = #{lat} </if>
+		  		  <if test="ltime != null and ltime != ''"> and ltime = #{ltime} </if>
+		  		  <if test="sjzd != null and sjzd != ''"> and sjzd = #{sjzd} </if>
+		  		  <if test="xzgkmj != null and xzgkmj != ''"> and xzgkmj = #{xzgkmj} </if>
+		  		  <if test="hjgkmj != null and hjgkmj != ''"> and hjgkmj = #{hjgkmj} </if>
+		  		  <if test="hjsqgb != null and hjsqgb != ''"> and hjsqgb = #{hjsqgb} </if>
+		  		  <if test="xzsqgb != null and xzsqgb != ''"> and xzsqgb = #{xzsqgb} </if>
+		  		  <if test="isbat != null and isbat != ''"> and isbat = #{isbat} </if>
+		  		  <if test="yaym != null and yaym != ''"> and yaym = #{yaym} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from jsb_hzxx
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="kid != null and kid != ''"> and kid = #{kid} </if>
+		  		  <if test="sfzh != null and sfzh != ''"> and sfzh = #{sfzh} </if>
+		  		  <if test="hzxm != null and hzxm != ''"> and hzxm = #{hzxm} </if>
+		  		  <if test="cym != null and cym != ''"> and cym = #{cym} </if>
+		  		  <if test="hzdh != null and hzdh != ''"> and hzdh = #{hzdh} </if>
+		  		  <if test="xb != null and xb != ''"> and xb = #{xb} </if>
+		  		  <if test="csrq != null and csrq != ''"> and csrq = #{csrq} </if>
+		  		  <if test="zy != null and zy != ''"> and zy = #{zy} </if>
+		  		  <if test="whcd != null and whcd != ''"> and whcd = #{whcd} </if>
+		  		  <if test="hyzk != null and hyzk != ''"> and hyzk = #{hyzk} </if>
+		  		  <if test="mz != null and mz != ''"> and mz = #{mz} </if>
+		  		  <if test="xzqh != null and xzqh != ''"> and xzqh = #{xzqh} </if>
+		  		  <if test="xzdz != null and xzdz != ''"> and xzdz = #{xzdz} </if>
+		  		  <if test="xzpcsjgdm != null and xzpcsjgdm != ''"> and xzpcsjgdm = #{xzpcsjgdm} </if>
+		  		  <if test="hjqh != null and hjqh != ''"> and hjqh = #{hjqh} </if>
+		  		  <if test="hjdz != null and hjdz != ''"> and hjdz = #{hjdz} </if>
+		  		  <if test="hjpcsjgdm != null and hjpcsjgdm != ''"> and hjpcsjgdm = #{hjpcsjgdm} </if>
+		  		  <if test="firsttime != null and firsttime != ''"> and firsttime = #{firsttime} </if>
+		  		  <if test="bgdq != null and bgdq != ''"> and bgdq = #{bgdq} </if>
+		  		  <if test="bgdw != null and bgdw != ''"> and bgdw = #{bgdw} </if>
+		  		  <if test="zdlx != null and zdlx != ''"> and zdlx = #{zdlx} </if>
+		  		  <if test="zdsh != null and zdsh != ''"> and zdsh = #{zdsh} </if>
+		  		  <if test="ispg != null and ispg != ''"> and ispg = #{ispg} </if>
+		  		  <if test="fxdj != null and fxdj != ''"> and fxdj = #{fxdj} </if>
+		  		  <if test="pgjg != null and pgjg != ''"> and pgjg = #{pgjg} </if>
+		  		  <if test="pgr != null and pgr != ''"> and pgr = #{pgr} </if>
+		  		  <if test="zs != null and zs != ''"> and zs = #{zs} </if>
+		  		  <if test="zh != null and zh != ''"> and zh = #{zh} </if>
+		  		  <if test="qwzs != null and qwzs != ''"> and qwzs = #{qwzs} </if>
+		  		  <if test="sz != null and sz != ''"> and sz = #{sz} </if>
+		  		  <if test="szyy != null and szyy != ''"> and szyy = #{szyy} </if>
+		  		  <if test="sztime != null and sztime != ''"> and sztime = #{sztime} </if>
+		  		  <if test="jyaq != null and jyaq != ''"> and jyaq = #{jyaq} </if>
+		  		  <if test="ispc != null and ispc != ''"> and ispc = #{ispc} </if>
+		  		  <if test="pctime != null and pctime != ''"> and pctime = #{pctime} </if>
+		  		  <if test="iszd != null and iszd != ''"> and iszd = #{iszd} </if>
+		  		  <if test="iszk != null and iszk != ''"> and iszk = #{iszk} </if>
+		  		  <if test="skyy != null and skyy != ''"> and skyy = #{skyy} </if>
+		  		  <if test="isyjdb != null and isyjdb != ''"> and isyjdb = #{isyjdb} </if>
+		  		  <if test="yjdbtime != null and yjdbtime != ''"> and yjdbtime = #{yjdbtime} </if>
+		  		  <if test="issc != null and issc != ''"> and issc = #{issc} </if>
+		  		  <if test="scyy != null and scyy != ''"> and scyy = #{scyy} </if>
+		  		  <if test="jhrsfzh != null and jhrsfzh != ''"> and jhrsfzh = #{jhrsfzh} </if>
+		  		  <if test="jhrxm != null and jhrxm != ''"> and jhrxm = #{jhrxm} </if>
+		  		  <if test="jhrdh != null and jhrdh != ''"> and jhrdh = #{jhrdh} </if>
+		  		  <if test="jhrgx != null and jhrgx != ''"> and jhrgx = #{jhrgx} </if>
+		  		  <if test="createtime != null and createtime != ''"> and createtime = #{createtime} </if>
+		  		  <if test="lng != null and lng != ''"> and lng = #{lng} </if>
+		  		  <if test="lat != null and lat != ''"> and lat = #{lat} </if>
+		  		  <if test="ltime != null and ltime != ''"> and ltime = #{ltime} </if>
+		  		  <if test="sjzd != null and sjzd != ''"> and sjzd = #{sjzd} </if>
+		  		  <if test="xzgkmj != null and xzgkmj != ''"> and xzgkmj = #{xzgkmj} </if>
+		  		  <if test="hjgkmj != null and hjgkmj != ''"> and hjgkmj = #{hjgkmj} </if>
+		  		  <if test="hjsqgb != null and hjsqgb != ''"> and hjsqgb = #{hjsqgb} </if>
+		  		  <if test="xzsqgb != null and xzsqgb != ''"> and xzsqgb = #{xzsqgb} </if>
+		  		  <if test="isbat != null and isbat != ''"> and isbat = #{isbat} </if>
+		  		  <if test="yaym != null and yaym != ''"> and yaym = #{yaym} </if>
+		  		</where>
+	</select>
+	
+	 <select id="getPcsMc" resultType="string">
+		SELECT bmmc from jsb_glbm where bmdm=#{value}
+	</select>
+	
+	<insert id="save" parameterType="com.bootdo.jsb.ywgl.domain.JsbHzxxDO">
+		insert into jsb_hzxx
+		(
+			`id`, 
+			`kid`, 
+			`sfzh`, 
+			`hzxm`, 
+			`cym`, 
+			`hzdh`, 
+			`xb`, 
+			`csrq`, 
+			`zy`, 
+			`whcd`, 
+			`hyzk`, 
+			`mz`, 
+			`xzqh`, 
+			`xzdz`, 
+			`xzpcsjgdm`, 
+			`hjqh`, 
+			`hjdz`, 
+			`hjpcsjgdm`, 
+			`firsttime`, 
+			`bgdq`, 
+			`bgdw`, 
+			`zdlx`, 
+			`zdsh`, 
+			`ispg`, 
+			`fxdj`, 
+			`pgjg`, 
+			`pgr`, 
+			`zs`, 
+			`zh`, 
+			`qwzs`, 
+			`sz`, 
+			`szyy`, 
+			`sztime`, 
+			`jyaq`, 
+			`ispc`, 
+			`pctime`, 
+			`iszd`, 
+			`iszk`, 
+			`skyy`, 
+			`isyjdb`, 
+			`yjdbtime`, 
+			`issc`, 
+			`scyy`, 
+			`jhrsfzh`, 
+			`jhrxm`, 
+			`jhrdh`, 
+			`jhrgx`, 
+			`createtime`, 
+			`lng`, 
+			`lat`, 
+			`ltime`, 
+			`sjzd`, 
+			`xzgkmj`, 
+			`hjgkmj`, 
+			`hjsqgb`, 
+			`xzsqgb`, 
+			`isbat`, 
+			`yaym`
+		)
+		values
+		(
+			#{id}, 
+			#{kid}, 
+			#{sfzh}, 
+			#{hzxm}, 
+			#{cym}, 
+			#{hzdh}, 
+			#{xb}, 
+			#{csrq}, 
+			#{zy}, 
+			#{whcd}, 
+			#{hyzk}, 
+			#{mz}, 
+			#{xzqh}, 
+			#{xzdz}, 
+			#{xzpcsjgdm}, 
+			#{hjqh}, 
+			#{hjdz}, 
+			#{hjpcsjgdm}, 
+			#{firsttime}, 
+			#{bgdq}, 
+			#{bgdw}, 
+			#{zdlx}, 
+			#{zdsh}, 
+			#{ispg}, 
+			#{fxdj}, 
+			#{pgjg}, 
+			#{pgr}, 
+			#{zs}, 
+			#{zh}, 
+			#{qwzs}, 
+			#{sz}, 
+			#{szyy}, 
+			#{sztime}, 
+			#{jyaq}, 
+			#{ispc}, 
+			#{pctime}, 
+			#{iszd}, 
+			#{iszk}, 
+			#{skyy}, 
+			#{isyjdb}, 
+			#{yjdbtime}, 
+			#{issc}, 
+			#{scyy}, 
+			#{jhrsfzh}, 
+			#{jhrxm}, 
+			#{jhrdh}, 
+			#{jhrgx}, 
+			#{createtime}, 
+			#{lng}, 
+			#{lat}, 
+			#{ltime}, 
+			#{sjzd}, 
+			#{xzgkmj}, 
+			#{hjgkmj}, 
+			#{hjsqgb}, 
+			#{xzsqgb}, 
+			#{isbat}, 
+			#{yaym}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.jsb.ywgl.domain.JsbHzxxDO">
+		update jsb_hzxx 
+		<set>
+			<if test="kid != null">`kid` = #{kid}, </if>
+			<if test="sfzh != null">`sfzh` = #{sfzh}, </if>
+			<if test="hzxm != null">`hzxm` = #{hzxm}, </if>
+			<if test="cym != null">`cym` = #{cym}, </if>
+			<if test="hzdh != null">`hzdh` = #{hzdh}, </if>
+			<if test="xb != null">`xb` = #{xb}, </if>
+			<if test="csrq != null">`csrq` = #{csrq}, </if>
+			<if test="zy != null">`zy` = #{zy}, </if>
+			<if test="whcd != null">`whcd` = #{whcd}, </if>
+			<if test="hyzk != null">`hyzk` = #{hyzk}, </if>
+			<if test="mz != null">`mz` = #{mz}, </if>
+			<if test="xzqh != null">`xzqh` = #{xzqh}, </if>
+			<if test="xzdz != null">`xzdz` = #{xzdz}, </if>
+			<if test="xzpcsjgdm != null">`xzpcsjgdm` = #{xzpcsjgdm}, </if>
+			<if test="hjqh != null">`hjqh` = #{hjqh}, </if>
+			<if test="hjdz != null">`hjdz` = #{hjdz}, </if>
+			<if test="hjpcsjgdm != null">`hjpcsjgdm` = #{hjpcsjgdm}, </if>
+			<if test="firsttime != null">`firsttime` = #{firsttime}, </if>
+			<if test="bgdq != null">`bgdq` = #{bgdq}, </if>
+			<if test="bgdw != null">`bgdw` = #{bgdw}, </if>
+			<if test="zdlx != null">`zdlx` = #{zdlx}, </if>
+			<if test="zdsh != null">`zdsh` = #{zdsh}, </if>
+			<if test="ispg != null">`ispg` = #{ispg}, </if>
+			<if test="fxdj != null">`fxdj` = #{fxdj}, </if>
+			<if test="pgjg != null">`pgjg` = #{pgjg}, </if>
+			<if test="pgr != null">`pgr` = #{pgr}, </if>
+			<if test="zs != null">`zs` = #{zs}, </if>
+			<if test="zh != null">`zh` = #{zh}, </if>
+			<if test="qwzs != null">`qwzs` = #{qwzs}, </if>
+			<if test="sz != null">`sz` = #{sz}, </if>
+			<if test="szyy != null">`szyy` = #{szyy}, </if>
+			<if test="sztime != null">`sztime` = #{sztime}, </if>
+			<if test="jyaq != null">`jyaq` = #{jyaq}, </if>
+			<if test="ispc != null">`ispc` = #{ispc}, </if>
+			<if test="pctime != null">`pctime` = #{pctime}, </if>
+			<if test="iszd != null">`iszd` = #{iszd}, </if>
+			<if test="iszk != null">`iszk` = #{iszk}, </if>
+			<if test="skyy != null">`skyy` = #{skyy}, </if>
+			<if test="isyjdb != null">`isyjdb` = #{isyjdb}, </if>
+			<if test="yjdbtime != null">`yjdbtime` = #{yjdbtime}, </if>
+			<if test="issc != null">`issc` = #{issc}, </if>
+			<if test="scyy != null">`scyy` = #{scyy}, </if>
+			<if test="jhrsfzh != null">`jhrsfzh` = #{jhrsfzh}, </if>
+			<if test="jhrxm != null">`jhrxm` = #{jhrxm}, </if>
+			<if test="jhrdh != null">`jhrdh` = #{jhrdh}, </if>
+			<if test="jhrgx != null">`jhrgx` = #{jhrgx}, </if>
+			<if test="createtime != null">`createtime` = #{createtime}, </if>
+			<if test="lng != null">`lng` = #{lng}, </if>
+			<if test="lat != null">`lat` = #{lat}, </if>
+			<if test="ltime != null">`ltime` = #{ltime}, </if>
+			<if test="sjzd != null">`sjzd` = #{sjzd}, </if>
+			<if test="xzgkmj != null">`xzgkmj` = #{xzgkmj}, </if>
+			<if test="hjgkmj != null">`hjgkmj` = #{hjgkmj}, </if>
+			<if test="hjsqgb != null">`hjsqgb` = #{hjsqgb}, </if>
+			<if test="xzsqgb != null">`xzsqgb` = #{xzsqgb}, </if>
+			<if test="isbat != null">`isbat` = #{isbat}, </if>
+			<if test="yaym != null">`yaym` = #{yaym}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from jsb_hzxx where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from jsb_hzxx where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<head>
+	<link type='text/css' rel='stylesheet' href="/css/all.css">
+	<style>
+		#exampleTable,.fixed-table-pagination{
+			color:black;
+		}
+		.row {
+		  	margin-right: 0;
+		  	margin-left: 0;
+		  	padding: 10px;
+		  	background-color: #fff; 
+		}
+		.img_div{
+			height: calc(33.33% - 12px);
+			margin: 9px 0;
+			/* margin-left: 10px; */
+			width: 90%;
+			box-shadow: 5px 5px 10px #EDECEC;
+			height: calc(25% - 10px);
+			margin: 10px 0;
+			border: 1px solid #E8E7E7;
+		}
+		.img_div span{
+			bottom: 5px;
+  			right: 28%;
+  			font-size: 16px;
+		}
+		@media only screen and (max-height: 600px) {
+	    	.img_div span{
+				bottom: 0px;
+	  			right: 42%;
+	  			font-size: 12px;
+			}	
+	    }
+		.img_div img{
+			height: 100%;
+			max-width: 100%;
+		}
+		#inform_online tr td a{
+			overflow: hidden;
+	  		height: 20px;
+	  		display: inline-block;
+		  	white-space: nowrap;
+		  	text-overflow: ellipsis;
+		  	width: 100%;
+		  	-o-text-overflow: ellipsis;
+		}
+		.tab_title_bg{
+			width: 100px;
+		  	background-color: #0EA7EE;
+		  	background-color: #0890BD;
+		  	padding: 0 10px;
+		  	margin: 5px 0 0 0;
+		  	border-radius: 5px;
+		  	height: 35px;
+		  	line-height: 35px;
+		  	color: #fff;
+		  	/* font-size: 20px !important; */
+		}
+		.tab_div .fixed-table-toolbar {
+		  	margin-bottom: 0;
+		}
+		.knowledge_div>div{
+			line-height: 30px;
+			font-size: 14px;
+		}
+		.knowledge_div>div i{
+			margin-right: 5px;
+		}
+		/* .layui-layer{
+			top:0 !important;
+			left:0 !important;
+		} */
+	</style>
+</head>
+<body class="gray-bg">
+<div class="wrapper wrapper-content" style="height: 100%;">
+    <div class="row" style="height: 100%;">
+        <!-- <div>
+            <div class="ibox"> -->
+               <div class="ibox-body tab_div col-xs-5" style="overflow:auto;width:calc(50% - 5px);height:100%;border:1px solid #ccc;background-color:#fff;padding: 10px;">
+                	<h4 class="tab_title tab_title_bg">
+                		<i class="fa fa-file-text"></i>
+                		待办工作
+                	</h4>
+                	<div th:replace="act/task/todoTask::todo_tab"></div>
+                	<h4 class="tab_title tab_title_bg">
+                		<i class="fa fa-briefcase"></i>
+                		已办工作
+                	</h4>
+                	<div th:replace="act/task/todoTask::done_tab"></div>
+                </div>
+                <div class="ibox-body col-xs-5" style="width:calc(50% - 5px);padding:0;height:100%;margin-left:10px;border:1px solid #ccc;background-color:#fff;padding: 10px;">
+	                <div class="ibox-body col-xs-5" style="width: 100%;margin-bottom:10px;;padding:0;height:calc(50% - 10px);background-color:#fff;">
+	                  	<div style="width:40%;height:100%;float:left;">
+	                  		<!-- <div class="img_div"><a onclick="add_workflow()"><img alt="" src="/images/sponsor_task.png"></a></div>
+		                  	<div class="img_div"><a onclick="add_overtime()"><img alt="" src="/images/sponsor_overtime.png"></a></div>
+		                  	<div class="img_div"><a onclick="add_notify()"><img alt="" src="/images/sponsor_inform.png"></a></div> -->
+		                  	<div class="img_div positionRelative">
+		                  		<a onclick="add_workflow()"><img alt="" src="/images/retreatManageNum.png"></a>
+		                  		<span class="displayInline positionAbsolute">2431</span>
+		                  	</div>
+		                  	<div class="img_div positionRelative">
+		                  		<a onclick="add_overtime()"><img alt="" src="/images/checkNum.png"></a>
+		                  		<span class="displayInline positionAbsolute">2431</span>
+		                  	</div>
+		                  	<div class="img_div positionRelative">
+		                  		<a onclick="add_notify()"><img alt="" src="/images/cureNum.png"></a>
+		                  		<span class="displayInline positionAbsolute">2431</span>
+		                  	</div>
+		                  	<div class="img_div positionRelative">
+		                  		<a onclick="add_notify()"><img alt="" src="/images/interviewNum.png"></a>
+		                  		<span class="displayInline positionAbsolute">2431</span>
+		                  	</div>
+	                  	</div>
+	                  	<div style="width:60%;height:100%;float:left;">
+	                  		<iframe class="J_iframe" name="iframe0" style="width:100%; height:100%;"
+		                    src="/tjfx/ShouYeBingTu.html" frameborder="0" scrolling="no" seamless></iframe>
+	                  	</div>
+	                </div>
+	                <!-- <div class="ibox-body col-xs-5" style="width: calc(50% - 5px);padding: 0 1px;height:calc(50% - 10px);border:1px solid #ccc;background-color:#fff;">
+	                     <iframe class="J_iframe" name="iframe0" style="width:100%; height:100%;"
+	                    src="/tjfx/ShouYeBingTu.html" frameborder="0" scrolling="no" 
+	                    seamless></iframe>
+	                </div> -->
+	               	<div class="ibox-body col-xs-5 knowledge_div" style="width:calc(50% - 5px);padding: 10px;height:50%;border: 1px solid #EFEEEE;">
+	                     <!-- <iframe class="J_iframe" name="iframe0" style="width:100%; height:100%;"
+	                    src="/rl" frameborder="0"
+	                    seamless></iframe> -->
+	                    <h4 class="tab_title">相关知识</h4>
+	                    <div><i class="fa fa-star red"></i><a>常见精神疾病基本知识</a></div>
+	                    <div><i class="fa fa-star red"></i><a>家庭护理</a></div>
+	                    <div><i class="fa fa-star red"></i><a>入院流程</a></div>
+	                    <div><i class="fa fa-star red"></i><a>危险等级评估</a></div>
+	                    <div><i class="fa fa-star red"></i><a>审批流程</a></div>
+	                    <div><i class="fa fa-exclamation-circle green"></i><a>收治肇事肇祸精神病人住院须知</a></div>
+	                </div>
+	                <div class="ibox-body tab_div tab_noborder col-xs-5" style="overflow:auto;width:calc(50% - 5px);height:50%;margin-left:10px;border: 1px solid #EFEEEE;background-color:#fff;padding: 10px;">
+	                	<h4 class="tab_title">通知公告</h4>
+	                   	<table style="border:0;table-layout: fixed;" id="inform_online" data-mobile-responsive="true"></table>
+	                   	<a onclick="more_notifies()" style="margin-left:10px;">更多……</a>
+	                </div>
+	          	</div>
+           <!--  </div>
+        </div> -->
+    </div>
+    <!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+    <div>
+        <script type="text/javascript">
+				var s_edit_h = 'hidden';
+				var s_remove_h = 'hidden';
+				var s_resetPwd_h = 'hidden';
+			</script>
+    </div>
+    <div shiro:hasPermission="act:process:edit">
+        <script type="text/javascript">
+				var s_edit_h = '';
+			</script>
+    </div>
+    <div shiro:hasPermission="act:process:remove">
+        <script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+    </div>
+    <div shiro:hasPermission="act:process:resetPwd">
+        <script type="text/javascript">
+				var s_resetPwd_h = '';
+			</script>
+    </div>
+</div>
+	<script src="/js/jquery.min.js?v=2.1.4"></script>
+	<script src="/js/bootstrap.min.js?v=3.3.6"></script>
+	<script src="/js/bootstrap-table-ShouYe.min.js"></script>
+	<script src="/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+	<script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="/js/plugins/validate/jquery.validate.min.js"></script>
+	<script src="/js/plugins/validate/messages_zh.min.js"></script>
+	<script src="/js/plugins/jsTree/jstree.min.js"></script>
+	<script src="/js/plugins/jqTreeGrid/jquery.treegrid.min.js"></script>
+	<script src="/js/plugins/jqTreeGrid/jquery.treegrid.extension.js"></script>
+	<script src="/js/plugins/jqTreeGrid/jquery.treegrid.bootstrap3.js"></script>
+	<script src="/js/plugins/chosen/chosen.jquery.js"></script>
+	<script src="/js/plugins/layer/layer.js"></script>
+	<script src="/js/content.js?v=1.0.0"></script>
+	<!--summernote-->
+	<script src="/js/plugins/summernote/summernote.js"></script>
+	<script src="/js/plugins/summernote/summernote-zh-CN.min.js"></script>
+	<script src="/js/ajax-util.js"></script>
+	<script type="text/javascript" src="/js/main.js"></script>
+</body>
+</html>

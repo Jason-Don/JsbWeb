@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head th:include="include :: header"></head>
+<head>
+<meta charset="UTF-8">
+<title>终止</title>
+<link type='text/css' rel='stylesheet' href="/css/all_workflow.css">
+<style>
+body,.message_div{
+background-color:#e6e6e6;
+padding-top:5px;
+}
+.submit_div{
+max-width:100%;
+}
+</style>
+</head>
+<body>
+	<div class="message_div">
+		<form  id="add_form">
+			<input id="id" name="id" type="hidden">
+			<input id="taskId" name="taskId" type="hidden">
+			<input id="assignee" name="assignee" type="hidden">
+			<input id="assigneeMc" name="assigneeMc" type="hidden">	
+			<input id="cbry" name="cbry" type="hidden">
+			<input id="cbryMc" name="cbryMc" type="hidden">	
+			<div class="message_detail_div">
+				<div>
+					<label class="label_left label_left_2">终止任务说明：</label>
+					<textarea id="comment" name="comment"></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="submit_div">
+		<input class="detail_type_1" type="button" id="fb_button" onclick="submit_task(this)" value="提交" />
+	</div>
+	<div th:include="include::footer"></div>
+
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugins/layer/laydate/laydate.js"></script>
+<script type="text/javascript" src="/js/appjs/act/workflow/sub_end.js"></script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head th:include="include :: header"></head>
+<head>
+<meta charset="UTF-8">
+<title>牵头人-分办任务</title>
+<link type='text/css' rel='stylesheet' href="/css/all_workflow.css">
+<style>
+body,.message_div{
+background-color:#e6e6e6;
+padding-top:5px;
+}
+.submit_div{
+max-width:100%;
+}
+</style>
+</head>
+<body class="body_layer_1">
+	<div class="message_div">
+		<form  id="add_form">
+		<input id="id" name="id" type="hidden">
+		<input id="taskId" name="taskId" type="hidden">
+		<input type="hidden" id="rwbllx" name="rwbllx" value="FB" />
+			<div class="message_detail_div">
+				<div class="more_div detail_type_1">
+					<label class="label_left">任务承办人员：</label>
+					<input id="cbry" name="cbry" class="hidden" >
+	             	<input id="cbryMc" name="cbryMc" type="text" onclick="openUser()" readonly="readonly" placeholder="--请选择--" >
+				</div>
+				<div class="more_div">
+					<label class="label_left label_left_2">处理意见：</label>
+					<textarea id="points_for_option" id="comment" name="comment"></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="submit_div">
+		<input class="detail_type_1" type="button" id="fb_button" onclick="submit_task(this)" value="提交" />
+	</div>
+<div th:include="include::footer"></div>
+
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugins/layer/laydate/laydate.js"></script>
+<script type="text/javascript" src="/js/appjs/act/workflow/sub_qtr_fb.js"></script>
+</html>

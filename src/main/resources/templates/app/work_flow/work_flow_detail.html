@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,inital-scale=1.0">
+		<title>查看工作流程</title>
+		
+		<link th:href="@{/app/css/style.css}" rel="stylesheet" />
+		<link th:href="@{/app/css/bootstrap.min.css}" rel="stylesheet" />
+		<link th:href="@{/app/css/plugins/bootstrap-table/bootstrap-table.min.css}" rel="stylesheet" />
+		<link th:href="@{/app/css/select_ZZWZ.css}" rel="stylesheet"/>
+		<link th:href="@{/app/css/template_mine.css}" rel="stylesheet" />
+		<link th:href="@{/app/css/font-awesome.min.css}" rel="stylesheet"/>
+		<link th:href="@{/app/css/task_manage/task_manage_other_detail.css}" rel="stylesheet"/>
+		<style>
+			.message_div {
+			  	height: calc(100% - 60px);
+			}
+			.message_detail_div+.message_detail_div{
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+	<body>
+	       <input id="id" name="id" th:value="${workflow.id}"  type="hidden">
+	       <input id="rwkssj" th:value="${workflow.rwkssj}"  type="hidden">
+           <input id="rwwcsj" th:value="${workflow.rwwcsj}"  type="hidden">
+           <input id="rwly" name="rwly" th:value="${workflow.rwly}"  type="hidden">
+           <input id="nycd" name="nycd" th:value="${workflow.nycd}"  type="hidden">
+           
+		<div id="app_div">
+			<div class="title_div">
+				<span onclick="go_back()">
+					<img src="../../images/back_history.png" />
+				</span>
+				<div>工作流程详细信息</div>
+			</div>
+			<div class="message_div">
+				<div class="message_detail_div ">
+					<div class="more_div msg_div">
+						<label class="label_left">任务来源：</label>
+						<span class="long_span" id="rwlytext"></span>
+					</div>
+					<div class="more_div msg_div">
+						<label class="label_left">任务创建人：</label> 
+						<span class="long_span" th:text="${workflow.cjryMc}" ></span>
+					</div>
+					<div class="more_div msg_div">
+						<label class="label_left">任务名称：</label> 
+						<span class="long_span" th:text="${workflow.taskName}" ></span>
+					</div>
+					<div class="more_div msg_div">
+						<label class="label_left">任务指派人：</label>
+						<span class="long_span" th:text="${workflow.rwzpryMc}" ></span>
+					</div>
+					<div class="msg_div">
+						<label class="label_left label_left_1">任务内容：</label>
+						<span class="no_border no_bg long_span" id="rwrr" name="rwnr" readonly="readonly"  th:text="${workflow.rwnr}" >
+						</span>
+					</div>
+					<div class="msg_div">
+						<label class="label_left">难易程度：</label>
+						<span id="nycdtext" ></span>
+					</div>
+					<div class="msg_div">
+						<label class="label_left">开始-结束时间：</label> 
+						<span id="startTime"></span><span>——</span><span id="endTime"></span>
+					</div>
+		            <div class="msg_div">
+		             	<label class="control-label label_left">附件：</label>
+		              	<div>
+							<input id="files" th:value="${workflow.fileId}" class="hide_div">
+							<!-- <a th:text="${workflow.fileMc}" onclick="downloadFile()"></a> -->
+							<a id="down" th:text="${workflow.fileMc}" href=""></a>
+						</div>
+		            </div>
+					<div class="msg_div">
+						<label class="label_left label_left_1">办理意见：</label>
+						<span class="no_border no_bg long_span" id="blyj" name="blyj" readonly="readonly"  th:text="${workflow.blyj}" >
+						</span>
+					</div>
+				</div>
+				<div class="message_detail_div is_fk">
+					<div class="more_div" id="fkDiv"></div> 
+				</div>
+				<div th:if="${workflow.wcqkpf}!=null" class="message_detail_div ">
+					<div class="msg_div read_only_div">
+						<label class="label_left">星级评价：</label>
+						<div id="starttwo" class="block clearfix">
+					        <div class="star_score" id="star_score">
+						        <a id="start1" href="javascript:void(0)" style="left: 0px; width: 22px; z-index: 5;"></a>
+						        <a id="start2" href="javascript:void(0)" style="left: 0px; width: 44px; z-index: 4;"></a>
+						        <a id="start3" href="javascript:void(0)" style="left: 0px; width: 66px; z-index: 3;"></a>
+						        <a id="start4" href="javascript:void(0)" style="left: 0px; width: 88px; z-index: 2;"></a>
+						        <a id="start5" href="javascript:void(0)" style="left: 0px; width: 110px; z-index: 1;"></a>
+					        </div>
+					        <p>您的评分：<span class="fenshu"  th:inline="text" id="fenshu" th:text="${workflow.wcqkpf}"></span> 分</p>
+					    </div>
+					</div>	
+					<div th:if="${workflow.wcqkpj}!=null" class="msg_div">
+						<label class="label_left label_left_1">完成情况评价：</label>
+						<span class="no_border no_bg long_span" id="wcqkpj" name="wcqkpj" readonly="readonly" th:text="${workflow.wcqkpj}" >
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script th:src="@{/app/js/jquery.min.js}" type="text/javascript" ></script>
+	<script th:src="@{/app/js/bootstrap.min.js}" type="text/javascript" ></script>
+<!-- 	<script th:src="@{/app/js/plugins/bootstrap-table/bootstrap-table.min.js}" type="text/javascript"></script>
+	<script th:src="@{/app/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js}" type="text/javascript" ></script> -->
+	<script th:src="@{/app/js/plugins/layer/laydate/laydate.js}" type="text/javascript"></script>
+	<script th:src="@{/app/js/plugins/layer/layer.js}" type="text/javascript"></script>
+	<script th:src="@{/app/js/select_ZZWZ.js}" type="text/javascript"></script>
+	<script th:src="@{/app/js/change_condition.js}" type="text/javascript"></script>
+	<script th:src="@{/app/js/startScore.js}" type="text/javascript"></script>
+	<script src="/app/js/all.js" type="text/javascript"></script>
+	<script th:src="@{/app/js/work_flow/work_flow_detail.js}" type="text/javascript"></script>
+</html>

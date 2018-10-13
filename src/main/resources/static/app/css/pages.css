@@ -1,0 +1,508 @@
+/*公共*/
+.fl{
+    float: left;
+}
+
+.city-query #citySel,#citySel2{
+	cursor: pointer;
+}
+
+/*案线比中人员*/
+.case-inline{
+
+}
+.case-inline table td{
+}
+.case-inline table tr:hover{
+    font-weight: bold;
+}
+.case-inline table td a,.target-person table td a{
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.case-inline table td span{
+    color: #c00;
+}
+.case-inline table td a.person-detail{
+    color: #003078;
+}
+.case-inline table td a.person-delete{
+    color: #666;
+}
+.case-inline h5 i{
+    color: #004890;
+}
+.search-condition{
+    overflow: hidden;
+    width: 80%;
+    margin: 10px auto;
+}
+.search-condition label{
+    width: 100px;
+    text-align: right;
+}
+.search-condition input{
+    height: 26px;
+    border: 1px solid #ccc;
+}
+.search-condition .search-btn{
+    display: block;
+    width: 70px;
+    height: 26px;
+    border-radius: 10px;
+    background-color: #004890;
+    margin-left: 30px;
+    color: #fff;
+    text-align: center;
+    line-height: 26px;
+}
+/*案线比中-导入文件*/
+.import-con{
+    margin: 10px auto;
+    padding: 14px;
+}
+.import-con label{
+    width: 100px;
+    text-align: right;
+}
+.import-con input[type=file]{
+    display: inline-block;
+    width: 180px;
+}
+.comparison-field,.person-type{
+    margin-bottom: 15px;
+}
+.person-type input{
+    width: 220px;
+    height: 26px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.go-back{
+    width: 100px;
+    height: 30px;
+    background-color: #004890;
+    color: #fff;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 30px;
+    margin-bottom: 15px;
+}
+
+/*20类人员列表*/
+.categories-search{
+    width: 80%;
+    margin: 10px auto;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+.categories-search label{
+    width: 100px;
+    text-align: right;
+}
+.categories-search .search-btn{
+    display: block;
+    width: 70px;
+    height: 26px;
+    border-radius: 10px;
+    background-color: #004890;
+    margin-left: 30px;
+    color: #fff;
+    text-align: center;
+    line-height: 26px;
+}
+
+
+/*打处对象关系人*/
+.target-query{
+    width: 100%;
+    border: 1px solid #001860;
+    background-color: #fff;
+    padding: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.target-query label{
+    width: 100px;
+    text-align: right;
+}
+.target-query input{
+    width: 160px;
+    height: 26px;
+    border: 1px solid #ccc;
+}
+.target-btn{
+    width: 60px;
+    height: 26px;
+    background-color: #004890;
+    border-radius: 4px;
+    text-align: center;
+    line-height: 26px;
+    color: #fff;
+    margin-left: 30px;
+}
+
+/*人员核查*/
+.staff-check{}
+.staff-check h5 span{
+    font-size: 12px;
+    color: #333;
+    margin-right: 15px;
+}
+.staff-check h5 span i{
+    color: #004890;
+    font-size: 14px;
+}
+.staff-check .table td a{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.jurisdiction-content{
+    padding: 20px 10px;
+}
+.jurisdiction-content select,.jurisdiction-content input{
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.jurisdiction-id{
+    margin-top: 15px;
+}
+.city,.city-id,.area,.area-id{
+    width: 140px;
+    height: 24px;
+}
+.township,.township-id{
+    width: 200px;
+    height: 24px;
+}
+
+/*人员核查-新增人员*/
+.staff-add-top{
+    width: 100%;
+    background-color: #d6eafe;
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0;
+}
+.first-line{
+    overflow: hidden;
+}
+.staff-add-top label{
+    width: 120px;
+    text-align: right;
+}
+.classify select,.charge-rank select,.collection-police input,.collection-time input{
+    width: 160px;
+    height: 24px;
+    border: 1px solid #ccc;
+    padding-left: 5px;
+}
+.collection-unit input,.collection-address input {
+    width: 240px;
+    height: 24px;
+    border: 1px solid #ccc;
+}
+.staff-add-content{
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0;
+    background-color: #fff;
+}
+.staff-add-content tr{
+    height: 40px;
+}
+.label-text{
+    width: 120px;
+    text-align: right;
+    color: #333;
+}
+.staff-add-content input{
+    height: 24px;
+    border: 1px solid #ccc;
+}
+.staff-add-content input[name=staff-name],
+.staff-add-content input[name=staff-id],
+.staff-add-content input[name=staff-register],
+.staff-add-content input[name=staff-station-police],
+.staff-add-content input[name=staff-register-police],
+.staff-add-content input[name=staff-station-phone],
+.staff-add-content input[name=landlord-name],
+.staff-add-content input[name=landlord-phone],
+.staff-add-content input[name=community-police],
+.staff-add-content input[name=police-telephone],
+.staff-add-content input[name=account-officer],
+.staff-add-content input[name=officer-telephone],
+.staff-add-content input[name=local-time],
+.staff-add-content input[name=portrait],
+.staff-add-content input[name=staff-height],
+.staff-add-content input[name=fingerprint],
+.staff-add-content input[name=staff-dna],
+.staff-add-content input[name=staff-telephone],
+.staff-add-content input[name=staff-sim]{
+    width: 300px;
+    padding-left: 5px;
+}
+.staff-add-content tr span{
+    margin-right: 15px;
+}
+.staff-add-content tr span input[type=radio]{
+    vertical-align: bottom;
+}
+.staff-add-content tr span input[name=discover-other],
+.staff-add-content tr span input[name=native-other],
+.staff-add-content tr span input[name=job-other]{
+    width: 80px;
+}
+.staff-add-content input[name=current-address],
+.staff-add-content textarea[name=virtual-identity]
+{
+    width: 720px;
+}
+.staff-add-content textarea[name=virtual-identity],
+.staff-add-content textarea[name=car-info],
+.staff-add-content textarea[name=other-info]{
+    width: 720px;
+    height: 70px;
+    border: 1px solid #ccc;
+}
+.staff-add-content select{
+    width: 200px;
+    height: 24px;
+    border: 1px solid #ccc;
+    margin-right: 15px;
+}
+.live-together,.belongings{
+    margin-top: 15px;
+    text-align: center;
+    width: 960px;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+.live-together table,.belongings table{
+    width: 100%;
+}
+.live-together table th,.belongings table th{
+    text-align: center;
+}
+.other-info{
+    margin-top: 15px;
+}
+
+/*新增管控*/
+.control-add td.con-text{
+    text-align: left;
+    background-color: #fff;
+}
+.control-add td.label-text{
+    text-align: right;
+    background-color: #ABDEF9;
+}
+.control-add textarea[name=control-info],
+.control-add input[name=visit-address]{
+    width: 80%;
+}
+.control-add textarea[name=control-info]{
+    height: 100px;
+}
+.control-add ol li{
+    line-height: 28px;
+}
+
+/*下发核查单*/
+.add-check{
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+}
+.add-check input,
+.add-check select{
+    height: 24px;
+    border: 1px solid #ccc;
+}
+.add-check label{
+    width: 100px;
+    text-align: right;
+}
+.recipient-name,.task-name,.task-remarks{
+    margin-bottom: 15px;
+}
+.recipient-name select,.task-name input,.task-remarks textarea{
+    width: 200px;
+}
+.task-remarks label{
+    vertical-align: top;
+}
+.task-remarks textarea{
+    height: 100px;
+    border: 1px solid #ccc;
+}
+.upload-attachments input[type=file]{
+    display: inline-block;
+}
+/*接收核查单*/
+.feedback-info{
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+}
+.feedback-info label{
+    vertical-align: top;
+}
+.feedback-info textarea{
+    width: 300px;
+    height: 100px;
+    border: 1px solid #ccc;
+}
+
+/*布控任务*/
+.control-task h5 span{
+    margin-right: 15px;
+    font-size: 14px;
+    font-weight: normal;
+}
+.control-task h5 span i{
+    color: #004890;
+    font-size: 16px;
+}
+.control-task td em{
+    font-style: normal;
+    color: #137f01;
+}
+.control-task td a.enter{
+    color: #001860;
+    font-weight: bold;
+}
+.add-control{
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+}
+.add-control label{
+    width: 100px;
+    text-align: right;
+}
+.add-control input,.add-control select{
+    height: 24px;
+    border: 1px solid #ccc;
+}
+.control-name input,.control-table input,.control-phone input,.receive-way select{
+    width: 180px;
+}
+.control-table,.control-phone,.receive-way{
+    margin-top: 15px;
+}
+.control-person{
+    width: 100%;
+    background-color: #fff;
+    padding: 20px 0;
+}
+.control-person input{
+    padding-left: 5px;
+}
+.control-person label{
+    width: 100px;
+    text-align: right;
+}
+.person-name,.person-id{
+    margin-bottom: 15px;
+}
+
+/*布控结果*/
+.result-search{
+    padding: 10px 20px;
+    overflow: hidden;
+}
+.result-search input,.result-search select{
+    padding-left: 5px;
+    height: 24px;
+    border: 1px solid #ccc;
+}
+.result-search .person-name input{
+    width: 80px;
+}
+.result-search .identity-num input{
+    width: 140px;
+}
+.result-search select{
+    width: 120px;
+    padding-left: 5px;
+    height: 24px;
+    border: 1px solid #ccc;
+}
+.result-search .person-name,.result-search .identity-num,.control-type,.data-sources{
+    margin-right: 20px;
+}
+.result-search .search-btn{
+    display: block;
+    width: 70px;
+    height: 26px;
+    border-radius: 10px;
+    background-color: #004890;
+    margin-left: 30px;
+    color: #fff;
+    text-align: center;
+    line-height: 26px;
+}
+
+/*数据池-所有人员列表*/
+.all-list h5 span{
+    font-size: 12px;
+    color: #333;
+    margin-right: 15px;
+}
+.all-list h5 span i{
+    color: #004890;
+    font-size: 14px;
+}
+.all-list .table td a{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/*出入城市涉恐人员分析*/
+.city-query{
+    width: 100%;
+    border: 1px solid #001860;
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 20px;
+}
+.city-query label{
+    font-size: 12px;
+    vertical-align: bottom;
+}
+.city-query input{
+    width: 180px;
+    height: 24px;
+    border: 1px solid #ccc;
+    padding-left: 5px;
+}
+.start-time,.end-time,.query-region{
+    margin-right: 25px;
+}
+.city-query .search-btn{
+    display: block;
+    width: 70px;
+    height: 26px;
+    border-radius: 10px;
+    background-color: #004890;
+    margin-left: 30px;
+    color: #fff;
+    text-align: center;
+    line-height: 26px;
+}
+
+@media screen and (max-width: 1366px) {
+    table td p{
+        max-width: 180px;
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+        margin: 0 auto;
+    }
+}
+
+.btn-formatter{
+	border-radius: 3px;
+	border: 1px solid transparent;
+	margin: 5px;
+}

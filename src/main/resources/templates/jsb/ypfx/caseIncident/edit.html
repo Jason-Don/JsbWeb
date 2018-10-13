@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+						<input id="id" name="id" th:value="${caseIncident.id}"  type="hidden">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">案件编号：</label>
+								<div class="col-sm-8">
+									<input id="caseCode" name="caseCode" th:value="${caseIncident.caseCode}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">身份证号码：</label>
+								<div class="col-sm-8">
+									<input id="idcard" name="idcard" th:value="${caseIncident.idcard}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">鉴定结论提交时间：</label>
+								<div class="col-sm-8">
+									<input id="identificationTime" name="identificationTime" th:value="${caseIncident.identificationTime}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">鉴定结论：</label>
+								<div class="col-sm-8">
+									<input id="appraiseResult" name="appraiseResult" th:value="${caseIncident.appraiseResult}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">处理人警号：</label>
+								<div class="col-sm-8">
+									<input id="handleName" name="handleName" th:value="${caseIncident.handleName}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">办案单位组织机构：</label>
+								<div class="col-sm-8">
+									<input id="handleOrgan" name="handleOrgan" th:value="${caseIncident.handleOrgan}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">照片路径：</label>
+								<div class="col-sm-8">
+									<input id="photopath" name="photopath" th:value="${caseIncident.photopath}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">数据来源_行政区划代码：</label>
+								<div class="col-sm-8">
+									<input id="dataSourceOrgCode" name="dataSourceOrgCode" th:value="${caseIncident.dataSourceOrgCode}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">数据来源_行政区划代码：</label>
+								<div class="col-sm-8">
+									<input id="dataSourceOrg" name="dataSourceOrg" th:value="${caseIncident.dataSourceOrg}" class="form-control" type="text">
+								</div>
+							</div>
+														<div class="form-group">	
+								<label class="col-sm-3 control-label">：</label>
+								<div class="col-sm-8">
+									<input id="time" name="time" th:value="${caseIncident.time}" class="form-control" type="text">
+								</div>
+							</div>
+																					<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="../../../../static/js/appjs/jsb/ypfx/caseIncident/edit.js">
+	</script>
+</body>
+</html>

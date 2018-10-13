@@ -1,0 +1,33 @@
+#exampleTable,#exampleTable_1{
+	table-layout: fixed;
+}
+.bootstrap-table .table>tbody>tr>td{
+	word-break: break-word;
+	padding: 8px 4px !important;
+}
+.fixed-table-container thead th .th-inner {
+  	padding: 8px 4px !important;
+}
+.bootstrap-table .table>tbody>tr:hover>td{
+	background-color: #E8E8EC;
+}
+.fixed-table-container tbody .selected td {
+  	background-color: #E7EEF2;
+}
+.red{
+	color: red;
+}
+.hideDiv{
+	display: none !important;
+}
+.detailH4{
+	padding-top: 15px;
+}
+input.shortInput,select.shortInput{
+	width: 240px;
+	padding-left: 5px;
+}
+input.longInput{
+	width: 320px;
+	padding-left: 5px;
+}

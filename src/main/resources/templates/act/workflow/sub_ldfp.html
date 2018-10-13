@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head th:include="include :: header"></head>
+<head>
+<meta charset="UTF-8">
+<title>领导分配任务--分办/交办</title>
+<link type='text/css' rel='stylesheet' href="/css/all_workflow.css">
+<style type="text/css">
+.body_layer_1 .message_detail_div>div {
+	margin: 20px 0;
+}
+
+body, .message_div {
+	background-color: #e6e6e6;
+	padding-top: 5px;
+}
+.message_detail_div {
+padding-top:0 !important;
+}
+.submit_div {
+	max-width: 100%;
+}
+</style>
+</head>
+<body class="body_layer_1">
+	<div class="message_div">
+		<form  id="add_form">
+			<input id="id" name="id" type="hidden">
+			<input id="taskId" name="taskId" type="hidden">
+			<div class="message_detail_div ">
+				<div>
+					<div>
+					<label class="label_left">结束时间：</label> <input id="rwwcsj" name="rwwcsj" class="laydate-icon layer-date" placeholder="请选择"
+						onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm',type:'datetime'})">
+					</div>	
+					<label class="label_left label_left_1">任务难易程度：</label>
+					<div>
+						<label><input type="radio" id="JD" name="nycd" value="JD" checked="checked"/>简单</label> 
+						<label><input type="radio" id="ZC" name="nycd" value="ZC"/>正常</label> 
+						<label><input type="radio" id="Nan" name="nycd" value="Nan"/>难</label>
+					</div>
+					<div class="clear_both"></div>
+				</div>
+				<div>
+					<label class="label_left label_left_1">任务办理类型：</label>
+					<div>
+						<label><input type="radio" id="JB" name="rwbllx" value="JB" checked="checked" />交办</label> 
+						<label><input type="radio" id="FB" name="rwbllx" value="FB" />分办</label> 
+					</div>
+					<div class="clear_both"></div>
+				</div>
+				<div class="more_div JB">
+					<label class="label_left">任务承办人员：</label>
+					<input id="rwqtr" name="rwqtr" class="hidden" >
+	             	<input id="rwqtrMc" name="rwqtrMc" type="text" onclick="openUser_1()"
+	              		readonly="readonly" placeholder="--请选择--">
+				</div>
+				<div class="more_div FB hide_div">
+					<label class="label_left">任务承办人员：</label>
+					<input id="cbry" name="cbry" class="hidden" >
+	             	<input id="cbryMc" name="cbryMc" type="text" onclick="openUser()"
+	              		readonly="readonly" placeholder="--请选择--">
+				</div>
+				<div>
+					<label class="label_left label_left_2">反馈说明：</label>
+					<textarea id="comment" name="comment" ></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="submit_div">
+		<input class="detail_type_1" type="button" id="fb_button" onclick="submit_task(this)" value="提交" />
+	</div>
+	<div th:include="include::footer"></div>
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugins/layer/laydate/laydate.js"></script>
+<script type="text/javascript" src="/js/appjs/act/workflow/sub_ldfp.js"></script>
+</html>

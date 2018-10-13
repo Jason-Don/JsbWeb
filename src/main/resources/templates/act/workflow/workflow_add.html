@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head th:include="include :: header"></head>
+<head>
+<meta charset="UTF-8">
+<title>信息入录</title>
+<link type='text/css' rel='stylesheet' href="/css/all_workflow.css">
+<style>
+body,.message_div{
+background-color:#e6e6e6;
+}
+</style>
+</head>
+<body>
+	<div class="message_div">
+		<div class="message_title ">
+			<div>任务信息</div>
+		</div>
+		<form  id="add_form" enctype="multipart/form-data">
+		
+		<div class="message_detail_div">
+			<div>
+				<div class="more_div">
+					<label class="label_left">任务来源：</label>
+					<select data-placeholder="--选择类别--" name="rwly" id="rwly"
+						class=" chosen-select" tabindex="2" required onchange="create_rwly()">
+						<option value="">--选择类别--</option>
+					</select>
+				</div>
+				<div class="more_div read_only">
+					<label class="label_left">任务创建人：</label> 
+					<input class="input" id="cjryMc" name="cjryMc" readonly="readonly">
+					<input id="cjryId" name="cjryId"  class="hidden">
+				</div>
+				<div class="clear_both"></div>
+			</div>
+			<div class="more_div">
+				<label class="label_left">任务名称：</label> 
+				<input class="input" id="taskName" name="taskName" type="text" />
+			</div>
+			
+			<div>
+				<label class="label_left">任务内容：</label>
+				<textarea id="rwnr" name="rwnr"></textarea>
+			</div>
+			<div>
+				<div class="more_div">
+					<label class="label_left">开始时间：</label> <input id="rwkssj" name="rwkssj"
+						class="laydate-icon layer-date input" placeholder="请选择"
+						onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm',type:'datetime'})">
+				</div>
+				<div class="more_div">
+					<label class="label_left">结束时间：</label> <input id="rwwcsj" name="rwwcsj"
+						class="laydate-icon layer-date input" placeholder="请选择"
+						onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm',type:'datetime'})">
+				</div>
+				<div class="clear_both"></div>
+			</div>
+            <div class="form-group">
+                  <label class="control-label label_left label_left_1">上传附件：</label>
+                  <input id="file" name="file" type="file">
+            </div>
+			<div>
+				<label class="label_left">办理意见：</label>
+				<textarea class="long_input" id="blyj" name="blyj"></textarea>
+			</div>
+			<div class="more_div">
+				<label class="label_left">室领导审核：</label>
+				<input id="rwzpry" name="rwzpry" class="hidden">
+              	<input class="input long_input" id="rwzpryMc" name="rwzpryMc" type="text" onclick="openUser_1()" 
+              	readonly="readonly" placeholder="--请选择--">
+				<!-- <select>
+					<option>张三丰</option>
+				</select> -->
+			</div>
+<!-- 			<div>
+				<label class="label_left">完成情况</label> <select class="long_select">
+					<option>已完成</option>
+					<option>未开始</option>
+					<option>进行中</option>
+				</select>
+			</div> -->
+		</div>
+		</form>
+	</div>
+	<div class="submit_div">
+		<!-- <input type="button" id="save_button" onclick="Workflow.save()" value="保存" /> -->
+		<input type="button" id="saveAndStart_button" onclick="Workflow.saveAndStart()" value="发起任务" /> 
+		<!-- <input type="button" id="start_button" onclick="Workflow.start()" value="发起任务" />  -->
+	</div>
+
+<div th:include="include::footer"></div>
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugins/layer/laydate/laydate.js"></script>
+<script type="text/javascript" src="/js/plugins/layer/extend/layer.ext.js"></script>
+<script type="text/javascript" src="/js/appjs/act/workflow/workflow_add.js"></script>
+</html>

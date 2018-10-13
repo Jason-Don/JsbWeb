@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.activiti.dao.FkDao">
+
+	<sql id="Base_Column_List">
+		id,workflow_id,cbry_id,cbry_mc,cjsj,file_id,file_mc,fkqksm,sfshtg,shyj
+	</sql>
+	<resultMap id="BaseResultMap" type="com.bootdo.activiti.domain.FkDO">
+		<result column="id" property="id"></result>
+		<result column="workflow_id" property="workflowId"></result>
+		<result column="cbry_id" property="cbryId"></result>
+		<result column="cbry_mc" property="cbryMc"></result>
+		<result column="cjsj" property="cjsj"></result>
+		<result column="file_id" property="fileId"></result>
+		<result column="file_mc" property="fileMc"></result>
+		<result column="fkqksm" property="fkqksm"></result>
+		<result column="sfshtg" property="sfshtg"></result>
+		<result column="shyj" property="shyj"></result>
+	</resultMap>
+
+	<select id="get" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from workflow_fk where id = #{value}
+	</select>
+
+	<select id="list" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from workflow_fk
+		<where>
+			<if test="id != null and id != ''"> and id = #{id} </if>
+			<if test="workflowId != null and workflowId != ''"> and workflow_id = #{workflowId} </if>
+			<if test="cbryId != null and cbryId != ''"> and cbry_id = #{cbryId} </if>
+			<if test="cbryMc != null and cbryMc != ''"> and cbry_mc = #{cbryMc} </if>
+			<if test="cjsj != null and cjsj != ''"> and cjsj = #{cjsj} </if>
+			<if test="fileId != null and fileId != ''"> and file_id = #{fileId} </if>
+			<if test="fileMc != null and fileMc != ''"> and file_mc = #{fileMc} </if>
+		  	<if test="sfshtg != null and sfshtg != ''"> and sfshtg = #{sfshtg} </if>
+		  	<if test="shyj != null and shyj != ''"> and shyj = #{shyj} </if>
+		</where>
+		<choose>
+			<when test="sort != null and sort.trim() != ''">
+				order by ${sort} ${order}
+			</when>
+			<otherwise>
+				order by id desc
+			</otherwise>
+		</choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+
+	<select id="count" resultType="int">
+		select count(*) from workflow_fk
+		<where>
+			<if test="id != null and id != ''"> and id = #{id} </if>
+			<if test="workflowId != null and workflowId != ''"> and workflow_id = #{workflowId} </if>
+			<if test="cbryId != null and cbryId != ''"> and cbry_id = #{cbryId} </if>
+			<if test="cbryMc != null and cbryMc != ''"> and cbry_mc = #{cbryMc} </if>
+			<if test="cjsj != null and cjsj != ''"> and cjsj = #{cjsj} </if>
+			<if test="fileId != null and fileId != ''"> and file_id = #{fileId} </if>
+			<if test="fileMc != null and fileMc != ''"> and file_mc = #{fileMc} </if>
+		  	<if test="sfshtg != null and sfshtg != ''"> and sfshtg = #{sfshtg} </if>
+		  	<if test="shyj != null and shyj != ''"> and shyj = #{shyj} </if>
+		</where>
+	</select>
+
+	<insert id="save" parameterType="com.bootdo.activiti.domain.FkDO" useGeneratedKeys="true" keyProperty="id">
+		insert into workflow_fk
+		(
+			`workflow_id`, 
+			`cbry_id`, 
+			`cbry_mc`, 
+			`cjsj`, 
+			`file_id`, 
+			`file_mc`, 
+			`fkqksm`, 
+			`sfshtg`, 
+			`shyj`
+		)
+		values
+		(
+			#{workflowId}, 
+			#{cbryId}, 
+			#{cbryMc}, 
+			#{cjsj}, 
+			#{fileId}, 
+			#{fileMc}, 
+			#{fkqksm}, 
+			#{sfshtg}, 
+			#{shyj}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.activiti.domain.FkDO">
+		update workflow_fk 
+		<set>
+			<if test="workflowId != null">`workflow_id` = #{workflowId}, </if>
+			<if test="cbryId != null">`cbry_id` = #{cbryId}, </if>
+			<if test="cbryMc != null">`cbry_mc` = #{cbryMc}, </if>
+			<if test="cjsj != null">`cjsj` = #{cjsj}, </if>
+			<if test="fileId != null">`file_id` = #{fileId}, </if>
+			<if test="fileMc != null">`file_mc` = #{fileMc}, </if>
+			<if test="fkqksm != null">`fkqksm` = #{fkqksm}, </if>
+			<if test="sfshtg != null">`sfshtg` = #{sfshtg}, </if>
+			<if test="shyj != null">`shyj` = #{shyj}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from workflow_fk where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from workflow_fk where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

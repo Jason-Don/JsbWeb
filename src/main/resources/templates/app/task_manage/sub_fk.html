@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head th:include="include :: header"></head>
+<head>
+<title>牵头人-直接反馈</title>
+<link th:href="@{/app/css/all_workflow.css}" rel="stylesheet"/>
+<link th:href="@{/app/css/task_manage/small_layer.css}" rel="stylesheet"/>
+<style>
+	.message_div {
+		padding:10px !important;
+		padding-bottom:0 !important;
+	}
+	#fkqksm{
+		width:99%;
+		height:100px;
+	}
+	
+</style>
+<meta charset="UTF-8">
+</head>
+<body class="body_layer">
+	<div class="message_div">
+		<form  id="add_form">
+			<input id="id" name="id" type="hidden">
+			<input id="taskId" name="taskId" type="hidden">
+			<div class="message_detail_div">
+				<div>
+					<textarea id="fkqksm" name="fkqksm" ></textarea>
+				</div>
+				<div class="form-group">
+	       			<label style="font-size:14px;">反馈附件：</label>
+	       			<button id="filebtn" onclick="openfilechooser()" type="button"  style="font-size:14px;  width: calc(30%);display:inline">选择文件</button>
+		            <span id="fname"></span>
+	              	<input id="file_fk" name="file_fk" onchange="setfname()" type="file" class="hidden">
+	            </div>
+			</div>
+		</form>
+	</div>
+	<div class="submit_div">
+		<input class="detail_type_1" type="button" id="fb_button" onclick="submit_task(this)" value="提交" />
+		<input class="detail_type_1" type="button" onclick="cancel()" value="取消" />
+	</div>
+	<div th:include="include::footer"></div>
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/plugins/layer/laydate/laydate.js"></script>
+<script th:src="@{/app/js/task_manage/sub_fk.js}"></script>
+</html>

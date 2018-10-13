@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+<meta charset="utf-8" />
+<head>
+	<meta charset="utf-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<title></title>
+	<meta content="" name="keywords" />
+	<meta content="" name="description" />
+	<link href="favicon.ico" rel="shortcut icon" />
+	<link href="/css/bootstrap.min.css?v=3.3.6" rel="stylesheet" />
+	<link href="/css/font-awesome.css?v=4.4.0" rel="stylesheet" />
+	<link href="/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" />
+	<link href="/css/plugins/jsTree/style.min.css" rel="stylesheet" />
+	<link href="/css/plugins/jqTreeGrid/jquery.treegrid.css" rel="stylesheet" />
+	<!--summernote css -->
+	<link href="/css/plugins/summernote/summernote-0.8.8.css" rel="stylesheet" />
+	<link href="/css/animate.css" rel="stylesheet" />
+	<link href="/css/plugins/chosen/chosen.css" rel="stylesheet" />
+	<link href="/css/style.css?v=4.1.0" rel="stylesheet" />
+</head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox-content">
+					<div id="jsTree"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/js/jquery.min.js?v=2.1.4"></script>
+	<script src="/js/bootstrap.min.js?v=3.3.6"></script>
+	<script src="/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+	<script src="/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+	<script src="/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+	<script src="/js/plugins/validate/jquery.validate.min.js"></script>
+	<script src="/js/plugins/validate/messages_zh.min.js"></script>
+	<script src="/js/plugins/jsTree/jstree.min.js"></script>
+	<script src="/js/plugins/jqTreeGrid/jquery.treegrid.min.js"></script>
+	<script src="/js/plugins/jqTreeGrid/jquery.treegrid.extension.js"></script>
+	<script src="/js/plugins/jqTreeGrid/jquery.treegrid.bootstrap3.js"></script>
+	<script src="/js/plugins/chosen/chosen.jquery.js"></script>
+	<script src="/js/plugins/layer/layer.js"></script>
+	<script src="/js/content.js?v=1.0.0"></script>
+	<!--summernote-->
+	<script src="/js/plugins/summernote/summernote.js"></script>
+	<script src="/js/plugins/summernote/summernote-zh-CN.min.js"></script>
+	<script src="/js/ajax-util.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			getTreeData();
+			$("#jsTree").click(function(){
+				loadUser();
+			});
+		});
+		function getTreeData() {
+			$.ajax({
+				type : "GET",
+				url : "/sys/user/tree",
+				success : function(tree) {
+					loadTree(tree);
+				}
+			});
+		}
+		function loadTree(tree) {
+			$('#jsTree').jstree({
+				'core' : {
+					'data' : tree
+				},
+				"plugins" : [ "checkbox" ]
+			});
+			$('#jsTree').jstree().open_all();
+		}
+		function loadUser(){
+			var userNames,userIds;
+			var ref = $('#jsTree').jstree(true); // 获得整个树
+			userIds = ref.get_bottom_selected();
+			users = ref.get_bottom_checked('true');
+			var txt="";
+			for(var user in users){
+				if(users[user].state.mType=="user"){
+					if(user == (users.length-1)){
+						txt += users[user].text;
+					}else{
+						txt += users[user].text+",";
+					}
+				}
+			}
+			//alert(userIds);
+			var pn=parent.document;
+			var duty=pn.getElementById("duty");
+			duty.value=txt;
+		}
+	</script>
+
+
+</body></html>

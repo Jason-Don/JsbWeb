@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head th:include="include :: header"></head>
+	<head>
+		<meta charset="UTF-8">
+		<title>添加加班</title>
+		<link type='text/css' rel='stylesheet' href="/css/all_workflow.css">
+		<style>
+		body,.message_div{
+			background-color:#e6e6e6;
+		}
+		</style>
+	</head>
+	<body>
+	<form class="gg-form" role="form" id="add_form">
+		<div class="message_div">
+			<div class="message_title ">
+				<div>基本信息</div>
+			</div>
+			<div class="message_detail_div read_only" >
+				<div>
+					<div class="more_div">
+						<label class="label_left">申请人：</label>
+						<input id="sqrId" name="sqrId" class="hidden">
+						<input class="input" id="sqrMc" name="sqrMc" readonly="readonly" >
+					</div>
+					<div class="more_div">
+						<label class="label_left">所在部门：</label>
+						<input id="szbmId" name="szbmId" class="hidden">
+						<input class="input" id="szbmMc" name="szbmMc" readonly="readonly">
+					</div>
+					<!-- <div class="more_div">
+						<label class="label_left">标题</label>
+						<input type="text" />
+					</div> -->
+					<div  class="gg-formGroup">
+						<label class="label_left label_left_1">紧急情况：</label>
+						<div id="jjqk_type" name="jjqk_type" class="radio i-checks">
+
+						</div>
+						<div class="clear_both"></div>
+					</div>
+
+					<div class="clear_both"></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="message_div">
+			<div class="message_title ">
+				<div>加班信息</div>
+			</div>
+			<div class="message_detail_div " >
+				<div>
+					<div class="more_div">
+						<label class="label_left">加班类型：</label>
+						<select
+							data-placeholder="--选择类别--" name="jblx" id="jblx"
+							class="form-control chosen-select input" required >
+							<option value="">--选择类别--</option>
+						</select>
+					</div>
+					<div class="more_div">
+						<label class="label_left">加班审核人员：</label>
+						<input id="shryId" name="shryId" class="hidden">
+	                    <input class="input" id="shryMc" name="shryMc" type="text" onclick="openUser()" readonly="readonly" placeholder="--请选择--">
+					</div>
+					<div class="clear_both"></div>
+				</div>
+				<div>
+					<div class="more_div">
+						<label class="label_left">开始时间：</label>
+						<input id="kssj" name="kssj" class="laydate-icon layer-date input" placeholder="请选择" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+					</div>
+					<div class="more_div">
+						<label class="label_left">结束时间：</label>
+						<input id="jssj" name="jssj" class="laydate-icon layer-date input" placeholder="请选择" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+					</div>
+					<div class="clear_both"></div>
+				</div>
+				<div>
+					<label class="label_left">加班事由：</label>
+					<textarea id="jbsy" name="jbsy"></textarea>
+				</div>
+				<div class="more_div">
+					<label class="label_left">关联流程：</label>
+					<select
+						data-placeholder="--选择类别--" name="glgzlc" id="glgzlc"
+						class="form-control chosen-select input" tabindex="2" required>
+						<option value="">--选择类别--</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		</form>
+		<div class="submit_div">
+			<input id="submit_button" type="button" value="提交"  />
+			<!-- <input id="save_button" type="button" value="保存" /> -->
+		</div>
+		<div th:include="include::footer"></div>
+	</body>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/plugins/layer/laydate/laydate.js"></script>
+	<script type="text/javascript" src="/js/appjs/act/overtime/overtime.js"></script>
+</html>

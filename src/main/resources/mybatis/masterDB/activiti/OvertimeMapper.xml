@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.activiti.dao.OvertimeDao">
+
+	<sql id="Base_Column_List">
+id,sqr_id,sqr_mc,szbm_id,szbm_mc,jjqk,sqsj,jblx,jbsy,kssj,jssj,glgzlc,yxbz,shry_id,shry_mc,status,shyj
+	</sql>
+	<resultMap id="BaseResultMap" type="com.bootdo.activiti.domain.OvertimeDO">
+		<result column="id" property="id"></result>
+		<result column="sqr_id" property="sqrId"></result>
+		<result column="sqr_mc" property="sqrMc"></result>
+		<result column="szbm_id" property="szbmId"></result>
+		<result column="szbm_mc" property="szbmMc"></result>
+		<result column="jjqk" property="jjqk"></result>
+		<result column="sqsj" property="sqsj"></result>
+		<result column="jblx" property="jblx"></result>
+		<result column="jbsy" property="jbsy"></result>
+		<result column="kssj" property="kssj"></result>
+		<result column="jssj" property="jssj"></result>
+		<result column="glgzlc" property="glgzlc"></result>
+		<result column="yxbz" property="yxbz"></result>
+		<result column="shry_id" property="shryId"></result>
+		<result column="shry_mc" property="shryMc"></result>
+		<result column="status" property="status"></result>
+		<result column="shyj" property="shyj"></result>
+	</resultMap>
+	
+	<select id="get" resultMap="BaseResultMap">
+SELECT
+	o.id,
+	sqr_id,
+	sqr_mc,
+	szbm_id,
+	szbm_mc,
+	jjqk,
+	sqsj,
+	jblx,
+	jbsy,
+	kssj,
+	jssj,
+	glgzlc,
+	w.task_name 'glgzlcMc',
+	o.shry_id,
+	o.shry_mc,
+	o.status,
+	o.shyj,
+	o.yxbz
+FROM
+	overtime as o LEFT JOIN workflow as w
+on o.glgzlc = w.id
+WHERE
+ o.id =#{value}
+	</select>
+
+	<select id="list" resultMap="BaseResultMap">
+		select 
+		<include refid="Base_Column_List" />
+		from overtime
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="sqrId != null and sqrId != ''"> and sqr_id = #{sqrId} </if>
+		  		  <if test="sqrMc != null and sqrMc != ''"> and sqr_mc = #{sqrMc} </if>
+		  		  <if test="szbmId != null and szbmId != ''"> and szbm_id = #{szbmId} </if>
+		  		  <if test="szbmMc != null and szbmMc != ''"> and szbm_mc = #{szbmMc} </if>
+		  		  <if test="jjqk != null and jjqk != ''"> and jjqk = #{jjqk} </if>
+		  		  <if test="sqsj != null and sqsj != ''"> and sqsj = #{sqsj} </if>
+		  		  <if test="jblx != null and jblx != ''"> and jblx = #{jblx} </if>
+		  		  <if test="jbsy != null and jbsy != ''"> and jbsy = #{jbsy} </if>
+		  		  <if test="kssj != null and kssj != ''"> and kssj = #{kssj} </if>
+		  		  <if test="jssj != null and jssj != ''"> and jssj = #{jssj} </if>
+		  		  <if test="glgzlc != null and glgzlc != ''"> and glgzlc = #{glgzlc} </if>
+		  		  <if test="yxbz != null and yxbz != ''"> and yxbz = #{yxbz} </if>
+		  		  <if test="shryId != null and shryId != ''"> and shry_id = #{shryId} </if>
+		  		  <if test="shryMc != null and shryMc != ''"> and shry_mc = #{shryMc} </if>
+		  		  <if test="status != null and status != ''"> and status = #{status} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from overtime
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="sqrId != null and sqrId != ''"> and sqr_id = #{sqrId} </if>
+		  		  <if test="sqrMc != null and sqrMc != ''"> and sqr_mc = #{sqrMc} </if>
+		  		  <if test="szbmId != null and szbmId != ''"> and szbm_id = #{szbmId} </if>
+		  		  <if test="szbmMc != null and szbmMc != ''"> and szbm_mc = #{szbmMc} </if>
+		  		  <if test="jjqk != null and jjqk != ''"> and jjqk = #{jjqk} </if>
+		  		  <if test="sqsj != null and sqsj != ''"> and sqsj = #{sqsj} </if>
+		  		  <if test="jblx != null and jblx != ''"> and jblx = #{jblx} </if>
+		  		  <if test="jbsy != null and jbsy != ''"> and jbsy = #{jbsy} </if>
+		  		  <if test="kssj != null and kssj != ''"> and kssj = #{kssj} </if>
+		  		  <if test="jssj != null and jssj != ''"> and jssj = #{jssj} </if>
+		  		  <if test="glgzlc != null and glgzlc != ''"> and glgzlc = #{glgzlc} </if>
+		  		  <if test="yxbz != null and yxbz != ''"> and yxbz = #{yxbz} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.activiti.domain.OvertimeDO" useGeneratedKeys="true" keyProperty="id">
+		insert into overtime
+		(
+			`sqr_id`, 
+			`sqr_mc`, 
+			`szbm_id`, 
+			`szbm_mc`, 
+			`jjqk`, 
+			`sqsj`, 
+			`jblx`, 
+			`jbsy`, 
+			`kssj`, 
+			`jssj`, 
+			`glgzlc`, 
+			`yxbz`,
+			`shry_id`,
+			`shry_mc`,
+			`status`,
+			`shyj`
+		)
+		values
+		(
+			#{sqrId}, 
+			#{sqrMc}, 
+			#{szbmId}, 
+			#{szbmMc}, 
+			#{jjqk}, 
+			#{sqsj}, 
+			#{jblx}, 
+			#{jbsy}, 
+			#{kssj}, 
+			#{jssj}, 
+			#{glgzlc}, 
+			#{yxbz},
+			#{shryId},
+			#{shryMc},
+			#{status},
+			#{shyj}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.activiti.domain.OvertimeDO">
+		update overtime 
+		<set>
+			<if test="sqrId != null">`sqr_id` = #{sqrId}, </if>
+			<if test="sqrMc != null">`sqr_mc` = #{sqrMc}, </if>
+			<if test="szbmId != null">`szbm_id` = #{szbmId}, </if>
+			<if test="szbmMc != null">`szbm_mc` = #{szbmMc}, </if>
+			<if test="jjqk != null">`jjqk` = #{jjqk}, </if>
+			<if test="sqsj != null">`sqsj` = #{sqsj}, </if>
+			<if test="jblx != null">`jblx` = #{jblx}, </if>
+			<if test="jbsy != null">`jbsy` = #{jbsy}, </if>
+			<if test="kssj != null">`kssj` = #{kssj}, </if>
+			<if test="jssj != null">`jssj` = #{jssj}, </if>
+			<if test="glgzlc != null">`glgzlc` = #{glgzlc}, </if>
+			<if test="yxbz != null">`yxbz` = #{yxbz},</if>
+		  		  <if test="shryId != null and shryId != ''"> `shry_id` = #{shryId}, </if>
+		  		  <if test="shryMc != null and shryMc != ''"> `shry_mc` = #{shryMc}, </if>
+		  		  <if test="status != null and status != ''"> `status` = #{status}, </if>
+		  		  <if test="shyj != null and shyj != ''"> `shyj` = #{shyj} </if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from overtime where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from overtime where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

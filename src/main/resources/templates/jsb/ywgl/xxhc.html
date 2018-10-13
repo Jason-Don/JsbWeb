@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<head>
+	<link href="/css/dashboard.css" type="text/css" rel="stylesheet">
+	<link href="/css/all.css" type="text/css" rel="stylesheet">
+	<link href="/css/ywgl/xxhc.css" type="text/css" rel="stylesheet">
+	<style>
+		.fixed-table-toolbar button>i{
+			margin-right: 5px;
+		}
+		.wrapper-content{
+			padding: 10px;
+		}
+	</style>
+</head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div>
+			<label>管理部门</label>
+			<div class="displayInline">
+			<input id="searchName" type="text" class="form-control shortInput" placeholder="输入公安机关部门代码或名称"></div>
+			<input id="citySel" type="text" value="" placeholder="点击右侧选择按钮选择类型，不选默认查询所有类型" readonly onclick="showMenu()">
+			<label>患者信息</label>
+			<div class="displayInline"><input id="searchName" type="text" class="form-control longInput" placeholder="输入患者身份证、姓名或地址，为空查询全部"></div>
+			<button class="btn btn-success " onclick="reLoad()">查询</button>
+		</div>
+				<div id="menuContent1" class="menuContent" style="display:none; position: absolute;">
+					<ul id="treeDemo1" class="ztree" style="border: 1px solid #617775;background: #f0f6e4;overflow-y:scroll;overflow-x:auto;z-index:10000;margin-top:0; width:280px; height: 400px;position:relative;"></ul>
+				</div>
+		<div>
+			<div class="fixed-table-toolbar">
+				<div class="columns pull-left">
+				<!-- 注释掉的原因是：显示不出来 -->
+					<!-- <button shiro:hasPermission="ywgl:jsbHzxx:add" type="button" class="btn  btn-primary" onclick="add()">
+						<i class="fa fa-plus" aria-hidden="true"></i>新增
+					</button> -->
+					<button type="button" class="btn  btn-primary" onclick="add()">
+						<i class="fe fe-plus-square" aria-hidden="true"></i>新增
+					</button>
+					<button type="button" class="btn  btn-danger" onclick="batchRemove()">
+						<i class="fe fe-x-circle" aria-hidden="true"></i>删除
+					</button>
+					<button type="button" class="btn  btn-primary" onclick="reject()">
+						<i class="fe fe-corner-up-left" aria-hidden="true"></i>回退
+					</button>
+					<!-- <button shiro:hasPermission="ywgl:jsbHzxx:batchRemove" type="button" class="btn  btn-danger"
+						onclick="batchRemove()">
+						<i class="fa fa-trash" aria-hidden="true"></i>删除
+					</button> -->
+				</div>
+			</div>
+			<table id="exampleTable" data-mobile-responsive="true">
+				<thead>
+					<tr>
+						<th data-field="state" data-checkbox="true"></th>
+						<th data-field="id" data-visible="false">ID</th>
+						<th data-formatter="sfzhFormatter">身份证号</th>
+						<th data-formatter="hzxmFormatter">患者姓名</th>
+						<th data-field="xzdz">现住地址</th>
+						<th data-field="lng" data-visible="false">经度</th>
+						<th data-field="lat" data-visible="false">纬度</th>
+						<th data-field="firsttime" data-visible="false">初次发病时间</th>
+						<th data-field="zdlx">疾病诊断类型</th>
+						<th data-field="bgdw" data-visible="false">报告单位</th>
+						<th data-field="szyy" data-visible="false">最后收治医院</th>
+						<th data-field="jhrxm">监护人姓名</th>
+						<th data-field="jhrdh" data-visible="false">监护人电话</th>
+						<th data-field="jhrgx" data-visible="false">监护人关系</th>
+						<th data-field="jyaq">简要案情</th>
+						<th data-field="zs">肇事</th>
+						<th data-field="zh">肇祸</th>
+						<th data-field="fxdj">风险等级</th>
+						<th data-field="ispg" data-formatter="ispg">是否评估</th>
+						<th data-field="iszd" data-formatter="iszd">是否重点患者</th>
+						<th data-field="iszk" data-formatter="iszk">是否在控</th>
+						<th data-field="hjpcs">户籍派出所</th>
+						<th data-field="xzpcs">现住派出所</th>
+						<th data-formatter=operate>操作</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
+	</div>
+	<!--shiro控制bootstraptable行内按钮看见性 来自bootdo的创新方案 -->
+		<div>
+			<script type="text/javascript">
+				var s_edit_h = 'hidden';
+				var s_remove_h = 'hidden';
+				var s_resetPwd_h = 'hidden';
+			</script>
+		</div>
+		<div shiro:hasPermission="ywgl:jsbHzxx:edit">
+			<script type="text/javascript">
+				s_edit_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="ywgl:jsbHzxx:remove">
+			<script type="text/javascript">
+				var s_remove_h = '';
+			</script>
+		</div>
+		<div shiro:hasPermission="ywgl:jsbHzxx:resetPwd">
+			<script type="text/javascript">
+				var s_resetPwd_h = '';
+			</script>
+		</div>
+	</div>
+	<div th:include="include :: footer"></div>
+	<script type="text/javascript" src="/js/appjs/jsb/ywgl/xxhc.js"></script>
+</body>
+</html>

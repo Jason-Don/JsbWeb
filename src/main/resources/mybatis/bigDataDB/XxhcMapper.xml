@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.bigData.bigDataDB.dao.XxhcDao">
+
+	<sql id="Base_Column_List">
+		s_id,s_tel_send,s_tel_accept,s_content,n_result,s_result,d_created_time
+	</sql>
+	<resultMap id="BaseResultMap" type="com.bootdo.common.domain.TSendDO">
+		<result column="s_id" property="sId"></result>
+		<result column="s_tel_send" property="sTelSend"></result>
+		<result column="s_tel_accept" property="sTelAccept"></result>
+		<result column="s_content" property="sContent"></result>
+		<result column="n_result" property="nResult"></result>
+		<result column="s_result" property="sResult"></result>
+		<result column="d_created_time" property="dCreatedTime"></result>
+	</resultMap>
+
+
+	<select id="get" resultType="java.util.Map">
+	select crossing_name from jt_kk_kkxx limit 0,1
+	</select>
+	
+	<select id="getPerInfo" resultType="java.util.Map">
+		select * from F_HJXX_CZRK where gmsfhm=#{value} and zt_dic='有效'
+	</select>
+</mapper>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bootdo.jsb.ypfx.dao.CaseIncidentDao">
+	<resultMap id="BaseResultMap" type="com.bootdo.jsb.ypfx.domain.CaseIncidentDO">
+		<result column="id" property="id"></result>
+		<result column="case_code" property="caseCode"></result>
+		<result column="idcard" property="idcard"></result>
+		<result column="identification_time" property="identificationTime"></result>
+		<result column="appraise_result" property="appraiseResult"></result>
+		<result column="handle_name" property="handleName"></result>
+		<result column="handle_organ" property="handleOrgan"></result>
+		<result column="photopath" property="photopath"></result>
+		<result column="data_source_org_code" property="dataSourceOrgCode"></result>
+		<result column="data_source_org" property="dataSourceOrg"></result>
+		<result column="time" property="time"></result>
+	</resultMap>
+	
+	<select id="get" resultMap="BaseResultMap">
+		select `id`,`case_code`,`idcard`,`identification_time`,`appraise_result`,`handle_name`,`handle_organ`,`photopath`,`data_source_org_code`,`data_source_org`,`time` from case_incident where id = #{value}
+	</select>
+
+	<select id="list" resultMap="BaseResultMap">
+		select `id`,`case_code`,`idcard`,`identification_time`,`appraise_result`,`handle_name`,`handle_organ`,`photopath`,`data_source_org_code`,`data_source_org`,`time` from case_incident
+        <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="caseCode != null and caseCode != ''"> and case_code = #{caseCode} </if>
+		  		  <if test="idcard != null and idcard != ''"> and idcard = #{idcard} </if>
+		  		  <if test="identificationTime != null and identificationTime != ''"> and identification_time = #{identificationTime} </if>
+		  		  <if test="appraiseResult != null and appraiseResult != ''"> and appraise_result = #{appraiseResult} </if>
+		  		  <if test="handleName != null and handleName != ''"> and handle_name = #{handleName} </if>
+		  		  <if test="handleOrgan != null and handleOrgan != ''"> and handle_organ = #{handleOrgan} </if>
+		  		  <if test="photopath != null and photopath != ''"> and photopath = #{photopath} </if>
+		  		  <if test="dataSourceOrgCode != null and dataSourceOrgCode != ''"> and data_source_org_code = #{dataSourceOrgCode} </if>
+		  		  <if test="dataSourceOrg != null and dataSourceOrg != ''"> and data_source_org = #{dataSourceOrg} </if>
+		  		  <if test="time != null and time != ''"> and time = #{time} </if>
+		  		</where>
+        <choose>
+            <when test="sort != null and sort.trim() != ''">
+                order by ${sort} ${order}
+            </when>
+			<otherwise>
+                order by id desc
+			</otherwise>
+        </choose>
+		<if test="offset != null and limit != null">
+			limit #{offset}, #{limit}
+		</if>
+	</select>
+	
+ 	<select id="count" resultType="int">
+		select count(*) from case_incident
+		 <where>  
+		  		  <if test="id != null and id != ''"> and id = #{id} </if>
+		  		  <if test="caseCode != null and caseCode != ''"> and case_code = #{caseCode} </if>
+		  		  <if test="idcard != null and idcard != ''"> and idcard = #{idcard} </if>
+		  		  <if test="identificationTime != null and identificationTime != ''"> and identification_time = #{identificationTime} </if>
+		  		  <if test="appraiseResult != null and appraiseResult != ''"> and appraise_result = #{appraiseResult} </if>
+		  		  <if test="handleName != null and handleName != ''"> and handle_name = #{handleName} </if>
+		  		  <if test="handleOrgan != null and handleOrgan != ''"> and handle_organ = #{handleOrgan} </if>
+		  		  <if test="photopath != null and photopath != ''"> and photopath = #{photopath} </if>
+		  		  <if test="dataSourceOrgCode != null and dataSourceOrgCode != ''"> and data_source_org_code = #{dataSourceOrgCode} </if>
+		  		  <if test="dataSourceOrg != null and dataSourceOrg != ''"> and data_source_org = #{dataSourceOrg} </if>
+		  		  <if test="time != null and time != ''"> and time = #{time} </if>
+		  		</where>
+	</select>
+	 
+	<insert id="save" parameterType="com.bootdo.jsb.ypfx.domain.CaseIncidentDO" useGeneratedKeys="true" keyProperty="id">
+		insert into case_incident
+		(
+			`case_code`, 
+			`idcard`, 
+			`identification_time`, 
+			`appraise_result`, 
+			`handle_name`, 
+			`handle_organ`, 
+			`photopath`, 
+			`data_source_org_code`, 
+			`data_source_org`, 
+			`time`
+		)
+		values
+		(
+			#{caseCode}, 
+			#{idcard}, 
+			#{identificationTime}, 
+			#{appraiseResult}, 
+			#{handleName}, 
+			#{handleOrgan}, 
+			#{photopath}, 
+			#{dataSourceOrgCode}, 
+			#{dataSourceOrg}, 
+			#{time}
+		)
+	</insert>
+	 
+	<update id="update" parameterType="com.bootdo.jsb.ypfx.domain.CaseIncidentDO">
+		update case_incident 
+		<set>
+			<if test="caseCode != null">`case_code` = #{caseCode}, </if>
+			<if test="idcard != null">`idcard` = #{idcard}, </if>
+			<if test="identificationTime != null">`identification_time` = #{identificationTime}, </if>
+			<if test="appraiseResult != null">`appraise_result` = #{appraiseResult}, </if>
+			<if test="handleName != null">`handle_name` = #{handleName}, </if>
+			<if test="handleOrgan != null">`handle_organ` = #{handleOrgan}, </if>
+			<if test="photopath != null">`photopath` = #{photopath}, </if>
+			<if test="dataSourceOrgCode != null">`data_source_org_code` = #{dataSourceOrgCode}, </if>
+			<if test="dataSourceOrg != null">`data_source_org` = #{dataSourceOrg}, </if>
+			<if test="time != null">`time` = #{time}</if>
+		</set>
+		where id = #{id}
+	</update>
+	
+	<delete id="remove">
+		delete from case_incident where id = #{value}
+	</delete>
+	
+	<delete id="batchRemove">
+		delete from case_incident where id in 
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+
+</mapper>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>统计分析</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="/css/animate.css" rel="stylesheet">
+    <link href="/css/style.css?v=4.1.0" rel="stylesheet">
+    
+	<style>
+		.a_click{
+			color: #337ab7;
+		}
+		.col-sm-6{
+			padding: 0;
+		}
+		#duty{
+			background-color:white;
+			width:220px;
+		}
+	</style>
+</head>
+
+<body class="gray-bg">
+
+	<div class="row wrapper border-bottom white-bg">
+		<div class="row">
+			<div class="col-sm-12" style="padding: 0px;height:110px;">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content" style="border: 0px; padding: 5px 20px;position:absolute;">
+						<form role="form" class="form-inline" id="myfrom">
+							<table class="table table-bordered region-query">
+								<tr>
+									<td class="textLable">按任务年份：</td>
+									<td>
+										<div class="input-group">
+											<input class="form-control" id="timeid" name="time" autocomplete="off" type="text">
+											<div class="input-group-btn">
+												<button type="button" class="btn btn-white dropdown-toggle"
+													data-toggle="">
+													<span class="caret"></span>
+												</button>
+												<ul class="dropdown-menu dropdown-menu-right" role="menu"
+													style="padding-top: 0px; max-height: 375px; max-width: 800px; overflow: auto; width: auto; transition: all 0.3s ease 0s;">
+												</ul>
+											</div>
+										</div>
+									</td>
+									<td class="textLable">按责任科室/人员：</td>
+									<td>
+										<div class="input-group">
+											<input class="form-control" id="duty"
+												name="duty" autocomplete="off" type="text" readonly="readonly">
+										</div>
+										<div id="treepanel" style="width:150px;height:550px;position:absolute;z-index:10;">
+										<iframe src="tree.html" style="height:100%;border:none;"></iframe>
+										</div>
+									</td>
+									<td>
+										<button data-toggle="button" class="btn btn-primary m-t"
+											type="button" onclick="searchbtn()" title="查询对应条件的统计数据">分析统计数据</button>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <div class="row  border-bottom white-bg dashboard-header" id="yearList">
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="padding:0">
+
+                        <div class="echarts" id="echarts-bar-chart-workflow"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="padding:0">
+
+                        <div class="echarts" id="echarts-pie-chart-workflow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="padding:0">
+
+                        <div class="echarts" id="echarts-bar-chart-overtime"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-content" style="padding:0">
+
+                        <div class="echarts" id="echarts-pie-chart-overtime"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- 全局js -->
+    <script src="/js/jquery.min.js?v=2.1.4"></script>
+    <script src="/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="/js/plugins/suggest/bootstrap-suggest.min.js"></script>
+
+    <!-- ECharts -->
+    <script src="/js/plugins/echarts/echarts-all.js"></script>
+
+    <!-- 自定义js -->
+    <script src="/js/content.js?v=1.0.0"></script>
+
+
+    <!-- ECharts demo data -->
+    <script src="/js/appjs/tjfx/echarts_tjfx.js"></script>
+
+
+</body>
+
+</html>
+<script>
+$("#treepanel").hide();
+$("#duty").click(
+		function(){
+			$("#treepanel").show();
+		}
+);
+$("#treepanel").mouseout(function(){
+	$("#treepanel").hide();
+});
+
+</script>

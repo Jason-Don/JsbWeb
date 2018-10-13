@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<head>
+	<link href="/css/dashboard.css" type="text/css" rel="stylesheet">
+	<link href="/css/all.css" type="text/css" rel="stylesheet">
+	<link href="/css/ywgl/xxhc.css" type="text/css" rel="stylesheet">
+	<style>
+		.gray-bg {
+	  		background-color: #E6E6E6;
+		}
+		.wrapper-content{
+			padding: 10px 30px;
+			width: 1200px;
+			margin: auto;
+		}
+		.importantMsg{
+			overflow: hidden;
+		}
+		.importantMsg>.imgDiv{
+			width: 170px;
+			position: relative;
+		}
+		.wrapper-content>div>div{
+			border: 1px solid #ccc;
+			padding: 10px;
+		}
+		.imgDiv>img{
+			position: absolute;
+			top: 20px;
+  			left: -100px;
+		}
+		.col-xs-6{
+			padding: 0;
+		}
+		.fitem{
+			margin: 10px 0;
+			overflow: hidden;
+		}
+		.fitem label {
+		  	display: inline-block;
+		  	width: 80px;
+		  	font-weight: normal;
+		}
+		.fitem .audioLabel {
+		  	width: 60px;
+		}
+		label>input{
+			vertical-align: top;
+		}
+		.fitem>input, .fitem>div>input, .fitem>select, .fitem>div>select{
+			height: 28px;
+			vertical-align: middle;
+			padding-left: 5px;
+		}
+		
+		.fitem .awardsLabel{
+			width: 60px;
+		}
+		input.awardsInput, select.awardsInput{
+			width: 175px;
+		}
+		textarea.largeInput{
+			width: calc(50% + 240px);
+			height: 80px;
+			vertical-align: top;
+		}
+		.picbtn {
+		  	height: 28px;
+		  	line-height: 28px;
+		  	position: relative;
+		  	left: 0px;
+		  	top: 1px;
+		 	display: block;
+		  	float: left;
+		  	background: url(/images/smallicon.png) no-repeat 15px -40px;
+		 	border: 1px solid #C0C0C0;
+		  	width: 100px;
+		  	font-size: 14px;
+		  	color: #000;
+		  	border-radius: 1px;
+		  	padding-left: 45px;
+		  	border-radius: 1px;
+		  	overflow: hidden;
+		  	width: 130px;
+		}
+		.picbtn:hover {
+		    background-color: #3DA6CD;
+		    background-position: 15px -76px;
+		    border: 1px solid #4763b9;
+		    cursor: pointer;
+		    color: #fff;
+		}
+		.condition_png {
+		  	width: 130px;
+		  	text-align: center;
+		  	position: absolute;
+		  	left: 0;
+		  	top: 0;
+		  	height: 28px;
+		  	font-size: 21px;
+		  	cursor: pointer;
+		  	-moz-opacity: 0;
+		  	opacity: 0;
+		  	font-size: 21px;
+		  	cursor: pointer;
+		}
+		div[type="tips"]{
+			left: calc(50% + 310px) !important;
+			top: 360px !important;
+			width: 300px !important;
+		}
+		.fa-question-circle:before {
+		  	content: "\f059";
+		}
+		.tipsI{
+			color: #ff892a;
+			font-size: 20px;
+		}
+		.ajBtn{
+			background-color: transparent;
+		  	border: 1px solid #ccc;
+		  	width: 80px;
+		  	margin-right: 20px;
+		}
+		.ajBtn:hover{
+			background-color: #F2ECEC;
+		}
+	</style>
+</head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div>
+			<h4>基本信息</h4>
+			<div class="importantMsg">
+				<div class="col-xs-6">
+					<div class="fitem">
+						<label><font class="red">*</font>身份证号</label>
+						<input name="sfzh" th:value=${jsbHzxx?.sfzh} id="sfzh" class="easyui-textbox" placeholder="身份证号" onchange="getState()">
+						<button onclick="getMsg()">获取</button>
+					</div>
+					<div class="fitem">
+						<label><font class="red">*</font>患者姓名</label>
+						<input name="hzxm" th:value=${jsbHzxx?.hzxm} id="hzxm" class="easyui-textbox" placeholder="患者姓名" data-options="validType:'length[2,10]'">
+						<label class="audioLabel"><input type="checkbox" name="ispc" id="ispcid" value="True"/><font color="green">已核查</font></label>
+						<label class="audioLabel"><input type="checkbox" name="ispg" id="ispgid" value="True"/>已评估</label>
+					</div>
+					<div style="padding:4px 0; color: red;" id="showMsg">
+						户籍信息可查询
+					</div>
+					<div class="fitem">
+						<label><font class="red">*</font>户籍地址</label>
+						<input name="hjdz" th:value=${jsbHzxx?.hjdz} id="hjdz" class="longInput" placeholder="户籍地址">
+					</div>
+					<div class="fitem">
+						<label><font class="red">*</font>现住地址</label>
+						<input name="xzdz" th:value=${jsbHzxx?.xzdz} id="xzdz" class="longInput" placeholder="现住地址">
+					</div>
+				</div>
+				<div class="imgDiv col-xs-6">
+					<a id="p2-piclink" href="javascript:void(0)" onclick="getImage()">
+						<img id="p2-pic" style="height: 160px; width:130px;" src="/images/defaultImg.png" alt="" >
+					</a>
+					<img class="hideDiv" id="checkAlready" alt="" src="/images/checkAlready.png">
+					<a href="javascript:void(0);" class="picbtn">
+                   		<input value="浏览" class="condition_png" type="file" id="file"/>
+                    	更改图片
+                 	</a>
+				</div>
+			</div>
+			<h4 class="detailH4">详细信息</h4>
+			<div class="otherMsg">
+				<div class="fitem">
+					<div class="col-xs-6">
+						<label><font class="red">*</font>诊断类型</label>
+						<select name="zdlx" id="zdlxid" class="shortInput">
+							<option th:selected="${jsbHzxx?.zdlx=='精神分裂症'}">精神分裂症</option>
+							<option th:selected="${jsbHzxx?.zdlx=='双相情感障碍'}">双相情感障碍</option>
+							<option th:selected="${jsbHzxx?.zdlx=='偏执性精神障碍'}">偏执性精神障碍</option>
+							<option th:selected="${jsbHzxx?.zdlx=='分裂情感性精神障碍'}">分裂情感性精神障碍</option>
+							<option th:selected="${jsbHzxx?.zdlx=='癫痫所致精神障碍'}">癫痫所致精神障碍</option>
+							<option th:selected="${jsbHzxx?.zdlx=='严重精神发育迟滞'}">严重精神发育迟滞</option>
+							<option th:selected="${jsbHzxx?.zdlx=='其他'}">其他</option>
+						</select>
+					</div>
+					<div class="col-xs-6">
+						<label><font class="red">*</font>风险等级</label>
+						<select name="zdlx" id="fxdjid" class="shortInput">
+							<option th:selected="${jsbHzxx?.fxdj==0}" value=0>0级 无以下行为</option>
+							<option th:selected="${jsbHzxx?.fxdj==1}" value=1>1级 口头威胁</option>
+							<option th:selected="${jsbHzxx?.fxdj==2}" value=2>2级 在家打砸</option>
+							<option th:selected="${jsbHzxx?.fxdj==3}" value=3>3级 不分场合打砸</option>
+							<option th:selected="${jsbHzxx?.fxdj==4}" value=4>4级 持续打砸（对人）</option>
+							<option th:selected="${jsbHzxx?.fxdj==5}" value=5>5级 持械伤人或纵火爆炸</option>
+						</select>
+						<i class="tipsI fa fa-question-circle" onmouseover="hover_hover();" onmouseout="layer.closeAll('tips');"></i>
+					</div>
+				</div>
+				<div class="fitem">
+					<div class="col-xs-6">
+						<label>诊断书</label>
+						<input name="zdsh" th:value=${jsbHzxx?.zdsh} class="shortInput" placeholder="诊断书">
+					</div>
+					<div class="col-xs-6">
+						<label>评估机构</label>
+						<input name="pgjg" th:value=${jsbHzxx?.pgjg} class="shortInput" placeholder="评估机构">
+					</div>
+				</div>
+				<div class="fitem">
+					<div class="col-xs-6">
+						<label><font class="red">*</font>肇祸次数</label>
+						<input name="zh" th:value=${jsbHzxx?.zh} id="zhid" class="shortInput" placeholder="肇祸次数">
+					</div>
+					<div class="col-xs-6">
+						<button class="ajBtn" onclick="getYaymnum()">案件数</button>
+						<button class="ajBtn" onclick="getYaymlist()">案件列表</button>
+						<!-- <a href="javascript:void(0)" class="">案件数</a>
+						<a href="javascript:void(0)" class="" onclick="getYaymlist()">案件列表</a> -->
+					</div>
+				</div>	
+				<div class="fitem">
+					<div class="col-xs-6">
+						<label><font class="red">*</font>肇事次数</label>
+						<input name="zs" th:value=${jsbHzxx?.zs} id="zsid" class="shortInput" placeholder="肇事次数">
+					</div>
+					<div class="col-xs-6">
+						<label>轻微滋事</label>
+						<input name="qwzs" th:value=${jsbHzxx?.qwzs} id="qwzsid" class="shortInput" placeholder="轻微滋事">
+					</div>
+				</div>	
+				<div class="fitem">
+					<div class="col-xs-6">
+						<label><font class="red">*</font>送治次数</label>
+						<input name="sz" th:value=${jsbHzxx?.sz} id="szid" class="shortInput" placeholder="送治次数">
+					</div>
+					<div class="col-xs-6">
+						<label><font class="red">*</font>送治医院</label>
+						<input name="szyy" th:value=${jsbHzxx?.szyy} id="szyyid" class="shortInput" placeholder="送治医院">
+					</div>
+				</div>	
+				<div class="fitem">
+					<label>简要情况</label>
+					<textarea name="jyaq" th:text=${jsbHzxx?.jyaq} class="largeInput" placeholder="填写肇事肇祸、现实表现、监护吃药等情况"></textarea>
+				</div>
+				<div class="fitem">
+					<label><input type="checkbox" name="isyjdb" value="True"/>已奖补</label>
+					<label class="awardsLabel">补奖时间</label>
+					<input name="yjdbtime" th:value=${jsbHzxx?.yjdbtime} id="yjdbtimeid" class="laydate-icon layer-date awardsInput" placeholder="补奖时间">
+				</div>
+				<div class="fitem">
+					<label><input type="checkbox" name="iszd" id="iszdid" value="True"/><font color="green">已列管</font></label>
+					<label class="awardsLabel">列管等级</label>
+					<select name="jhrgx" id="lgdj" class="awardsInput">
+						<option value=1>1级列管</option>
+						<option value=2>2级列管</option>
+						<option value=3>3级列管</option>
+					</select>
+				</div>
+				<div class="fitem">
+					<label><input type="checkbox" name="iszk" id="iszkid" value="True" onchange="switchIszk()"/><font color="green">已在控</font></label>
+					<input name="skyy" th:value=${jsbHzxx?.skyy} id="skyyid" class="longInput" placeholder="失控填写原因，在控保持为空">
+				</div>
+				<div class="fitem">
+					<label><font class="red">*</font>监护人姓名</label>
+					<input name="jhrxm" th:value=${jsbHzxx?.jhrxm} class="shortInput" placeholder="监护人姓名">
+				</div>
+				<div class="fitem">
+					<div class="col-xs-6">
+						<label><font class="red">*</font>监护人电话</label>
+						<input name="jhrdh" th:value=${jsbHzxx?.jhrdh} id="jhrdh" class="shortInput" placeholder="监护人电话" data-options="validType:'length[7,11]'" >
+					</div>
+					<div class="col-xs-6">
+						<label>监护人关系</label>
+						<select name="jhrgx" id="jhrgxid" class="shortInput">
+							<option th:selected="${jsbHzxx?.jhrgx=='父亲'}" value="父亲">患者父亲</option>
+							<option th:selected="${jsbHzxx?.jhrgx=='母亲'}" value="母亲">患者母亲</option>
+							<option th:selected="${jsbHzxx?.jhrgx=='丈夫'}" value="丈夫">患者丈夫</option>
+							<option th:selected="${jsbHzxx?.jhrgx=='妻子'}" value="妻子">患者妻子</option>
+							<option th:selected="${jsbHzxx?.jhrgx=='兄弟'}" value="兄弟">患者兄弟</option>
+							<option th:selected="${jsbHzxx?.jhrgx=='姐妹'}" value="姐妹">患者姐妹</option>
+							<option th:selected="${jsbHzxx?.jhrgx=='祖父母'}" value="祖父母">患者祖父母</option>
+							<option th:selected="${jsbHzxx?.jhrgx=='外祖父母'}" value="外祖父母">患者外祖父母</option>
+							<option th:selected="${jsbHzxx?.jhrgx=='亲戚'}" value="亲戚">患者亲戚</option>
+							<option th:selected="${jsbHzxx?.jhrgx=='社区干部'}" value="社区干部">社区干部</option>
+							<option th:selected="${jsbHzxx?.jhrgx=='其他'}" value="其他">其他</option>
+						</select>
+					</div>
+				</div>
+				<div class="fitem">
+					<div class="col-xs-6">
+						<label><font class="red">*</font>居住地干部</label>
+						<input name="xzsqgb" th:value=${jsbHzxx?.xzsqgb} id="xzsqgbid" class="shortInput" placeholder="居住地社区干部姓名">
+					</div>
+					<div class="col-xs-6">
+						<label><font class="red">*</font>干部电话</label>
+						<input name="xzgbdh" id="xzgbdhid" class="shortInput" placeholder="居住地干部电话" disabled="disabled">
+					</div>
+				</div>
+				<div class="fitem">
+					<div class="col-xs-6">
+						<label><font class="red">*</font>户籍地干部</label>
+						<input name="hjsqgb" th:value=${jsbHzxx?.hjsqgb} id="hjsqgbid" class="shortInput" placeholder="户籍地社区干部姓名">
+					</div>
+					<div class="col-xs-6">
+						<label><font class="red">*</font>干部电话</label>
+						<input name="hjgbdh" id="hjgbdhid" class="shortInput" placeholder="户籍干部电话" disabled="disabled">
+					</div>
+				</div>
+				<div class="fitem">
+					<label><font class="red">*</font>现住派出所</label>
+					<!--<input name="xzpcsjgdm" type="text" readonly="true" style="display:none">-->
+					<input name="xzpcs" th:value=${jsbHzxx?.xzpcs} id="xzpcsid" class="shortInput" placeholder="现住地派出所" disabled="disabled">
+				</div>
+				<div class="fitem">
+					<div class="col-xs-6">
+						<label><font class="red">*</font>现住地民警</label>
+						<input name="xzgkmj" id="xzgkmjid" class="shortInput" placeholder="现住地民警姓名">
+					</div>
+					<div class="col-xs-6">
+						<label><font class="red">*</font>民警电话</label>
+						<input name="xzmjdh" id="xzmjdhid" class="shortInput" placeholder="现住地民警电话" disabled="disabled">
+					</div>
+				</div>
+				<div class="fitem">
+					<label><font class="red">*</font>户籍派出所</label>
+					<input name="hjpcs" th:value=${jsbHzxx?.hjpcs} id="hjpcsid" class="shortInput" placeholder="户籍地派出所" disabled="disabled">
+				</div>
+				<div class="fitem">
+					<div class="col-xs-6">
+						<label><font class="red">*</font>户籍地民警</label>
+						<input name="hjgkmj" id="hjgkmjid" class="shortInput" placeholder="户籍地民警姓名">
+					</div>
+					<div class="col-xs-6">
+						<label><font class="red">*</font>民警电话</label>
+						<input name="hjmjdh" id="hjmjdhid" class="shortInput" placeholder="户籍地民警电话" disabled="disabled">
+					</div>
+				</div>
+			</div>
+		</div> 
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/plugins/layer/laydate/laydate.js"></script>
+	<script type="text/javascript" src="/js/appjs/jsb/ywgl/jsbHzxx/edit.js">
+	</script>
+</body>
+</html>

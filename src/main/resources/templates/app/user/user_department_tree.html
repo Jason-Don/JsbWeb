@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用户部门树</title>
+		
+		<link href="../css/bootstrap.min.css?v=3.3.6" rel="stylesheet" />
+		<link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet" />
+		<link href="../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet" />
+		<link href="../css/plugins/jsTree/style.min.css" rel="stylesheet" />
+		<link href="../css/style.css?v=4.1.0" rel="stylesheet" />
+		<style>
+			.jsTree_div{
+				max-height: 300px;
+				overflow-y: auto;
+				padding: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="app_div">
+			<div class="jsTree_div">
+				<div id="deptTree"></div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/jquery.min.js?v=2.1.4"></script>
+	<script src="../js/bootstrap.min.js?v=3.3.6"></script>
+	<script src="../js/plugins/jsTree/jstree.min.js"></script>
+	<script src="../js/plugins/layer/layer.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			getTreeData()
+		});
+		function getTreeData() {
+			var tree = 
+				{
+					"id":"19","text":"政策研究室","state":{"opened":true},"checked":false,"attributes":null,
+					"children":[
+						{
+							"id":"23","text":"室领导","state":{"opened":true},"checked":false,"attributes":null,
+							"children":[
+								{
+									"id":"141","text":"李伟智","state":{"opened":true,"mType":"user"},"checked":false,
+									"attributes":null,"children":[],"parentId":"23","hasParent":true,"hasChildren":false
+								},
+								{
+									"id":"140","text":"李晶","state":{"opened":true,"mType":"user"},"checked":false,
+									"attributes":null,"children":[],"parentId":"23","hasParent":true,"hasChildren":false
+								},
+								{
+									"id":"139","text":"邱鼎文","state":{"opened":true,"mType":"user"},"checked":false,
+									"attributes":null,"children":[],"parentId":"23","hasParent":true,"hasChildren":false
+								},
+								{
+									"id":"138","text":"李颖","state":{"opened":true,"mType":"user"},"checked":false,
+									"attributes":null,"children":[],"parentId":"23","hasParent":true,"hasChildren":false
+								}	
+							],
+							"parentId":"19","hasParent":true,"hasChildren":false
+						},
+						{
+							"id":"22","text":"文稿综合科","state":{"opened":true},"checked":false,"attributes":null,
+							"children":[],"parentId":"19","hasParent":true,"hasChildren":false
+						},
+						{
+							"id":"21","text":"调研指导科","state":{"opened":true},"checked":false,"attributes":null,
+							"children":[],"parentId":"19","hasParent":true,"hasChildren":false
+						},
+						{
+							"id":"20","text":"情况信息科","state":{"opened":true},"checked":false,"attributes":null,
+							"children":[],"parentId":"19","hasParent":true,"hasChildren":false
+						}
+					],
+					"parentId":"0","hasParent":false,"hasChildren":true
+				};
+			loadTree(tree);
+		}
+		function loadTree(tree) {
+			$('#deptTree').jstree({
+				'core' : {
+					'data' : tree
+				},
+				"plugins" : [ "search" ]
+			});
+			$('#deptTree').jstree().open_all();
+		}
+		$('#deptTree').on("changed.jstree", function(e, data) {
+			if(data.node.id!=-1){
+//				parent.loadDept(data.node.id,data.node.text);
+//				var index = parent.layer.getFrameIndex(window.name); // 获取窗口索引
+//				parent.layer.close(index);
+				console.log(data);
+			}
+			
+		});
+	</script>
+</html>

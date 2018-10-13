@@ -1,0 +1,16 @@
+/* 总的字体 */body{font-family: "Microsoft YaHei" !important;}
+/* 隐藏/块/横  */.displayNone,.hideDiv{display: none !important;}.displayInline{display: inline-block !important;}.displayBlock{display: block !important;}
+/* 透明度为0 */.opacityDiv{opacity: 0 !important;}
+/* 颜色  */.red{color: red !important;}.green{color: green !important;}
+/* 偏移  */.floatLeft{float: left !important;}.floatRight{float: right !important;}.floatNone{float: none !important;}.clearDiv{clear: both !important;height: 0 !important;width: 100% important;}
+/* 悬浮  */.positionRelative{position: relative}.positionAbsolute{position: absolute}
+/* 宽度100%-0% */.width_10{width: 100% !important;}.width_9{width: 90% !important;}.width_8{width: 80% !important;}.width_7{width: 70% !important;}.width_6{width: 60% !important;}.width_5{width: 50% !important;}.width_4{width: 40% !important;}.width_3{width: 30% !important;}.width_2{width: 20% !important;}.width_1{width: 10% !important;}.width_33{width: 33.33% !important;}
+/* 高度100%-0% */.height_10{height: 100% !important;}.height_9{height: 90% !important;}.height_8{height: 80% !important;}.height_7{height: 70% !important;}.height_6{height: 60% !important;}.height_5{height: 50% !important;}.height_4{height: 40% !important;}.height_3{height: 30% !important;}.height_2{height: 20% !important;}.height_1{height: 10% !important;}.height_33{height: 33.33% !important;}
+/* 位置居中/左/右  */.alignCenter{text-align: center !important;}.alignLeft{text-align: left !important;}.alignRight{text-align: right !important;}
+/* 无边框/背景/点击无边框 */.noBorder{border:0;}.noBgc{background-color: transparent}.noOutline{outline: none;}
+
+
+
+
+
+
